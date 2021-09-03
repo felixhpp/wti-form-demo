@@ -8,29 +8,29 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Base from './component/base';
-// import EditTemplate from './children/edit_template';
+import Base from './component/demo_base';
+import FormItemInput from './component/input';
 
 Vue.use(Router);
 
 const routes = [
     {
-        path: '/compoenent/base',
+        path: '/demo/base',
         component: Base,
     },
-    // {
-    //     path: '/edit',
-    //     component: EditTemplate,
-    // },
+    {
+        path: '/formItem/input',
+        component: FormItemInput,
+    },
     {
         path: '*',
-        redirect: 'compoenent/base',
+        redirect: '/demo/base',
     },
 ];
 
 const router = new Router({
     routes,
-    mode: 'history',
+    // mode: 'history',
 });
 
 export default router;

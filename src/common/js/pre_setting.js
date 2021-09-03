@@ -12,6 +12,7 @@ import http from '@/api/ajax.js';
 import URL from './url';
 import 'common/less/config.less';
 import 'element-ui/lib/theme-chalk/index.css';
+import WtiForm from '@/components/wti-form';
 
 const isProd = process.env.NODE_ENV !== 'development';
 
@@ -20,9 +21,9 @@ const CommonUtils = {
         Vue.use(URL);
         Vue.config.productionTip = !isProd;
         Vue.use(http);
-        // Vue.use(ElementUI)
         // 按需加载
         Vue.use(Element);
+        Vue.use(WtiForm);
 
         if (!document.getElementById('app')) {
             const DOM = document.createElement('div');
@@ -31,7 +32,6 @@ const CommonUtils = {
         }
 
         window.version = process.env.date;
-        // todo 以后以下这些也归属到开发模式下用
         Vue.use(forDevelopment);
     },
     setTitle (title) {
