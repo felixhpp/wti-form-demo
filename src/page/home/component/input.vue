@@ -4,13 +4,79 @@
         <p>最基本的文本输入框啦</p>
 
         <h3>基本用法</h3>
-        <wti-form :fields="fields1"/>
+        <p>这是最基本的用法，一个输入框 + 一个 label + 一个提交按钮。提交结果请查看控制台。为了区分代码，加了 border</p>
+        <wti-form ref="form1"
+                  :fields="fields1"/>
+        <div class="submit-line">
+            <el-button @click="submit('form1')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
         <el-collapse class="collapse">
             <el-collapse-item>
                 <template slot="title">
                     <b>点击查看代码</b>
                 </template>
                 <div class="code">{{ code1 }}</div>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>必填</h3>
+        <p>你可以直接点击提交按钮试试</p>
+        <wti-form ref="form2"
+                  :fields="fields2"
+                  :border-form="false"/>
+        <div class="submit-line">
+            <el-button @click="submit('form2')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code2 }}</div>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>最大最小长度限制</h3>
+        <p>可以为空，但不是空的话就必须符合长度要求</p>
+        <wti-form ref="form3"
+                  :fields="fields3"
+                  :border-form="false"/>
+        <div class="submit-line">
+            <el-button @click="submit('form3')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code3 }}</div>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>输入框前后添加文字</h3>
+        <p>其实跟 elementui 的玩法是差不多的</p>
+        <wti-form ref="form4"
+                  :fields="fields4"
+                  :border-form="false"/>
+        <div class="submit-line">
+            <el-button @click="submit('form3')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code4 }}</div>
             </el-collapse-item>
         </el-collapse>
     </div>
@@ -23,32 +89,177 @@
             return {
                 fields1: [
                     {
-                        label: '基本用法',
                         children: [
                             {
-                                key: 'test1',
+                                key: 'key1',
                                 type: 'input',
-                                label: '一个文本输入框'
+                                label: '我是输入框的 label'
                             }
                         ]
                     }
                 ],
 
-                code1: `<wti-form :fields="fields1"/>
+                code1: `<wti-form ref="form1"
+:fields="fields1"
+:border-form="false"/>
 ---
 fields1: [
     {
-        label: '基本用法',
         children: [
             {
-                key: 'test1',
+                key: 'key1',
                 type: 'input',
-                label: '一个文本输入框'
+                label: '我是输入框的 label'
             }
         ]
     }
-]`
+]`,
+
+                fields2: [
+                    {
+                        children: [
+                            {
+                                key: 'key2',
+                                type: 'input',
+                                label: '必填输入框的label',
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: '请输入',
+                                        trigger: [
+                                            'blur',
+                                            'change'
+                                        ]
+                                    }
+                                ],
+                            }
+                        ]
+                    }
+                ],
+
+                code2: `<wti-form ref="form2"
+:fields="fields2"
+:border-form="false"/>
+---
+fields2: [
+    {
+        children: [
+            {
+                key: 'key2',
+                type: 'input',
+                label: '必填输入框的label',
+                rules: [
+                    {
+                        required: true,
+                        message: '请输入',
+                        trigger: [
+                            'blur',
+                            'change'
+                        ]
+                    }
+                ],
+            }
+        ]
+    }
+]`,
+
+
+                fields3: [
+                    {
+                        children: [
+                            {
+                                key: 'key3',
+                                type: 'input',
+                                label: '最少3个字，最多6个字',
+                                rules: [
+                                    {
+                                        trigger: [
+                                            'blur',
+                                            'change'
+                                        ],
+                                        max: 6,
+                                        message: '长度应当处于3到6之间',
+                                        min: 3
+                                    }
+                                ],
+                            }
+                        ]
+                    }
+                ],
+
+                code3: `<wti-form ref="form3"
+:fields="fields3"
+:border-form="false"/>
+---
+fields3: [
+    {
+        children: [
+            {
+                key: 'key3',
+                type: 'input',
+                label: '最少3个字，最多6个字',
+                rules: [
+                    {
+                        trigger: [
+                            'blur',
+                            'change'
+                        ],
+                        max: 6,
+                        message: '长度应当处于3到6之间',
+                        min: 3
+                    }
+                ],
+            }
+        ]
+    }
+]`,
+
+
+                fields4: [
+                    {
+                        children: [
+                            {
+                                key: 'key4',
+                                type: 'input',
+                                label: '比如第 x 月这样就可以这么用',
+                                prefixMsg: '第',
+                                suffixMsg: '月',
+                                placeholder: '请输入月份'
+                            }
+                        ]
+                    }
+                ],
+
+                code4: `<wti-form ref="form4"
+:fields="fields4"
+:border-form="false"/>
+---
+fields4: [
+    {
+        children: [
+            {
+                key: 'key4',
+                type: 'input',
+                label: '比如第 x 月这样就可以这么用',
+                prefixMsg: '第',
+                suffixMsg: '月',
+                placeholder: '请输入月份'
+            }
+        ]
+    }
+]`,
             };
+        },
+        methods: {
+            submit (formName) {
+                this.$refs[formName].validate((isPass, data) => {
+                    if (isPass) {
+                        console.log('这是你刚提交的数据', data);
+                    } else {
+                        this.$message.error('校验失败！');
+                    }
+                });
+            }
         }
     };
 </script>
@@ -59,6 +270,16 @@ fields1: [
 #formitem-input {
     position: relative;
     width: 100%;
+
+    .submit-line {
+        margin: 10px 0;
+
+        .tips {
+            margin-left: 24px;
+            font-size: 10px;
+        }
+    }
+
 
     .collapse {
         position: relative;
