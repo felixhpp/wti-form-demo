@@ -68,7 +68,7 @@
                   :fields="fields4"
                   :border-form="false"/>
         <div class="submit-line">
-            <el-button @click="submit('form3')">提交按钮</el-button>
+            <el-button @click="submit('form4')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
         </div>
         <el-collapse class="collapse">
@@ -77,6 +77,26 @@
                     <b>点击查看代码</b>
                 </template>
                 <div class="code">{{ code4 }}</div>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>默认值</h3>
+        <p>在初始化的时候，如果没有给值，那么则会使用默认值。如果给值的则使用给的值</p>
+        <wti-form ref="form5"
+                  :fields="fields5"
+                  :border-form="false"/>
+        <div class="submit-line">
+            <el-button @click="submit('form5')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code5 }}</div>
             </el-collapse-item>
         </el-collapse>
     </div>
@@ -244,6 +264,37 @@ fields4: [
                 prefixMsg: '第',
                 suffixMsg: '月',
                 placeholder: '请输入月份'
+            }
+        ]
+    }
+]`,
+
+
+                fields5: [
+                    {
+                        children: [
+                            {
+                                key: 'key5',
+                                type: 'input',
+                                label: '给个默认值吧',
+                                defaultValue: '1234'
+                            }
+                        ]
+                    }
+                ],
+
+                code5: `<wti-form ref="form5"
+:fields="fields5"
+:border-form="false"/>
+---
+fields5: [
+    {
+        children: [
+            {
+                key: 'key5',
+                type: 'input',
+                label: '给个默认值吧',
+                defaultValue: '1234'
             }
         ]
     }
