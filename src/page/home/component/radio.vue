@@ -1,5 +1,5 @@
 <template>
-    <div id="formitem-input">
+    <div class="formitem-box">
         <h2>普通下拉框 NormalSelect</h2>
         <p>一个普通的下拉框。一般情况下，候选项是初始固定的。用于处理需要下拉选择的情况，暂时只支持单选。推荐 3 个元素以上的情况下，使用</p>
 
@@ -194,7 +194,7 @@ delOption () {
 <style scoped lang="less">
 @import '~common/less/config.less';
 
-#formitem-input {
+.formitem-box {
     position: relative;
     width: 100%;
 

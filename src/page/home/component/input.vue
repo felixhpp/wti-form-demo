@@ -1,5 +1,5 @@
 <template>
-    <div id="formitem-input">
+    <div class="formitem-box">
         <h2>文本输入框 Input</h2>
         <p>最基本的文本输入框啦</p>
 
@@ -323,7 +323,7 @@ fields5: [
 <style scoped lang="less">
 @import '~common/less/config.less';
 
-#formitem-input {
+.formitem-box {
     position: relative;
     width: 100%;
 

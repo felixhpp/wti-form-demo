@@ -14,12 +14,18 @@ import FormItemNormalSelect from './component/normal_select';
 import FormItemRadio from './component/radio';
 import FormItemMoneyInput from './component/money_input';
 
+import Connection from './component/connection';
+
 Vue.use(Router);
 
 const routes = [
     {
         path: '/demo/base',
         component: Base,
+    },
+    {
+        path: '/others/connection',
+        component: Connection,
     },
     {
         path: '/formItem/input',

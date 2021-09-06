@@ -16,6 +16,10 @@
                 <el-menu-item index="/formItem/radio">单选框 Radio</el-menu-item>
                 <el-menu-item index="/formItem/money_input">金钱输入框 MoneyInput</el-menu-item>
             </el-menu-item-group>
+            <el-menu-item-group>
+                <template slot="title">其他</template>
+                <el-menu-item index="/others/connection">联系方式</el-menu-item>
+            </el-menu-item-group>
         </el-menu>
         <div id="main">
             <router-view/>
