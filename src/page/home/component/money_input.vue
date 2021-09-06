@@ -25,8 +25,7 @@
         <h3>只能输入正数</h3>
         <p>不允许输入负数的金额。方法是 positive 属性设置为 true</p>
         <wti-form ref="form2"
-                  :fields="fields2"
-                  :border-form="false"/>
+                  :fields="fields2"/>
         <div class="submit-line">
             <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
@@ -45,8 +44,7 @@
         <h3>单位为万元</h3>
         <p>但是实际提交的值，还是以元为单位进行提交的</p>
         <wti-form ref="form3"
-                  :fields="fields3"
-                  :border-form="false"/>
+                  :fields="fields3"/>
         <div class="submit-line">
             <el-button type="primary" @click="submit('form3')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
@@ -82,8 +80,7 @@
 
                 code1: `<wti-form
             ref="form1"
-            :fields="fields1"
-            :border-form="false"/>
+            :fields="fields1"/>
 ---
 fields1: [
     {
@@ -114,8 +111,7 @@ fields1: [
                 ],
 
                 code2: `<wti-form ref="form2"
-:fields="fields2"
-:border-form="false"/>
+:fields="fields2"/>
 ---
 fields2: [
     {
@@ -146,8 +142,7 @@ fields2: [
                 ],
 
                 code3: `<wti-form ref="form3"
-:fields="fields3"
-:border-form="false"/>
+:fields="fields3"/>
 ---
 fields3: [
     {
@@ -161,7 +156,7 @@ fields3: [
         ]
     }
 ]`,
-                
+
             };
         },
         methods: {

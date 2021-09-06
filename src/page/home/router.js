@@ -10,6 +10,7 @@ import Router from 'vue-router';
 
 import Base from './component/demo_base';
 import FormItemInput from './component/input';
+import FormItemNormalSelect from './component/normal_select';
 import FormItemMoneyInput from './component/money_input';
 
 Vue.use(Router);
@@ -22,6 +23,10 @@ const routes = [
     {
         path: '/formItem/input',
         component: FormItemInput,
+    },
+    {
+        path: '/formItem/normal_select',
+        component: FormItemNormalSelect,
     },
     {
         path: '/formItem/money_input',
