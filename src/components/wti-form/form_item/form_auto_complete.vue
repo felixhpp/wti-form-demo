@@ -37,7 +37,6 @@
                 }
 
                 axios.post(this.item.searchUrl, payload).then(res => {
-                    // console.log(res);
                     if (res.code === 200) {
                         if (res.data) {
                             const d = res.data.map(item => {
@@ -56,11 +55,11 @@
                             cb(d);
                         } else {
                             cb([]);
-                            this.$message.error('暂无数据');
+                            this.$message.error('无匹配数据');
                         }
                     } else {
                         cb([]);
-                        this.$message.error(res.msg);
+                        this.$message.error(res.msg || '无匹配数据');
                     }
                 });
             },

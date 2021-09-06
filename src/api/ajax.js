@@ -9,8 +9,8 @@ import { get, post } from '../config/http';
 
 const $ajax = {
     // 示例
-    test (payload) {
-        return post('/test', payload);
+    autocomplete (payload) {
+        return post('/autocomplete', payload);
     },
     testGet (payload) {
         return get('/test', payload);

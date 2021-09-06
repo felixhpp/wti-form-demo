@@ -63,7 +63,7 @@ const getEntries = function () {
                 removeAttributeQuotes: isProd, // 去掉引号
             },
             hash: true, // 去掉上次浏览器的缓存（使浏览器每次获取到的是最新的html）
-            chunks: [item.filename /*'vendor'*/], // 实现多入口的核心，决定自己加载哪个js文件，
+            chunks: [ item.filename /*'vendor'*/ ], // 实现多入口的核心，决定自己加载哪个js文件，
             xhtml: true, // 自闭标签
         });
     });
@@ -133,7 +133,7 @@ const config = {
         progress: false,
         proxy: {
             '/api': {
-                target: 'http://127.0.0.1:8080',
+                target: 'http://127.0.0.1:7001',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': '',
@@ -148,11 +148,11 @@ const config = {
                 exclude: /node_modules/,
                 loader: 'vue-loader',
                 options: {
-                    css: ['css-loader'],
+                    css: [ 'css-loader' ],
                     postcss: isProd ? [
                         require('autoprefixer'),
                     ] : [],
-                    less: ['less-loader'],
+                    less: [ 'less-loader' ],
                 },
             },
             {
@@ -252,7 +252,7 @@ const config = {
         ],
     },
     resolve: { // 配置路径别名
-        extensions: ['.js', '.vue'], // import引入文件的时候不用加后缀
+        extensions: [ '.js', '.vue' ], // import引入文件的时候不用加后缀
         alias: {
             '@': resolve('src'),
             'components': resolve('src/components'),
@@ -270,7 +270,7 @@ const config = {
     plugins: [
         new ESLintPlugin({
             // fix: true,
-            extensions: ['js', 'vue'],
+            extensions: [ 'js', 'vue' ],
         }),
         new VueLoaderPlugin(), // vue加载器
         ...entries.plugins,
@@ -286,7 +286,7 @@ if (isProd) {
             filename: 'css/[name].css',
         }),
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [resolve('dist/*')],
+            cleanOnceBeforeBuildPatterns: [ resolve('dist/*') ],
         }),
         new webpack.DefinePlugin({
             'process.env': {
