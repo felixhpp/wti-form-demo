@@ -11,10 +11,18 @@
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">各表单组件</template>
-                <el-menu-item index="/formItem/input">文本输入框 Input</el-menu-item>
-                <el-menu-item index="/formItem/normal_select">普通下拉框 NormalSelect</el-menu-item>
-                <el-menu-item index="/formItem/radio">单选框 Radio</el-menu-item>
-                <el-menu-item index="/formItem/money_input">金钱输入框 MoneyInput</el-menu-item>
+                <el-menu-item index="/formItem/Input">文本输入框 Input</el-menu-item>
+                <el-menu-item index="/formItem/NormalSelect">普通下拉框 NormalSelect</el-menu-item>
+                <el-menu-item index="/formItem/Radio">单选框 Radio</el-menu-item>
+                <el-menu-item index="/formItem/MoneyInput">金钱输入框 MoneyInput</el-menu-item>
+                <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
+                <el-menu-item index="/formItem/AutoCompleteInput">输入搜索下拉框 AutoCompleteInput</el-menu-item>
+                <el-menu-item index="/formItem/DateInput">日期输入框 DateInput</el-menu-item>
+                <el-menu-item index="/formItem/DateRangeInput">日期范围输入框 DateRangeInput</el-menu-item>
+                <el-menu-item index="/formItem/DynamicSelect">字典下拉框 DynamicSelect</el-menu-item>
+                <el-menu-item index="/formItem/HourMinuteInput">时分输入框 HourMinuteInput</el-menu-item>
+                <el-menu-item index="/formItem/NumberInput">数字输入框 NumberInput</el-menu-item>
+                <el-menu-item index="/formItem/RateInput">利率输入框 RateInput</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">其他</template>
@@ -55,7 +63,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 200px;
+        width: 300px;
         height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
@@ -64,7 +72,7 @@
     #main {
         position: absolute;
         top: 0;
-        left: 200px;
+        left: 300px;
         right: 0;
         height: 100%;
         overflow-y: auto;
