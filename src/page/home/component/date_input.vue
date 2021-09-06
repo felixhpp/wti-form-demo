@@ -1,7 +1,24 @@
 <template>
     <div class="formitem-box">
         <h2>日期输入框 DateInput</h2>
-        <p>还没来得及写文档</p>
+        <p>用于处理需要日期的表单元素</p>
+
+        <h3>基本用法</h3>
+        <p>基础用法</p>
+        <wti-form ref="form1"
+                  :fields="fields1"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form1')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code1 }}</div>
+            </el-collapse-item>
+        </el-collapse>
     </div>
 </template>
 
@@ -9,9 +26,49 @@
     export default {
         name: 'DateInput',
         data () {
-            return {};
+            return {
+                fields1: [
+                    {
+                        children: [
+                            {
+                                'key': 'key1',
+                                'label': '一个日期输入框',
+                                'placeholder': '请输入',
+                                'type': 'date-input'
+                            }
+                        ]
+                    }
+                ],
+
+                code1: `<wti-form ref="form1"
+            :fields="fields1"/>
+---
+fields1: [
+    {
+        children: [
+            {
+                'key': 'key1',
+                'label': '一个日期输入框',
+                'placeholder': '请输入',
+                'type': 'date-input'
+            }
+        ]
+    }
+]
+`,
+            };
         },
-        methods: {}
+        methods: {
+            submit (formName) {
+                this.$refs[formName].validate((isPass, data) => {
+                    if (isPass) {
+                        console.log('这是你刚提交的数据', data);
+                    } else {
+                        this.$message.error('校验失败！');
+                    }
+                });
+            }
+        }
     };
 </script>
 
