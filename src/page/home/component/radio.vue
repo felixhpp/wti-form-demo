@@ -45,7 +45,7 @@
 
 <script>
     export default {
-        name: 'NormalSelect',
+        name: 'Radio',
         data () {
             return {
                 fields1: [
@@ -61,19 +61,11 @@
                                         'value': 'value_b',
                                         'label': 'label B'
                                     },
-                                    {
-                                        'value': 'value_c',
-                                        'label': 'label C'
-                                    },
-                                    {
-                                        'value': 'value_d',
-                                        'label': 'label D'
-                                    }
                                 ],
                                 'key': 'key1',
                                 'label': '一个下拉框',
                                 'placeholder': '请选择',
-                                'type': 'normal-select'
+                                'type': 'radio'
                             }
                         ]
                     }
@@ -95,19 +87,11 @@ fields1: [
                         'value': 'value_b',
                         'label': 'label B'
                     },
-                    {
-                        'value': 'value_c',
-                        'label': 'label C'
-                    },
-                    {
-                        'value': 'value_d',
-                        'label': 'label D'
-                    }
                 ],
                 'key': 'key A',
                 'label': '一个下拉框',
                 'placeholder': '请选择',
-                'type': 'normal-select'
+                'type': 'radio'
             }
         ]
     }
@@ -126,7 +110,7 @@ fields1: [
                                 'key': 'key2',
                                 'label': '一个下拉框',
                                 'placeholder': '请选择',
-                                'type': 'normal-select'
+                                'type': 'radio'
                             }
                         ]
                     }
@@ -148,7 +132,7 @@ fields2: [
                 'key': 'key2',
                 'label': '一个下拉框',
                 'placeholder': '请选择',
-                'type': 'normal-select'
+                'type': 'radio'
             }
         ]
     }

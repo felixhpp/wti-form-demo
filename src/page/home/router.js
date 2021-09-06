@@ -11,6 +11,7 @@ import Router from 'vue-router';
 import Base from './component/demo_base';
 import FormItemInput from './component/input';
 import FormItemNormalSelect from './component/normal_select';
+import FormItemRadio from './component/radio';
 import FormItemMoneyInput from './component/money_input';
 
 Vue.use(Router);
@@ -27,6 +28,10 @@ const routes = [
     {
         path: '/formItem/normal_select',
         component: FormItemNormalSelect,
+    },
+    {
+        path: '/formItem/radio',
+        component: FormItemRadio,
     },
     {
         path: '/formItem/money_input',

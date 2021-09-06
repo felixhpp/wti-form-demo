@@ -62,7 +62,7 @@
 
 <script>
     export default {
-        name: 'Input',
+        name: 'MoneyInput',
         data () {
             return {
                 fields1: [
@@ -111,7 +111,7 @@ fields1: [
                 ],
 
                 code2: `<wti-form ref="form2"
-:fields="fields2"/>
+            :fields="fields2"/>
 ---
 fields2: [
     {
@@ -142,7 +142,7 @@ fields2: [
                 ],
 
                 code3: `<wti-form ref="form3"
-:fields="fields3"/>
+            :fields="fields3"/>
 ---
 fields3: [
     {
