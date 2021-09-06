@@ -11,9 +11,9 @@
                         :placeholder="getPlaceholder(item)"
                         @blur="e => onBlur(item, e)"
                         @focus="e => onFocus(item, e)"
-                        format="HH:mm"
-                        value-format="HH:mm:00"
-                        step="00:01"
+                        :format="item.format || 'HH:mm'"
+                        :value-format="item['value-format'] || 'HH:mm:00'"
+                        v-bind="item"
                         v-if="!getTextModel"/>
         <div v-else :style="item.textStyle||{}">{{ val || '-' }}</div>
     </div>
