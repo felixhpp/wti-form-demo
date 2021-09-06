@@ -17,8 +17,8 @@
                 <el-menu-item index="/formItem/MoneyInput">金钱输入框 MoneyInput</el-menu-item>
                 <el-menu-item index="/formItem/AutoCompleteInput">输入搜索下拉框 AutoCompleteInput</el-menu-item>
                 <el-menu-item index="/formItem/DateInput">日期输入框 DateInput</el-menu-item>
-                <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
                 <el-menu-item index="/formItem/DateRangeInput">日期范围输入框 DateRangeInput</el-menu-item>
+                <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
                 <el-menu-item index="/formItem/DynamicSelect">字典下拉框 DynamicSelect</el-menu-item>
                 <el-menu-item index="/formItem/HourMinuteInput">时分输入框 HourMinuteInput</el-menu-item>
                 <el-menu-item index="/formItem/NumberInput">数字输入框 NumberInput</el-menu-item>
