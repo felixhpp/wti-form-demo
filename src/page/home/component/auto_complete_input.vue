@@ -6,6 +6,7 @@
 
         <h3>基本用法</h3>
         <p>配置好表单组件，然后输入字符串，自动将内容回显到输入框里</p>
+        <p>接口返回数据请自行查看 network</p>
         <wti-form ref="form1"
                   :fields="fields1"/>
         <div class="submit-line">
@@ -22,6 +23,23 @@
         </el-collapse>
 
         <el-divider/>
+
+        <h3>自动带入</h3>
+        <p>当选择其中一个选项后，该选项里某些值，会被同步带入到表单对应的元素里</p>
+        <wti-form ref="form2"
+                  :fields="fields2"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form1')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code2 }}</div>
+            </el-collapse-item>
+        </el-collapse>
     </div>
 </template>
 
@@ -39,24 +57,121 @@
             return {
                 fields1: [
                     {
-                        children: [ {
-                            'autoCompleteKeys': [],
-                            'searchUrl': '/autocomplete',
-                            'searchKey': 'search',
-                            'mainShowKey': 'search',
-                            'key': 'key1',
-                            'label': '基础用法',
-                            'placeholder': '请输入',
-                            'type': 'auto-complete-input',
-                        }
+                        children: [
+                            {
+                                'autoCompleteKeys': [],
+                                'searchUrl': '/autocomplete',
+                                'searchKey': 'search',
+                                'mainShowKey': 'search',
+                                'key': 'key1',
+                                'label': '基础用法',
+                                'placeholder': '请输入',
+                                'type': 'auto-complete-input',
+                            }
                         ]
                     }
                 ],
 
-                code1: ''
+                code1: `<wti-form ref="form1"
+            :fields="fields1"/>
+---
+fields1: [
+    {
+        children: [
+            {
+                'autoCompleteKeys': [],
+                'searchUrl': '/autocomplete',
+                'searchKey': 'search',
+                'mainShowKey': 'search',
+                'key': 'key1',
+                'label': '基础用法',
+                'placeholder': '请输入',
+                'type': 'auto-complete-input',
+            }
+        ]
+    }
+]
+`,
+
+                fields2: [
+                    {
+                        children: [
+                            {
+                                'autoCompleteKeys': [
+                                    'keyA',
+                                    'keyB'
+                                ],
+                                'searchUrl': '/autocomplete',
+                                'searchKey': 'search',
+                                'mainShowKey': 'search',
+                                'key': 'key1',
+                                'label': '基础用法',
+                                'placeholder': '请输入',
+                                'type': 'auto-complete-input',
+                            },
+                            {
+                                'key': 'keyA',
+                                'label': 'keyA',
+                                'type': 'input',
+                                'disableDefault': true,
+                                'nextRowFirst': true
+                            },
+                            {
+                                'key': 'keyB',
+                                'label': 'keyB',
+                                'type': 'input',
+                            }
+                        ]
+                    }
+                ],
+
+                code2: `<wti-form ref="form1"
+            :fields="fields1"/>
+---
+fields2: [
+    {
+        children: [
+            {
+                'autoCompleteKeys': [
+                    'keyA',
+                    'keyB'
+                ],
+                'searchUrl': '/autocomplete',
+                'searchKey': 'search',
+                'mainShowKey': 'search',
+                'key': 'key1',
+                'label': '基础用法',
+                'placeholder': '请输入',
+                'type': 'auto-complete-input',
+            },
+            {
+                'key': 'keyA',
+                'label': 'keyA',
+                'type': 'input',
+                'disableDefault': true,
+                'nextRowFirst': true
+            },
+            {
+                'key': 'keyB',
+                'label': 'keyB',
+                'type': 'input',
+            }
+        ]
+    }
+]`,
             };
         },
-        methods: {}
+        methods: {
+            submit (formName) {
+                this.$refs[formName].validate((isPass, data) => {
+                    if (isPass) {
+                        console.log('这是你刚提交的数据', data);
+                    } else {
+                        this.$message.error('校验失败！');
+                    }
+                });
+            }
+        }
     };
 </script>
 
