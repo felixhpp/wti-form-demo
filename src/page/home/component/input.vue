@@ -8,7 +8,7 @@
         <wti-form ref="form1"
                   :fields="fields1"/>
         <div class="submit-line">
-            <el-button @click="submit('form1')">提交按钮</el-button>
+            <el-button type="primary" @click="submit('form1')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
         </div>
         <el-collapse class="collapse">
@@ -28,7 +28,7 @@
                   :fields="fields2"
                   :border-form="false"/>
         <div class="submit-line">
-            <el-button @click="submit('form2')">提交按钮</el-button>
+            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
         </div>
         <el-collapse class="collapse">
@@ -48,7 +48,7 @@
                   :fields="fields3"
                   :border-form="false"/>
         <div class="submit-line">
-            <el-button @click="submit('form3')">提交按钮</el-button>
+            <el-button type="primary" @click="submit('form3')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
         </div>
         <el-collapse class="collapse">
@@ -68,7 +68,7 @@
                   :fields="fields4"
                   :border-form="false"/>
         <div class="submit-line">
-            <el-button @click="submit('form4')">提交按钮</el-button>
+            <el-button type="primary" @click="submit('form4')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
         </div>
         <el-collapse class="collapse">
@@ -88,7 +88,7 @@
                   :fields="fields5"
                   :border-form="false"/>
         <div class="submit-line">
-            <el-button @click="submit('form5')">提交按钮</el-button>
+            <el-button type="primary" @click="submit('form5')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
         </div>
         <el-collapse class="collapse">
@@ -119,9 +119,10 @@
                     }
                 ],
 
-                code1: `<wti-form ref="form1"
-:fields="fields1"
-:border-form="false"/>
+                code1: `<wti-form
+            ref="form1"
+            :fields="fields1"
+            :border-form="false"/>
 ---
 fields1: [
     {
@@ -157,9 +158,10 @@ fields1: [
                     }
                 ],
 
-                code2: `<wti-form ref="form2"
-:fields="fields2"
-:border-form="false"/>
+                code2: `<wti-form
+            ref="form2"
+            :fields="fields2"
+            :border-form="false"/>
 ---
 fields2: [
     {
@@ -207,9 +209,10 @@ fields2: [
                     }
                 ],
 
-                code3: `<wti-form ref="form3"
-:fields="fields3"
-:border-form="false"/>
+                code3: `<wti-form
+            ref="form3"
+            :fields="fields3"
+            :border-form="false"/>
 ---
 fields3: [
     {
@@ -250,9 +253,10 @@ fields3: [
                     }
                 ],
 
-                code4: `<wti-form ref="form4"
-:fields="fields4"
-:border-form="false"/>
+                code4: `<wti-form
+            ref="form4"
+            :fields="fields4"
+            :border-form="false"/>
 ---
 fields4: [
     {
@@ -283,9 +287,10 @@ fields4: [
                     }
                 ],
 
-                code5: `<wti-form ref="form5"
-:fields="fields5"
-:border-form="false"/>
+                code5: `<wti-form
+            ref="form5"
+            :fields="fields5"
+            :border-form="false"/>
 ---
 fields5: [
     {

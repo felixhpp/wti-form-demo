@@ -11,7 +11,8 @@
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">各表单组件</template>
-                <el-menu-item index="/formItem/input">文本输入框 input</el-menu-item>
+                <el-menu-item index="/formItem/input">文本输入框 Input</el-menu-item>
+                <el-menu-item index="/formItem/money_input">金钱输入框 MoneyInput</el-menu-item>
             </el-menu-item-group>
         </el-menu>
         <div id="main">
