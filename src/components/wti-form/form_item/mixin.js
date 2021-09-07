@@ -11,7 +11,7 @@ export default {
             type: Object,
             default: () => ({}),
         },
-        value: [ String, Number ],
+        value: [ String, Number, Array ],
         allDisabled: {
             type: Boolean,
             default: false,

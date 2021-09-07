@@ -12,6 +12,7 @@
                       @keydown.native="onKeydown($event)"
                       @blur="e => onBlur(item, e)"
                       @focus="e => onFocus(item, e)"
+                      v-bind="item"
                       :clearable="true">
                 <template slot="append" class="suffixMsg">{{ item.suffixMsg }}</template>
             </el-input>
@@ -20,6 +21,7 @@
                       :disabled="getDisabled"
                       class="input-readonly"
                       type="input"
+                      v-bind="item"
                       :clearable="true">
                 <template slot="append" class="suffixMsg">{{ item.suffixMsg }}</template>
             </el-input>

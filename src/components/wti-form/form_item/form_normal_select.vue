@@ -6,6 +6,7 @@
                    v-model="val"
                    :disabled="getDisabled"
                    :placeholder="getPlaceholder(item)"
+                   v-bind="item"
                    v-if="!getTextModel">
             <el-option v-for="option in item.options"
                        :key="option.value"

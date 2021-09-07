@@ -592,7 +592,7 @@
                 this.childFormFileds = [];
                 // 这里的目的是为了生成 fields
                 this.value.forEach(() => {
-                    const filed = deepCopy(childrenForm);
+                    const filed = this.deepCopy(childrenForm);
                     // 给每个 field 添加一个随机 id
                     const randomId = (Math.random() * 100000000).toFixed(0);
                     filed.randomId = randomId;

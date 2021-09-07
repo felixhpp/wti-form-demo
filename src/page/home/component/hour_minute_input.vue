@@ -4,7 +4,7 @@
         <p>用于输入小时和分钟的输入框</p>
 
         <h3>基本用法</h3>
-        <p>提交的值是 hh:mm:ss 格式</p>
+        <p>提交的值是 hh:mm:ss 格式。注意，这个是基于 <code>el-time-picker</code> 标签开发的，不适用于 <code>el-time-select</code> 标签的选项。</p>
         <wti-form ref="form1"
                   :fields="fields1"/>
         <div class="submit-line">
@@ -23,7 +23,21 @@
         <el-divider/>
 
         <h3>其他</h3>
-        <p>也可以像 Element UI 那样支持很多功能，但是，除非你催更，否则，暂时，还不支持</p>
+        <p>Element UI 该组件的原生方法，大部分支持，例如可以传入属性：<code>'is-range': true</code> 将其变为时间范围输入框</p>
+        <wti-form ref="form2"
+                  :fields="fields2"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code2 }}</div>
+            </el-collapse-item>
+        </el-collapse>
     </div>
 </template>
 
@@ -43,15 +57,46 @@
                                 'key': 'key1',
                                 'label': '时分输入框',
                                 'type': 'hour-minute-input',
-                                'step': '00:15',
-                                'value-format': 'HH:mm:00',
-                                editable: false
                             }
                         ]
                     }
                 ],
 
                 code1: `<wti-form
+            ref="form1"
+            :fields="fields1"
+            :border-form="false"/>
+---
+fields1: [
+    {
+        children: [
+            {
+                key: 'key1',
+                type: 'input',
+                label: '我是输入框的 label'
+            }
+        ]
+    }
+]`,
+
+                fields2: [
+                    {
+                        children: [
+                            {
+                                'key': 'key2',
+                                'label': '时分范围输入框',
+                                'type': 'hour-minute-input',
+                                'value-format': 'HH:mm',
+                                // 'is-range': true
+                                'picker-options': {
+                                    selectableRange: '18:30:00 - 20:30:00'
+                                }
+                            }
+                        ]
+                    }
+                ],
+
+                code2: `<wti-form
             ref="form1"
             :fields="fields1"
             :border-form="false"/>

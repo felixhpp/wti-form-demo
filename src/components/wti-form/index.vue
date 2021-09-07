@@ -150,6 +150,11 @@
                                                            :item="rowItem"
                                                            :all-disabled="allDisabled"
                                                            v-model.trim="formData[rowItem.key]"/>
+                                            <FormAreaSelect v-if="rowItem.type==='area-select'"
+                                                            :ref="rowItem.key"
+                                                            :item="rowItem"
+                                                            :all-disabled="allDisabled"
+                                                            v-model.trim="formData[rowItem.key]"/>
                                         </el-form-item>
 
                                         <ChildForm v-if="rowItem.type === 'child-form'"
@@ -183,6 +188,7 @@
     import FormRadio from './form_item/form_radio';
     import FormMoneyInput from './form_item/form_money_input';
     import FormRateInput from './form_item/form_rate_input';
+    import FormAreaSelect from './form_item/form_area_select';
 
     import ChildForm from './child_form';
     import FormMixin from './mixin';
@@ -283,6 +289,7 @@
         provide () {
             return {
                 // formData: this.formData,
+                dictUrl: this.dictUrl,
                 dynamicDict: this.dynamicDict,
                 // 状态切换函数
                 statusChangeFn: {
@@ -343,6 +350,8 @@
                                     // 2.2 该要素没有默认值，使用通用默认值
                                     if (field.type === 'child-form') {
                                         this.$set(this.formData, field.key, []);
+                                    } else if (field.type === 'area-select') {
+                                        this.$set(this.formData, field.key, [ '', '', '' ]);
                                     } else {
                                         this.$set(this.formData, field.key, '');
                                     }
@@ -665,6 +674,24 @@
                                     this.$set(this.dynamicDict, field.parentKey, []);
                                 }
                             }
+                            // 地区选择框，三级联动
+                            if (field.type === 'area-select') {
+                                const firstParentKey = field.firstParentKey || '10020';
+                                const secondParentKey = field.firstParentKey || '10021';
+                                const thirdParentKey = field.firstParentKey || '10022';
+                                if (parentCodeList.indexOf(firstParentKey) === -1) {
+                                    parentCodeList.push(firstParentKey);
+                                    this.$set(this.dynamicDict, firstParentKey, []);
+                                }
+                                if (parentCodeList.indexOf(secondParentKey) === -1) {
+                                    parentCodeList.push(secondParentKey);
+                                    this.$set(this.dynamicDict, secondParentKey, []);
+                                }
+                                if (parentCodeList.indexOf(thirdParentKey) === -1) {
+                                    parentCodeList.push(thirdParentKey);
+                                    this.$set(this.dynamicDict, thirdParentKey, []);
+                                }
+                            }
                         });
                     }
                 });
@@ -890,6 +917,7 @@
             FormNormalSelect,
             FormMoneyInput,
             FormRateInput,
+            FormAreaSelect,
             ChildForm,
         },
     };
