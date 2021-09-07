@@ -19,9 +19,9 @@
                 <el-menu-item index="/formItem/DateInput">日期输入框 DateInput</el-menu-item>
                 <el-menu-item index="/formItem/DateRangeInput">日期范围输入框 DateRangeInput</el-menu-item>
                 <el-menu-item index="/formItem/HourMinuteInput">时分输入框 HourMinuteInput</el-menu-item>
+                <el-menu-item index="/formItem/NumberInput">数字输入框 NumberInput</el-menu-item>
                 <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
                 <el-menu-item index="/formItem/DynamicSelect">字典下拉框 DynamicSelect</el-menu-item>
-                <el-menu-item index="/formItem/NumberInput">数字输入框 NumberInput</el-menu-item>
                 <el-menu-item index="/formItem/RateInput">利率输入框 RateInput</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
@@ -54,71 +54,76 @@
     };
 </script>
 <style lang="less" scoped>
-#app {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-    #nav {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 300px;
+    #app {
+        position: relative;
+        width: 100%;
         height: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
 
-    #main {
-        position: absolute;
-        top: 0;
-        left: 300px;
-        right: 0;
-        height: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding: 40px 20px;
+        #nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        #main {
+            position: absolute;
+            top: 0;
+            left: 300px;
+            right: 0;
+            height: 100%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
     }
-}
 </style>
 <style lang="less" type="text/less">
-@import '~common/css/reset.css';
+    @import '~common/css/reset.css';
 
-html, body {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
+    html, body {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
 
-h2 {
-    font-weight: 400;
-    color: #1f2f3d;
-    font-size: 28px;
-    height: 40px;
-    line-height: 40px;
-}
+    h2 {
+        font-weight: 400;
+        color: #1f2f3d;
+        font-size: 28px;
+        height: 40px;
+        line-height: 40px;
+    }
 
-h3 {
-    margin: 55px 0 20px;
-    font-weight: 400;
-    color: #1f2f3d;
-    font-size: 22px;
-    height: 30px;
-    line-height: 30px;
-}
+    h3 {
+        margin: 55px 0 20px;
+        font-weight: 400;
+        color: #1f2f3d;
+        font-size: 22px;
+        height: 30px;
+        line-height: 30px;
+    }
 
-p {
-    font-size: 14px;
-    color: #5e6d82;
-    line-height: 20px;
-    margin: 14px 0;
-}
+    p {
+        font-size: 14px;
+        color: #5e6d82;
+        line-height: 20px;
+        margin: 14px 0;
+    }
 
-code {
-    background-color: #fafafa;
-    border: 1px solid #ebebeb;
-    padding: 0 5px;
-    border-radius: 3px;
-}
+    code {
+        background-color: #fafafa;
+        border: 1px solid #ebebeb;
+        padding: 0 5px;
+        border-radius: 3px;
+    }
+
+    .el-menu-item, .el-submenu__title {
+        height: 46px;
+        line-height: 46px;
+    }
 </style>
 

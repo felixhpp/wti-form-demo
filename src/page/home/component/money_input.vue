@@ -72,7 +72,7 @@
                                 key: 'key1',
                                 type: 'money-input',
                                 label: '金额输入框',
-                                suffixMsg: '元'
+                                append: '元'
                             }
                         ]
                     }
@@ -89,7 +89,7 @@ fields1: [
                 key: 'key1',
                 type: 'money-input',
                 label: '金额输入框',
-                suffixMsg: '元',
+                append: '元',
                 size: 6
             }
         ]
@@ -103,7 +103,7 @@ fields1: [
                                 key: 'key2',
                                 type: 'money-input',
                                 label: '非负金额输入框',
-                                suffixMsg: '元',
+                                append: '元',
                                 positive: true,
                             }
                         ]
@@ -120,7 +120,7 @@ fields2: [
                 key: 'key2',
                 type: 'money-input',
                 label: '非负金额输入框',
-                suffixMsg: '元',
+                append: '元',
                 positive: true,
             }
         ]
@@ -135,7 +135,7 @@ fields2: [
                                 key: 'key3',
                                 type: 'money-input',
                                 label: '非负金额输入框',
-                                suffixMsg: '万元'
+                                append: '万元'
                             }
                         ]
                     }
@@ -151,7 +151,7 @@ fields3: [
                 key: 'key3',
                 type: 'money-input',
                 label: '非负金额输入框',
-                suffixMsg: '万元'
+                append: '万元'
             }
         ]
     }

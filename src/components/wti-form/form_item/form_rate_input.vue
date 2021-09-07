@@ -242,56 +242,6 @@
                 return value;
             },
 
-
-            // 丢掉数字的小数点右边末尾的 0
-            // 例如入参是 1.2000，出参是 1.2
-            // 入参是 12.0000 ，出参是 12
-            throwPointRightZero (v) {
-                const n = String(v);
-                if (n.indexOf('.') > -1) {
-                    // 有小数点
-                    const list = n.split('.');
-                    let pointRight = list[1];
-                    pointRight = pointRight.replace(/[0]+$/g, '');
-                    if (pointRight.length === 0) {
-                        return list[0];
-                    } else {
-                        return list[0] + '.' + pointRight;
-                    }
-                } else {
-                    // 无小数点
-                    return n;
-                }
-            },
-
-            // 丢掉数字的小数点左边开头的 0
-            // 例如入参是 0123.45，出参是 123.45
-            // 入参是 00.12 ，出参是 0.12
-            throwPointLeftZero (v) {
-                let n = String(v);
-                if (n.indexOf('.') > -1) {
-                    // 有小数点
-                    const list = n.split('.');
-                    let pointLeft = list[0];
-                    pointLeft = pointLeft.replace(/^[0]+/g, '');
-                    if (pointLeft.length === 0) {
-                        return '0.' + list[1];
-                    } else {
-                        return pointLeft + '.' + list[1];
-                    }
-                } else {
-                    // 无小数点，那么直接把左边开头的 0 扔掉
-                    n = n.replace(/^[0]+/g, '');
-                    // 如果结果为空，并且 v 不是空（比如是 0），那么返回 0
-                    // 如果都是空，则返回空（这里不做处理）
-                    if (n === '' && v !== '') {
-                        n = '0';
-                    }
-                    // 无小数点
-                    return n;
-                }
-            },
-
             getClass () {
                 const c1 = `form-unqiue-${this.item.key}`;
                 const c2 = this.readonly ? 'is-readonly' : 'is-wr';
