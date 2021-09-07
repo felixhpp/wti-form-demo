@@ -12,13 +12,13 @@
                   :clearable="true"
                   v-bind="item"
                   v-if="!getTextModel">
-            <template slot="prepend" v-if="prependMsg">{{ prependMsg }}</template>
-            <template slot="append" v-if="appendMsg">{{ appendMsg }}</template>
+            <template slot="prepend" v-if="prepend">{{ prepend }}</template>
+            <template slot="append" v-if="append">{{ append }}</template>
         </el-input>
         <div v-else :style="item.textStyle||{}" class="form-input-text">
-            <span class="prepend-msg" v-if="prependMsg">{{ prependMsg }}</span>
+            <span class="prepend-msg" v-if="prepend">{{ prepend }}</span>
             <span class="text">{{ val || '-' }}</span>
-            <span class="append-msg" v-if="appendMsg">{{ appendMsg }}</span>
+            <span class="append-msg" v-if="append">{{ append }}</span>
         </div>
     </div>
 </template>
@@ -29,48 +29,57 @@
     export default {
         name: 'FormInput',
         mixins: [ FormMixin ],
-        data () {
-            return {
-                prependMsg: '',
-                appendMsg: ''
-            };
-        },
-        watch: {
-            item: {
-                handler (n) {
-                    if (n.prefixMsg) {
-                        this.prependMsg = n.prefixMsg;
-                    }
-                    if (n.suffixMsg) {
-                        this.appendMsg = n.suffixMsg;
-                    }
-                },
-                immediate: true
-            }
+        computed: {
+            // 前置符号
+            prepend () {
+                // 兼容性处理
+                if (this.item.prepend) {
+                    return this.item.prepend;
+                } else if (this.item.prependMsg) {
+                    return this.item.prependMsg;
+                } else if (this.item.prefixMsg) {
+                    return this.item.prefixMsg;
+                } else {
+                    return '';
+                }
+            },
+            // 后置符号
+            append () {
+                // 兼容性处理
+                if (this.item.append) {
+                    return this.item.append;
+                } else if (this.item.appendMsg) {
+                    return this.item.appendMsg;
+                } else if (this.item.suffixMsg) {
+                    return this.item.suffixMsg;
+                } else {
+                    return '';
+                }
+            },
         }
     };
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.form-input-box /deep/ .el-input {
-    position: relative;
-    width: 100%;
-    height: 36px;
+    .form-input-box /deep/ .el-input {
+        position: relative;
+        width: 100%;
+        height: 36px;
 
-    .el-input__inner {
+        .el-input__inner {
+            height: 36px;
+            line-height: 36px;
+        }
+    }
+
+    .form-input-text {
+        position: relative;
+        width: 100%;
         height: 36px;
         line-height: 36px;
+        font-size: 14px;
+        color: #12182A;
     }
-}
-
-.form-input-text {
-    position: relative;
-    width: 100%;
-    height: 36px;
-    line-height: 36px;
-    font-size: 14px;
-    color: #12182A;
-}
 </style>

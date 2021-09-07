@@ -23,7 +23,7 @@
         <el-divider/>
 
         <h3>动态添加/删除候选项</h3>
-        <p>你可以直接点击提交按钮试试</p>
+        <p>你可以点击添加/删除按钮试试</p>
         <wti-form ref="form2"
                   :fields="fields2"/>
         <div class="submit-line">
@@ -63,7 +63,7 @@
                                     },
                                 ],
                                 'key': 'key1',
-                                'label': '一个下拉框',
+                                'label': '一个单选框',
                                 'placeholder': '请选择',
                                 'type': 'radio'
                             }
@@ -108,7 +108,7 @@ fields1: [
                                     },
                                 ],
                                 'key': 'key2',
-                                'label': '一个下拉框',
+                                'label': '动态增删的单选框',
                                 'placeholder': '请选择',
                                 'type': 'radio'
                             }

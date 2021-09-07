@@ -37,6 +37,14 @@
 </template>
 
 <script>
+    /* 配置属性：
+    * positive：默认 false，true 的时候禁止输入负号（但理论上 js 给的负数值不会变化，下同）；
+    * onlyInt：默认 false，true 的时候禁止输入小数点；
+    * zeroPadding：默认为空，number 类型，指自动补零到指定位数；
+    * decimalLimit：默认为空，number 类型，最大小数位数，小数位数超过这个长度的部分，将被自动截掉；
+    * prefix：默认为空，string 类型，前置符号；
+    * suffix：默认为空，string 类型，后置符号；
+    * */
     import FormMixin from './mixin';
 
     export default {

@@ -245,8 +245,8 @@ fields3: [
                                 key: 'key4',
                                 type: 'input',
                                 label: '比如第 x 月这样就可以这么用',
-                                prefixMsg: '第',
-                                suffixMsg: '月',
+                                prepend: '第',
+                                append: '月',
                                 placeholder: '请输入月份'
                             }
                         ]
@@ -265,8 +265,8 @@ fields4: [
                 key: 'key4',
                 type: 'input',
                 label: '比如第 x 月这样就可以这么用',
-                prefixMsg: '第',
-                suffixMsg: '月',
+                prepend: '第',
+                append: '月',
                 placeholder: '请输入月份'
             }
         ]
@@ -321,33 +321,33 @@ fields5: [
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.formitem-box {
-    position: relative;
-    width: 100%;
-
-    .submit-line {
-        margin: 10px 0;
-
-        .tips {
-            margin-left: 24px;
-            font-size: 10px;
-        }
-    }
-
-
-    .collapse {
+    .formitem-box {
         position: relative;
-        width: 600px;
+        width: 100%;
 
-        .code {
-            white-space: pre;
-            background: #fafafa;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 10px;
+        .submit-line {
+            margin: 10px 0;
+
+            .tips {
+                margin-left: 24px;
+                font-size: 10px;
+            }
+        }
+
+
+        .collapse {
+            position: relative;
+            width: 600px;
+
+            .code {
+                white-space: pre;
+                background: #fafafa;
+                border: 1px solid #ddd;
+                padding: 10px;
+                border-radius: 10px;
+            }
         }
     }
-}
 </style>

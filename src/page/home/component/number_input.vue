@@ -22,83 +22,98 @@
 
         <el-divider/>
 
-        <!--        <h3>必填</h3>-->
-        <!--        <p>你可以直接点击提交按钮试试。其他例子同这种写法，所以其他表单组件里就不写了。</p>-->
-        <!--        <wti-form ref="form2"-->
-        <!--                  :fields="fields2"-->
-        <!--                  :border-form="false"/>-->
-        <!--        <div class="submit-line">-->
-        <!--            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>-->
-        <!--            <span class="tips">请查看控制台看提交结果</span>-->
-        <!--        </div>-->
-        <!--        <el-collapse class="collapse">-->
-        <!--            <el-collapse-item>-->
-        <!--                <template slot="title">-->
-        <!--                    <b>点击查看代码</b>-->
-        <!--                </template>-->
-        <!--                <div class="code">{{ code2 }}</div>-->
-        <!--            </el-collapse-item>-->
-        <!--        </el-collapse>-->
+        <h3>前后缀添加</h3>
+        <p>前缀属性： <code>prepend</code>，后缀属性： <code>append</code>。可以只使用其中一个</p>
+        <wti-form ref="form2"
+                  :fields="fields2"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code2 }}</div>
+            </el-collapse-item>
+        </el-collapse>
 
-        <!--        <el-divider/>-->
+        <el-divider/>
 
-        <!--        <h3>最大最小长度限制</h3>-->
-        <!--        <p>可以为空，但不是空的话就必须符合长度要求</p>-->
-        <!--        <wti-form ref="form3"-->
-        <!--                  :fields="fields3"-->
-        <!--                  :border-form="false"/>-->
-        <!--        <div class="submit-line">-->
-        <!--            <el-button type="primary" @click="submit('form3')">提交按钮</el-button>-->
-        <!--            <span class="tips">请查看控制台看提交结果</span>-->
-        <!--        </div>-->
-        <!--        <el-collapse class="collapse">-->
-        <!--            <el-collapse-item>-->
-        <!--                <template slot="title">-->
-        <!--                    <b>点击查看代码</b>-->
-        <!--                </template>-->
-        <!--                <div class="code">{{ code3 }}</div>-->
-        <!--            </el-collapse-item>-->
-        <!--        </el-collapse>-->
+        <h3>只允许输入整数</h3>
+        <p>除非是 js 赋值负数，否则是不能输入负数的（干掉了负号的输入）</p>
+        <wti-form ref="form3"
+                  :fields="fields3"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form3')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code3 }}</div>
+            </el-collapse-item>
+        </el-collapse>
 
-        <!--        <el-divider/>-->
+        <el-divider/>
 
-        <!--        <h3>输入框前后添加文字</h3>-->
-        <!--        <p>其实跟 elementui 的玩法是差不多的</p>-->
-        <!--        <wti-form ref="form4"-->
-        <!--                  :fields="fields4"-->
-        <!--                  :border-form="false"/>-->
-        <!--        <div class="submit-line">-->
-        <!--            <el-button type="primary" @click="submit('form4')">提交按钮</el-button>-->
-        <!--            <span class="tips">请查看控制台看提交结果</span>-->
-        <!--        </div>-->
-        <!--        <el-collapse class="collapse">-->
-        <!--            <el-collapse-item>-->
-        <!--                <template slot="title">-->
-        <!--                    <b>点击查看代码</b>-->
-        <!--                </template>-->
-        <!--                <div class="code">{{ code4 }}</div>-->
-        <!--            </el-collapse-item>-->
-        <!--        </el-collapse>-->
+        <h3>不允许输入小数</h3>
+        <p>同上，干掉了小数点的输入</p>
+        <wti-form ref="form4"
+                  :fields="fields4"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form4')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code4 }}</div>
+            </el-collapse-item>
+        </el-collapse>
 
-        <!--        <el-divider/>-->
+        <el-divider/>
 
-        <!--        <h3>默认值</h3>-->
-        <!--        <p>在初始化的时候，如果没有给值，那么则会使用默认值。如果给值的则使用给的值。其他例子同这种写法，所以其他表单组件里就不写了。</p>-->
-        <!--        <wti-form ref="form5"-->
-        <!--                  :fields="fields5"-->
-        <!--                  :border-form="false"/>-->
-        <!--        <div class="submit-line">-->
-        <!--            <el-button type="primary" @click="submit('form5')">提交按钮</el-button>-->
-        <!--            <span class="tips">请查看控制台看提交结果</span>-->
-        <!--        </div>-->
-        <!--        <el-collapse class="collapse">-->
-        <!--            <el-collapse-item>-->
-        <!--                <template slot="title">-->
-        <!--                    <b>点击查看代码</b>-->
-        <!--                </template>-->
-        <!--                <div class="code">{{ code5 }}</div>-->
-        <!--            </el-collapse-item>-->
-        <!--        </el-collapse>-->
+        <h3>小数位数限制</h3>
+        <p>适用场景：比如说只允许输入两位小数。在 blur 事件触发后，会干掉多余的小数</p>
+        <wti-form ref="form5"
+                  :fields="fields5"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form5')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code5 }}</div>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>自动补零（未完成）</h3>
+        <p>适用场景：比如说无论输入几位小数，都自动补零到指定位数</p>
+        <wti-form ref="form6"
+                  :fields="fields6"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form6')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code6 }}</div>
+            </el-collapse-item>
+        </el-collapse>
     </div>
 </template>
 
@@ -114,8 +129,6 @@
                                 key: 'key1',
                                 type: 'number-input',
                                 label: '我是输入框的 label',
-                                prepend: '第',
-                                append: '期'
                             }
                         ]
                     }
@@ -123,16 +136,15 @@
 
                 code1: `<wti-form
             ref="form1"
-            :fields="fields1"
-            :border-form="false"/>
+            :fields="fields1"/>
 ---
 fields1: [
     {
         children: [
             {
                 key: 'key1',
-                type: 'input',
-                label: '我是输入框的 label'
+                type: 'number-input',
+                label: '我是输入框的 label',
             }
         ]
     }
@@ -143,18 +155,10 @@ fields1: [
                         children: [
                             {
                                 key: 'key2',
-                                type: 'input',
-                                label: '必填输入框的label',
-                                rules: [
-                                    {
-                                        required: true,
-                                        message: '请输入',
-                                        trigger: [
-                                            'blur',
-                                            'change'
-                                        ]
-                                    }
-                                ],
+                                type: 'number-input',
+                                label: '一般用于第 x 期，第 x 月',
+                                prepend: '第',
+                                append: '期'
                             }
                         ]
                     }
@@ -162,8 +166,7 @@ fields1: [
 
                 code2: `<wti-form
             ref="form2"
-            :fields="fields2"
-            :border-form="false"/>
+            :fields="fields2"/>
 ---
 fields2: [
     {
@@ -193,19 +196,9 @@ fields2: [
                         children: [
                             {
                                 key: 'key3',
-                                type: 'input',
-                                label: '最少3个字，最多6个字',
-                                rules: [
-                                    {
-                                        trigger: [
-                                            'blur',
-                                            'change'
-                                        ],
-                                        max: 6,
-                                        message: '长度应当处于3到6之间',
-                                        min: 3
-                                    }
-                                ],
+                                type: 'number-input',
+                                label: '无法输入负数',
+                                positive: true
                             }
                         ]
                     }
@@ -213,27 +206,16 @@ fields2: [
 
                 code3: `<wti-form
             ref="form3"
-            :fields="fields3"
-            :border-form="false"/>
+            :fields="fields3"/>
 ---
 fields3: [
     {
         children: [
             {
                 key: 'key3',
-                type: 'input',
-                label: '最少3个字，最多6个字',
-                rules: [
-                    {
-                        trigger: [
-                            'blur',
-                            'change'
-                        ],
-                        max: 6,
-                        message: '长度应当处于3到6之间',
-                        min: 3
-                    }
-                ],
+                type: 'number-input',
+                label: '无法输入负数',
+                positive: true
             }
         ]
     }
@@ -245,11 +227,9 @@ fields3: [
                         children: [
                             {
                                 key: 'key4',
-                                type: 'input',
-                                label: '比如第 x 月这样就可以这么用',
-                                prefixMsg: '第',
-                                suffixMsg: '月',
-                                placeholder: '请输入月份'
+                                type: 'number-input',
+                                label: '禁止小数点的输入',
+                                onlyInt: true
                             }
                         ]
                     }
@@ -257,19 +237,16 @@ fields3: [
 
                 code4: `<wti-form
             ref="form4"
-            :fields="fields4"
-            :border-form="false"/>
+            :fields="fields4"/>
 ---
 fields4: [
     {
         children: [
             {
                 key: 'key4',
-                type: 'input',
-                label: '比如第 x 月这样就可以这么用',
-                prefixMsg: '第',
-                suffixMsg: '月',
-                placeholder: '请输入月份'
+                type: 'number-input',
+                label: '禁止小数点的输入',
+                onlyInt: true
             }
         ]
     }
@@ -281,9 +258,9 @@ fields4: [
                         children: [
                             {
                                 key: 'key5',
-                                type: 'input',
-                                label: '给个默认值吧',
-                                defaultValue: '1234'
+                                type: 'number-input',
+                                label: '最多 2 位小数',
+                                decimalLimit: 2
                             }
                         ]
                     }
@@ -291,17 +268,46 @@ fields4: [
 
                 code5: `<wti-form
             ref="form5"
-            :fields="fields5"
-            :border-form="false"/>
+            :fields="fields5"/>
 ---
 fields5: [
     {
         children: [
             {
                 key: 'key5',
-                type: 'input',
-                label: '给个默认值吧',
-                defaultValue: '1234'
+                type: 'number-input',
+                label: '最多 2 位小数',
+                decimalLimit: 2
+            }
+        ]
+    }
+]`,
+
+                fields6: [
+                    {
+                        children: [
+                            {
+                                key: 'key6',
+                                type: 'number-input',
+                                label: '自动补完 2 位小数',
+                                zeroPadding: 2
+                            }
+                        ]
+                    }
+                ],
+
+                code6: `<wti-form
+            ref="form6"
+            :fields="fields6"/>
+---
+fields5: [
+    {
+        children: [
+            {
+                key: 'key5',
+                type: 'number-input',
+                label: '最多 2 位小数',
+                decimalLimit: 2
             }
         ]
     }
