@@ -23,6 +23,9 @@ import RateInput from './component/rate_input';
 
 
 import Connection from './component/connection';
+import AutoTest from './component/auto_test';
+import CodeMaker from './component/code_maker';
+import ElementStart from './component/element_start';
 
 Vue.use(Router);
 
@@ -31,10 +34,6 @@ const routes = [
     {
         path: '/demo/base',
         component: Base,
-    },
-    {
-        path: '/others/connection',
-        component: Connection,
     },
     {path: '/formItem/Input', component: Input,},
     {path: '/formItem/NormalSelect', component: NormalSelect,},
@@ -47,6 +46,12 @@ const routes = [
     {path: '/formItem/HourMinuteInput', component: HourMinuteInput,},
     {path: '/formItem/NumberInput', component: NumberInput,},
     {path: '/formItem/RateInput', component: RateInput,},
+
+
+    {path: '/others/AutoTest', component: AutoTest,},
+    {path: '/others/CodeMaker', component: CodeMaker,},
+    {path: '/others/ElementStart', component: ElementStart,},
+    {path: '/others/connection', component: Connection,},
     {
         path: '*',
         redirect: '/demo/base',
