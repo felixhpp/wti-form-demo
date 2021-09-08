@@ -23,6 +23,7 @@ export default {
     },
     inject: [
         'dynamicDict',
+        'dynamicSelectOption',
         'changeData',
         'statusChangeFn',
         'formItemType',

@@ -12,9 +12,9 @@
                            @change="v => onChange(v, '0')"
                            :disabled="getDisabled">
                     <el-option v-for="items in dynamicDict[item.firstParentKey || '10020']"
-                               :key="items[dictKey.key]"
-                               :label="items[dictKey.label]"
-                               :value="items[dictKey.key]"/>
+                               :key="items[dynamicSelectOption.value]"
+                               :label="items[dynamicSelectOption.label]"
+                               :value="items[dynamicSelectOption.value]"/>
                 </el-select>
             </el-col>
             <el-col :span="8">
@@ -24,9 +24,9 @@
                            @change="v => onChange(v, '1')"
                            :disabled="getDisabled">
                     <el-option v-for="items in cityList"
-                               :key="items[dictKey.key]"
-                               :label="items[dictKey.label]"
-                               :value="items[dictKey.key]"/>
+                               :key="items[dynamicSelectOption.value]"
+                               :label="items[dynamicSelectOption.label]"
+                               :value="items[dynamicSelectOption.value]"/>
                 </el-select>
             </el-col>
             <el-col :span="8">
@@ -35,9 +35,9 @@
                            placeholder="请选择"
                            :disabled="getDisabled">
                     <el-option v-for="items in areaList"
-                               :key="items[dictKey.key]"
-                               :label="items[dictKey.label]"
-                               :value="items[dictKey.key]"/>
+                               :key="items[dynamicSelectOption.value]"
+                               :label="items[dynamicSelectOption.label]"
+                               :value="items[dynamicSelectOption.value]"/>
                 </el-select>
             </el-col>
         </el-row>
@@ -50,10 +50,10 @@
 <script>
     import FormMixin from './mixin';
 
+    // 这个是已经耦合的，非通用组件
     export default {
         name: 'FormAreaSelect',
         mixins: [ FormMixin ],
-        inject: [ 'dictKey', 'dictUrl' ],
         data () {
             return {
                 prependMsg: '',
@@ -85,19 +85,6 @@
                 return `${this.getText(firstParentKey, this.val[0])}${this.getText(secondParentKey, this.val[1])}${this.getText(thirdParentKey, this.val[2])}`;
             }
         },
-        watch: {
-            item: {
-                handler (n) {
-                    if (n.prefixMsg) {
-                        this.prependMsg = n.prefixMsg;
-                    }
-                    if (n.suffixMsg) {
-                        this.appendMsg = n.suffixMsg;
-                    }
-                },
-                immediate: true
-            }
-        },
         methods: {
             onChange (v, index) {
                 if (index === '0') {
@@ -110,11 +97,11 @@
             },
             getText (pCode, val) {
                 if (this.val[0]) {
-                    const t = this.dynamicDict[pCode].filter(item => item[this.dictKey.key] === val);
+                    const t = this.dynamicDict[pCode].filter(item => item[this.dynamicSelectOption.value] === val);
                     if (t.length === 0) {
                         return '';
                     } else {
-                        return t[0][this.dictKey.label];
+                        return t[0][this.dynamicSelectOption.label];
                     }
                 } else {
                     return '';
@@ -125,29 +112,29 @@
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.form-input-box /deep/ .el-input {
-    position: relative;
-    width: 100%;
-    height: 36px;
+    .form-input-box /deep/ .el-input {
+        position: relative;
+        width: 100%;
+        height: 36px;
 
-    .el-input__inner {
+        .el-input__inner {
+            height: 36px;
+            line-height: 36px;
+        }
+    }
+
+    .form-input-text {
+        position: relative;
+        width: 100%;
         height: 36px;
         line-height: 36px;
+        font-size: 14px;
+        color: #12182A;
     }
-}
 
-.form-input-text {
-    position: relative;
-    width: 100%;
-    height: 36px;
-    line-height: 36px;
-    font-size: 14px;
-    color: #12182A;
-}
-
-.select {
-    width: 100%;
-}
+    .select {
+        width: 100%;
+    }
 </style>

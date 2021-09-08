@@ -224,11 +224,7 @@
                 type: Boolean,
                 default: false,
             },
-            // 动态下拉框的url
-            dictUrl: {
-                type: String,
-                default: '/wkbbackend/queryByCategoryCodeList'
-            }
+            // 数据字典的配置
         },
         data () {
             return {
@@ -289,7 +285,7 @@
         provide () {
             return {
                 // formData: this.formData,
-                dictUrl: this.dictUrl,
+                dynamicSelectOption: this.dynamicSelectOption,
                 dynamicDict: this.dynamicDict,
                 // 状态切换函数
                 statusChangeFn: {
@@ -306,8 +302,7 @@
                 // 会动态变化的数据（注意，来自 props【更上级组件】的数据，不能放这个里面，只能显式的通过 props 往下面传）
                 changeData: this.changeData,
                 formItemType: '',
-                childChangeData: {},
-                dictKey: this.dictKey
+                childChangeData: {}
             };
         },
         watch: {
@@ -700,16 +695,24 @@
                 }
 
                 // 通过父 key 拿到所有元素
-                const payload = {
-                    categoryCodeList: parentCodeList
-                };
+                let payload = null;
+                if (this.dynamicSelectOption.queryKey) {
+                    payload = {
+                        [this.dynamicSelectOption.queryKey]: parentCodeList
+                    };
+                } else {
+                    payload = parentCodeList;
+                }
                 // console.log('WtiForm 拉取动态字典');
-                axios.post(this.dictUrl, payload).then(res => {
+                axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
                     if (res.code === 200) {
                         if (res.data.length > 0) {
                             // 加载到结果
                             res.data.forEach(item => {
-                                this.dynamicDict[item.categoryCode].push(
+                                // 用每个返回值的 pCode 作为 key，将该项添加到数组里。
+                                // 注：之所以是数组，是因为之前已经初始化过了（parentKey 为 Code）
+                                const pCode = item[this.dynamicSelectOption.parentCode];
+                                this.dynamicDict[pCode].push(
                                     item
                                 );
                             });

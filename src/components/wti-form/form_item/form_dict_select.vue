@@ -10,9 +10,9 @@
                    v-if="!getTextModel">
             <!-- <el-option key="" label="请选择..." value=""/> -->
             <el-option v-for="items in dynamicDict[item.parentKey]"
-                       :key="items[dictKey.key]"
-                       :label="items[dictKey.label]"
-                       :value="items[dictKey.key]"/>
+                       :key="items[dynamicSelectOption.value]"
+                       :label="items[dynamicSelectOption.label]"
+                       :value="items[dynamicSelectOption.value]"/>
         </el-select>
         <div v-else :style="item.textStyle||{}">{{ textModelValue || '-' }}</div>
     </div>
@@ -24,13 +24,12 @@
     export default {
         name: 'FormDynamicSelect',
         mixins: [ FormMixin ],
-        inject: [ 'dictKey' ],
         computed: {
             textModelValue () {
                 const content = this.dynamicDict[this.item.parentKey] && this.dynamicDict[this.item.parentKey].find((item) => {
-                    return item[this.dictKey.key] === this.val;
+                    return item[this.dynamicSelectOption.value] === this.val;
                 });
-                return content && content[this.dictKey.label] || '';
+                return content && content[this.dynamicSelectOption.label] || '';
             },
 
             val: {
