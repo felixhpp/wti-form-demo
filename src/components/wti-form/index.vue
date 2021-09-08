@@ -711,7 +711,7 @@
                             res.data.forEach(item => {
                                 // 用每个返回值的 pCode 作为 key，将该项添加到数组里。
                                 // 注：之所以是数组，是因为之前已经初始化过了（parentKey 为 Code）
-                                const pCode = item[this.dynamicSelectOption.parentCode];
+                                const pCode = item[this.dynamicSelectOption.parentKey];
                                 this.dynamicDict[pCode].push(
                                     item
                                 );

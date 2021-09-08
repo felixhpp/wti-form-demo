@@ -8,13 +8,12 @@
                    :disabled="getDisabled"
                    :placeholder="getPlaceholder(item)"
                    v-if="!getTextModel">
-            <!-- <el-option key="" label="请选择..." value=""/> -->
             <el-option v-for="items in dynamicDict[item.parentKey]"
                        :key="items[dynamicSelectOption.value]"
                        :label="items[dynamicSelectOption.label]"
                        :value="items[dynamicSelectOption.value]"/>
         </el-select>
-        <div v-else :style="item.textStyle||{}">{{ textModelValue || '-' }}</div>
+        <div v-else :style="item.textStyle || {}">{{ textModelValue || '-' }}</div>
     </div>
 </template>
 
@@ -55,21 +54,21 @@
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.form-item-box /deep/ .el-input {
-    position: relative;
-    width: 100%;
-    height: 36px;
-
-    .el-input__inner {
-        position: absolute;
+    .form-item-box /deep/ .el-input {
+        position: relative;
         width: 100%;
         height: 36px;
-        line-height: 36px;
-        padding-right: 10px;
-        padding-left: 12px;
+
+        .el-input__inner {
+            position: absolute;
+            width: 100%;
+            height: 36px;
+            line-height: 36px;
+            padding-right: 10px;
+            padding-left: 12px;
+        }
     }
-}
 
 </style>
