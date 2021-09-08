@@ -76,7 +76,7 @@
                 });
             },
             handleSelect (selectedItem) {
-                console.log('selectedItem', selectedItem);
+                // console.log('selectedItem', selectedItem);
                 const payload = {};
                 // 将需要更新的数据的值，添加到 payload 里
                 this.item.autoCompleteKeys.forEach(key => {

@@ -29,7 +29,7 @@
         <wti-form ref="form2"
                   :fields="fields2"/>
         <div class="submit-line">
-            <el-button type="primary" @click="submit('form1')">提交按钮</el-button>
+            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
             <span class="tips">请查看控制台看提交结果</span>
         </div>
         <el-collapse class="collapse">
@@ -38,6 +38,27 @@
                     <b>点击查看代码</b>
                 </template>
                 <div class="code">{{ code2 }}</div>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>特殊回调</h3>
+        <p>在搜索到数据后，会触发 <code>fetchSuggestions</code> 回调函数，入参是请求到的所有值</p>
+        <p>在选中后，会触发 <code>onSelect</code> 回调，入参是当前选中的值所在的那条数据。</p>
+        <p>你可以在控制台看到每个回调函数触发后的打印内容。</p>
+        <wti-form ref="form3"
+                  :fields="fields3"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form3')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <div class="code">{{ code3 }}</div>
             </el-collapse-item>
         </el-collapse>
     </div>
@@ -104,7 +125,7 @@ fields1: [
                                 'searchUrl': '/autocomplete',
                                 'searchKey': 'search',
                                 'mainShowKey': 'search',
-                                'key': 'key1',
+                                'key': 'key2',
                                 'label': '基础用法',
                                 'placeholder': '请输入',
                                 'type': 'auto-complete-input',
@@ -125,8 +146,8 @@ fields1: [
                     }
                 ],
 
-                code2: `<wti-form ref="form1"
-            :fields="fields1"/>
+                code2: `<wti-form ref="form2"
+            :fields="fields2"/>
 ---
 fields2: [
     {
@@ -139,7 +160,7 @@ fields2: [
                 'searchUrl': '/autocomplete',
                 'searchKey': 'search',
                 'mainShowKey': 'search',
-                'key': 'key1',
+                'key': 'key2',
                 'label': '基础用法',
                 'placeholder': '请输入',
                 'type': 'auto-complete-input',
@@ -159,6 +180,57 @@ fields2: [
         ]
     }
 ]`,
+
+
+                fields3: [
+                    {
+                        children: [
+                            {
+                                'autoCompleteKeys': [],
+                                'searchUrl': '/autocomplete',
+                                'searchKey': 'search',
+                                'mainShowKey': 'search',
+                                'key': 'key3',
+                                'label': '回调函数',
+                                'placeholder': '请输入',
+                                'type': 'auto-complete-input',
+                                onSelect (row) {
+                                    console.log('onSelect', row);
+                                },
+                                fetchSuggestions (data) {
+                                    console.log('fetchSuggestions', data);
+                                }
+                            }
+                        ]
+                    }
+                ],
+
+                code3: `<wti-form ref="form3"
+            :fields="fields3"/>
+---
+fields1: [
+    {
+        children: [
+            {
+                'autoCompleteKeys': [],
+                'searchUrl': '/autocomplete',
+                'searchKey': 'search',
+                'mainShowKey': 'search',
+                'key': 'key3',
+                'label': '回调函数',
+                'placeholder': '请输入',
+                'type': 'auto-complete-input',
+                onSelect (row) {
+                    console.log('onSelect', row);
+                },
+                fetchSuggestions (data) {
+                    console.log('fetchSuggestions', data);
+                }
+            }
+        ]
+    }
+]
+`,
             };
         },
         methods: {
@@ -176,33 +248,33 @@ fields2: [
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.formitem-box {
-    position: relative;
-    width: 100%;
-
-    .submit-line {
-        margin: 10px 0;
-
-        .tips {
-            margin-left: 24px;
-            font-size: 10px;
-        }
-    }
-
-
-    .collapse {
+    .formitem-box {
         position: relative;
-        width: 600px;
+        width: 100%;
 
-        .code {
-            white-space: pre;
-            background: #fafafa;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 10px;
+        .submit-line {
+            margin: 10px 0;
+
+            .tips {
+                margin-left: 24px;
+                font-size: 10px;
+            }
+        }
+
+
+        .collapse {
+            position: relative;
+            width: 600px;
+
+            .code {
+                white-space: pre;
+                background: #fafafa;
+                border: 1px solid #ddd;
+                padding: 10px;
+                border-radius: 10px;
+            }
         }
     }
-}
 </style>
