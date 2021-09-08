@@ -245,10 +245,6 @@
                     }
                 }).join('.');
 
-                if (newVal === '') {
-                    newVal = 0;
-                }
-
                 // 假如禁止输入负数，那么小于 0 则自动变为 0
                 if (this.item.positive && newVal < 0) {
                     newVal = 0;

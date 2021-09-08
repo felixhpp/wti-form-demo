@@ -20,9 +20,10 @@
                 <el-menu-item index="/formItem/DateRangeInput">日期范围输入框 DateRangeInput</el-menu-item>
                 <el-menu-item index="/formItem/HourMinuteInput">时分输入框 HourMinuteInput</el-menu-item>
                 <el-menu-item index="/formItem/NumberInput">数字输入框 NumberInput</el-menu-item>
-                <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
                 <el-menu-item index="/formItem/DynamicSelect">字典下拉框 DynamicSelect</el-menu-item>
                 <el-menu-item index="/formItem/RateInput">利率输入框 RateInput</el-menu-item>
+                <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
+                <el-menu-item index="/formItem/RateInput">三级联动输入框（依赖于字典）</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">其他</template>

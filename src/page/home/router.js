@@ -27,6 +27,8 @@ import AutoTest from './component/auto_test';
 import CodeMaker from './component/code_maker';
 import ElementStart from './component/element_start';
 
+import Empty from './component/empty';
+
 Vue.use(Router);
 
 
@@ -53,8 +55,12 @@ const routes = [
     {path: '/others/ElementStart', component: ElementStart,},
     {path: '/others/connection', component: Connection,},
     {
+        path: '/',
+        redirect: '/demo/base'
+    },
+    {
         path: '*',
-        redirect: '/demo/base',
+        component: Empty
     },
 ];
 

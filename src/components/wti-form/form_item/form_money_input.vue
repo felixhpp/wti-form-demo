@@ -28,7 +28,7 @@
         </template>
         <div v-else :style="item.textStyle||{}">
             {{ dealInputValue || '-' }}
-            {{ symbolAfter }}
+            {{ append }}
         </div>
     </div>
 </template>
@@ -279,13 +279,6 @@
                         return newS;
                     }
                 }).join('.');
-
-                if (newVal === '') {
-                    newVal = 0;
-                }
-                if (!this.item.returnString) {
-                    newVal = Number(newVal);
-                }
 
                 // 假如禁止输入负数，那么小于 0 则自动变为 0
                 if (this.item.positive && newVal < 0) {
