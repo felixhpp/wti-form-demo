@@ -13,7 +13,7 @@
                          value-key="value"
                          :fetch-suggestions="querySearchAsync"
                          @select="handleSelect"
-                         v-bind="item"
+                         v-bind="bindOptions"
                          v-if="!getTextModel"/>
         <div v-else :style="item.textStyle||{}">{{ val || '-' }}</div>
     </div>

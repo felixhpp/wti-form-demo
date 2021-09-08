@@ -13,7 +13,7 @@
                         @focus="e => onFocus(item, e)"
                         :format="item.format || 'HH:mm'"
                         :value-format="item['value-format'] || 'HH:mm:00'"
-                        v-bind="item"
+                        v-bind="bindOptions"
                         v-if="!getTextModel"/>
         <div v-else :style="item.textStyle||{}">{{ val || '-' }}</div>
     </div>

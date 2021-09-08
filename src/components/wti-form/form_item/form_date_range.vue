@@ -11,7 +11,7 @@
                         @focus="e => onFocus(item, e)"
                         value-format="yyyy-MM-dd"
                         :clearable="true"
-                        v-bind="item"
+                        v-bind="bindOptions"
                         v-if="!getTextModel"/>
         <div v-else :style="item.textStyle||{}">{{ textModelValue || '-' }}</div>
     </div>

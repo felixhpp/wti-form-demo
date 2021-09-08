@@ -8,7 +8,7 @@
                         @blur="e => onBlur(item, e)"
                         @focus="e => onFocus(item, e)"
                         :clearable="true"
-                        v-bind="item"
+                        v-bind="bindOptions"
                         v-if="!getTextModel">
             <el-radio v-for="opt in item.options" :key="opt.value" :label="opt.value">{{ opt.label }}</el-radio>
         </el-radio-group>

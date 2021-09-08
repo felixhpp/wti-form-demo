@@ -48,12 +48,6 @@
             };
         },
         computed: {
-            bindOptions () {
-                const obj = Object.assign({}, this.item);
-                delete obj.key;
-                return obj;
-            },
-
             // 千分位的数字
             dealInputValue () {
                 if (this.value === '') {

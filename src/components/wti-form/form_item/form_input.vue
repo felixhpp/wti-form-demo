@@ -10,7 +10,7 @@
                   @focus="e => onFocus(item, e)"
                   type="text"
                   :clearable="true"
-                  v-bind="item"
+                  v-bind="bindOptions"
                   v-if="!getTextModel">
             <template slot="prepend" v-if="prepend">{{ prepend }}</template>
             <template slot="append" v-if="append">{{ append }}</template>

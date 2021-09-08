@@ -30,6 +30,14 @@ export default {
         'childChangeData',
     ],
     computed: {
+        // 扩展属性，直接将属性配置，传到表单组件内部（即 Element UI 上）
+        // 忽略属性【key、size】
+        bindOptions () {
+            const obj = Object.assign({}, this.item);
+            delete obj.key;
+            delete obj.size;
+            return obj;
+        },
         // 获取禁用状态
         getDisabled () {
             // 如果全部都被禁用了
