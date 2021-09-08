@@ -36,6 +36,15 @@ export default {
             const obj = Object.assign({}, this.item);
             delete obj.key;
             delete obj.size;
+            delete obj.type;
+            delete obj.label;
+            delete obj.readonly;
+            delete obj.rules;
+            delete obj.placeholder;
+            delete obj.prepend;
+            delete obj.append;
+            delete obj.defaultValue;
+
             return obj;
         },
         // 获取禁用状态
