@@ -98,7 +98,7 @@
 
         <el-divider/>
 
-        <h3>自动补零（未完成）</h3>
+        <h3>自动补零</h3>
         <p>适用场景：比如说无论输入几位小数，都自动补零到指定位数</p>
         <wti-form ref="form6"
                   :fields="fields6"/>

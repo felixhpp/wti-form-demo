@@ -216,7 +216,6 @@
             },
 
 
-
             getClass () {
                 const c1 = `form-unqiue-${this.item.key}`;
                 const c2 = this.readonly ? 'is-readonly' : 'is-wr';
@@ -256,20 +255,15 @@
                         if (l[0].length === 0) {
                             newVal = '';
                         } else {
-                            newVal += '.';
                             // 自动补零
-                            for (let i = 0; i < this.item.zeroPadding; i++) {
-                                newVal += '0';
-                            }
+                            newVal += '.' + '0'.padEnd(this.item.zeroPadding, '0');
                         }
                     } else {
                         // 此时说明有小数点，那么小数位数多，则去掉多余的。位数小，则补零
                         const currentLength = l[1].length;
                         // 小数位数少，则补零
                         if (currentLength < this.item.zeroPadding) {
-                            for (let i = 0; i < this.item.zeroPadding - currentLength; i++) {
-                                newVal += '0';
-                            }
+                            newVal = l[0] + '.' + l[1].padEnd(this.item.zeroPadding, '0');
                         }
                         // 如果大于
                         if (currentLength > this.item.zeroPadding) {

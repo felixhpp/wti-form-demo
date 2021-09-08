@@ -54,14 +54,25 @@
                                 }
                             });
                             cb(d);
+                            if (this.item.fetchSuggestions) {
+                                this.item.fetchSuggestions(d, this.randomId);
+                            }
                         } else {
                             cb([]);
+                            if (this.item.fetchSuggestions) {
+                                this.item.fetchSuggestions([], this.randomId);
+                            }
                             this.$message.error('无匹配数据');
                         }
                     } else {
                         cb([]);
+                        if (this.item.fetchSuggestions) {
+                            this.item.fetchSuggestions([], this.randomId);
+                        }
                         this.$message.error(res.msg || '无匹配数据');
                     }
+                }).catch(() => {
+                    this.$message.error('服务器错误');
                 });
             },
             handleSelect (selectedItem) {
@@ -73,15 +84,19 @@
                 });
                 // 再调用方法，推到 wti_form 这个组件中
                 this.statusChangeFn.updateFormData(payload);
+
+                if (this.item.onSelect) {
+                    this.item.onSelect(selectedItem, this.randomId);
+                }
             }
         }
     };
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.auto-complte-input {
-    width: 100%;
-}
+    .auto-complte-input {
+        width: 100%;
+    }
 </style>
