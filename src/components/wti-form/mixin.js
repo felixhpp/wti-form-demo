@@ -75,7 +75,7 @@ export default {
             }
 
             // 要素为其他类型时，优先全局 size，再次是要素本身 size，再次是默认值 12，半行
-            return this.formItemCol || item.size || 12;
+            return item.span || this.formItemCol || item.size || 12;
         },
         deepCopy (origin) {
             const valueTypes = [ 'object', 'array' ]; // 后面可以支持下 map、set 等

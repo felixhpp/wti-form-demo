@@ -71,9 +71,9 @@ fields1: [
     {
         children: [
             {
-                key: 'key1',
-                type: 'input',
-                label: '我是输入框的 label'
+                'key': 'key1',
+                'label': '时分输入框',
+                'type': 'hour-minute-input',
             }
         ]
     }

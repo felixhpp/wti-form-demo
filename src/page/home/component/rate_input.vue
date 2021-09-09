@@ -50,10 +50,8 @@ fields1: [
         children: [
             {
                 key: 'key1',
-                type: 'money-input',
-                label: '金额输入框',
-                append: '元',
-                size: 6
+                type: 'rate-input',
+                label: '利率输入框',
             }
         ]
     }

@@ -64,7 +64,6 @@
                                 ],
                                 'key': 'key1',
                                 'label': '一个单选框',
-                                'placeholder': '请选择',
                                 'type': 'radio'
                             }
                         ]
@@ -90,7 +89,6 @@ fields1: [
                 ],
                 'key': 'key A',
                 'label': '一个下拉框',
-                'placeholder': '请选择',
                 'type': 'radio'
             }
         ]
@@ -109,7 +107,6 @@ fields1: [
                                 ],
                                 'key': 'key2',
                                 'label': '动态增删的单选框',
-                                'placeholder': '请选择',
                                 'type': 'radio'
                             }
                         ]
@@ -131,7 +128,6 @@ fields2: [
                 ],
                 'key': 'key2',
                 'label': '一个下拉框',
-                'placeholder': '请选择',
                 'type': 'radio'
             }
         ]
