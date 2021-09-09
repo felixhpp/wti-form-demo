@@ -120,7 +120,12 @@
                                                             :ref="rowItem.key"
                                                             :item="rowItem"
                                                             :all-disabled="allDisabled"
-                                                            v-model.trim="formData[rowItem.key]"/>
+                                                            v-model.trim="val[rowItem.key]"/>
+                                            <FormNormalNumberInput v-if="rowItem.type==='normal-number'"
+                                                                   :ref="rowItem.key"
+                                                                   :item="rowItem"
+                                                                   :all-disabled="allDisabled"
+                                                                   v-model.trim="val[rowItem.key]"/>
                                         </el-form-item>
                                     </el-col>
                                 </div>
@@ -152,6 +157,8 @@
     import FormMoneyInput from './form_item/form_money_input';
     import FormRateInput from './form_item/form_rate_input';
     import FormMulLinkage from './form_item/form_mul_linkage';
+    import FormNormalNumberInput from './form_item/form_normal_number_input';
+    import axios from 'axios';
 
     export default {
         name: 'ChildForm',
@@ -176,7 +183,7 @@
                 }
             }
         },
-        inject: [ 'changeData', 'statusChangeFn' ],
+        inject: [ 'changeData', 'statusChangeFn', 'dynamicDict', 'dynamicSelectOption' ],
         watch: {
             // 这个是只有当 子表单 的值变化时才会触发的
             // 以下两个示例都会触发。注意，其他情况下不会触发
@@ -211,6 +218,8 @@
             } else {
                 this.addChildForm();
             }
+            // 动态加载需要数据字典的选项
+            this.loadDynamicSelectOptions();
         },
         data () {
             return {
@@ -251,35 +260,85 @@
                 // this.$emit('input', data);
             },
 
-            // 获取过滤后的数据，主要是把不需要显示的那一项隐藏起来
-            // getData () {
-            //     const list = [];
-            //     this.childFormFileds.forEach((field, index) => {
-            //         const d = {};
-            //         // 如果是子表单里的元素的话，采用三段匹配
-            //         // 先拿到子表单的 key 和子表单里某一个小表单的 randomId
-            //         const formKey = this.item.key;
-            //         const randomId = field.randomId;
-            //
-            //         // 遍历单个子表单的每个表单元素
-            //         field.forEach(item => {
-            //             const key = item.key;
-            //             const keyText = `${formKey}_${randomId}_${key}`;
-            //             // 判断这个表单元素是否在 hiddenKeyList 里
-            //             if (this.changeData.hiddenKeyList.indexOf(keyText) > -1) {
-            //                 // console.log('false', keyText);
-            //                 // 如果在的话，则直接返回就行（不要这个了）
-            //                 return;
-            //             } else {
-            //                 // 如果不在，则说明这个数据可以取
-            //                 d[key] = this.childFormData[index][key];
-            //             }
-            //         });
-            //         list.push(d);
-            //     });
-            //
-            //     return list;
-            // },
+            loadDynamicSelectOptions () {
+                const parentCodeList = [];
+                // console.log('loadDynamicSelectOptions');
+                // console.log(JSON.stringify(Object.keys(this.dynamicDict)));
+                // 遍历传入的数据
+                this.childFormFileds.forEach(fields => {
+                    if (fields && fields instanceof Array) {
+                        fields.forEach(field => {
+                            if (field.type === 'dynamic-select' && field.parentKey) {
+                                // 再做一次去重判断。如果该字典已经在里面了，再跳过这一个
+                                if (parentCodeList.indexOf(field.parentKey) === -1) {
+                                    if (!this.dynamicDict[field.parentKey]) {
+                                        parentCodeList.push(field.parentKey);
+                                        // 初始化一个数组
+                                        this.$set(this.dynamicDict, field.parentKey, []);
+                                    }
+                                }
+                            }
+                            // 地区选择框，三级联动
+                            if (field.type === 'area-select') {
+                                const firstParentKey = field.firstParentKey || '10020';
+                                const secondParentKey = field.firstParentKey || '10021';
+                                const thirdParentKey = field.firstParentKey || '10022';
+                                if (parentCodeList.indexOf(firstParentKey) === -1) {
+                                    if (!this.dynamicDict[firstParentKey]) {
+                                        parentCodeList.push(firstParentKey);
+                                        this.$set(this.dynamicDict, firstParentKey, []);
+                                    }
+                                }
+                                if (parentCodeList.indexOf(secondParentKey) === -1) {
+                                    if (!this.dynamicDict[secondParentKey]) {
+                                        parentCodeList.push(secondParentKey);
+                                        this.$set(this.dynamicDict, secondParentKey, []);
+                                    }
+                                }
+                                if (parentCodeList.indexOf(thirdParentKey) === -1) {
+                                    if (!this.dynamicDict[thirdParentKey]) {
+                                        parentCodeList.push(thirdParentKey);
+                                        this.$set(this.dynamicDict, thirdParentKey, []);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+                if (parentCodeList.length === 0) {
+                    return;
+                }
+
+                // 通过父 key 拿到所有元素
+                let payload = null;
+                if (this.dynamicSelectOption.queryKey) {
+                    payload = {
+                        [this.dynamicSelectOption.queryKey]: parentCodeList
+                    };
+                } else {
+                    payload = parentCodeList;
+                }
+                // console.log('WtiForm 拉取动态字典');
+                axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
+                    if (res.code === 200) {
+                        if (res.data.length > 0) {
+                            // 加载到结果
+                            res.data.forEach(item => {
+                                // 用每个返回值的 pCode 作为 key，将该项添加到数组里。
+                                // 注：之所以是数组，是因为之前已经初始化过了（parentKey 为 Code）
+                                const pCode = item[this.dynamicSelectOption.parentKey];
+                                this.dynamicDict[pCode].push(
+                                    item
+                                );
+                            });
+                        }
+                    } else {
+                        this.$message.error(res.msg);
+                    }
+                }).catch(() => {
+                    this.$message.error('数据字典加载错误，请刷新页面重试');
+                });
+            },
 
             // 添加一个子表单到 childFormFileds 最后
             addChildForm (childFormData) {
@@ -636,6 +695,7 @@
             FormMoneyInput,
             FormRateInput,
             FormMulLinkage,
+            FormNormalNumberInput,
         }
     };
 </script>

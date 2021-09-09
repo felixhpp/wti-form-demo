@@ -676,9 +676,11 @@
                             if (field.type === 'dynamic-select' && field.parentKey) {
                                 // 再做一次去重判断。如果该字典已经在里面了，再跳过这一个
                                 if (parentCodeList.indexOf(field.parentKey) === -1) {
-                                    parentCodeList.push(field.parentKey);
-                                    // 初始化一个数组
-                                    this.$set(this.dynamicDict, field.parentKey, []);
+                                    if (!(this.dynamicDict[field.parentKey] && this.dynamicDict[field.parentKey].length !== 0)) {
+                                        parentCodeList.push(field.parentKey);
+                                        // 初始化一个数组
+                                        this.$set(this.dynamicDict, field.parentKey, []);
+                                    }
                                 }
                             }
                             // 地区选择框，三级联动
@@ -687,16 +689,22 @@
                                 const secondParentKey = field.firstParentKey || '10021';
                                 const thirdParentKey = field.firstParentKey || '10022';
                                 if (parentCodeList.indexOf(firstParentKey) === -1) {
-                                    parentCodeList.push(firstParentKey);
-                                    this.$set(this.dynamicDict, firstParentKey, []);
+                                    if (!(this.dynamicDict[firstParentKey] && this.dynamicDict[firstParentKey].length !== 0)) {
+                                        parentCodeList.push(firstParentKey);
+                                        this.$set(this.dynamicDict, firstParentKey, []);
+                                    }
                                 }
                                 if (parentCodeList.indexOf(secondParentKey) === -1) {
-                                    parentCodeList.push(secondParentKey);
-                                    this.$set(this.dynamicDict, secondParentKey, []);
+                                    if (!(this.dynamicDict[secondParentKey] && this.dynamicDict[secondParentKey].length !== 0)) {
+                                        parentCodeList.push(secondParentKey);
+                                        this.$set(this.dynamicDict, secondParentKey, []);
+                                    }
                                 }
                                 if (parentCodeList.indexOf(thirdParentKey) === -1) {
-                                    parentCodeList.push(thirdParentKey);
-                                    this.$set(this.dynamicDict, thirdParentKey, []);
+                                    if (!(this.dynamicDict[thirdParentKey] && this.dynamicDict[thirdParentKey].length !== 0)) {
+                                        parentCodeList.push(thirdParentKey);
+                                        this.$set(this.dynamicDict, thirdParentKey, []);
+                                    }
                                 }
                             }
                         });

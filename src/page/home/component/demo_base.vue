@@ -8,6 +8,14 @@
         <p>包含各种表单项，比如文本输入框，数字输入框，单选框，多选框等</p>
 
         <wti-form :fields="fields1"
+                  ref="form1"
+                  :form-item-col="12"
+                  :dynamic-select-option="dynamicSelectOption"/>
+
+        <el-divider/>
+
+        <wti-form :fields="fields2"
+                  ref="form2"
                   :form-item-col="12"
                   :dynamic-select-option="dynamicSelectOption"/>
     </div>
@@ -142,10 +150,60 @@
                                 firstParentKey: '100'
                             },
                             {
+                                // key
+                                'key': 'testInput',
+                                // 小型表单
+                                'type': 'child-form',
+                                // 是否允许删除单个子表单，默认 true（允许）（未完成）
+                                deleteEnable: true,
+                                // 是否允许新增单个子表单，默认 true（允许）（未完成）
+                                addEnable: true,
+                                // 每个小表单头的文字部分，以及新增按钮的部分
+                                headerLabel: '面签人员信息',
+                                // 里面是表单的每一项，写法和外面的没区别
+                                childrenForm: [
+                                    {
+                                        key: 'dict_code',
+                                        type: 'dynamic-select',
+                                        label: '这是一个字典下拉框（想不出来用处了）',
+                                        parentKey: '101'
+                                    },
+                                ]
+                            },
+                            {
                                 key: 'address',
                                 type: 'textarea',
                                 label: '详细地址',
                                 span: 24
+                            }
+                        ]
+                    }
+                ],
+
+                fields2: [
+                    {
+                        label: '用户信息登记',
+                        children: [
+                            {
+                                // key
+                                'key': 'testInput',
+                                // 小型表单
+                                'type': 'child-form',
+                                // 是否允许删除单个子表单，默认 true（允许）（未完成）
+                                deleteEnable: true,
+                                // 是否允许新增单个子表单，默认 true（允许）（未完成）
+                                addEnable: true,
+                                // 每个小表单头的文字部分，以及新增按钮的部分
+                                headerLabel: '面签人员信息',
+                                // 里面是表单的每一项，写法和外面的没区别
+                                childrenForm: [
+                                    {
+                                        key: 'dict_code2',
+                                        type: 'dynamic-select',
+                                        label: '这是一个字典下拉框（想不出来用处了）',
+                                        parentKey: '101'
+                                    },
+                                ]
                             }
                         ]
                     }
