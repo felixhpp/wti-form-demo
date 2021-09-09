@@ -21,6 +21,7 @@ import HourMinuteInput from './component/hour_minute_input';
 import NumberInput from './component/number_input';
 import RateInput from './component/rate_input';
 import MulLinkage from './component/mul_linkage';
+import Textarea from './component/text_area';
 
 
 import Connection from './component/connection';
@@ -50,6 +51,7 @@ const routes = [
     {path: '/formItem/NumberInput', component: NumberInput,},
     {path: '/formItem/RateInput', component: RateInput,},
     {path: '/formItem/MulLinkage', component: MulLinkage,},
+    {path: '/formItem/Textarea', component: Textarea,},
 
 
     {path: '/others/AutoTest', component: AutoTest,},

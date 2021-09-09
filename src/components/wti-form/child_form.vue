@@ -105,7 +105,7 @@
                                                           :item="rowItem"
                                                           :random-id="childField.randomId"
                                                           :all-disabled="allDisabled"
-                                                          v-model.trim="val[index][rowItem.key]"/>
+                                                          v-model="val[index][rowItem.key]"/>
                                             <FormMoneyInput v-if="rowItem.type==='money-input'"
                                                             :item="rowItem"
                                                             :random-id="childField.randomId"

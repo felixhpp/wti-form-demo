@@ -3,22 +3,20 @@
     <div :style="item.style||{}"
          :class="`form-unqiue-${item.key}`"
          class="form-input-box form-item-box">
-        <el-input v-model.trim="val"
+        <el-input v-model="val"
                   :placeholder="getPlaceholder(item)"
                   :disabled="getDisabled"
                   @blur="e => onBlur(item, e)"
                   @focus="e => onFocus(item, e)"
                   type="textarea"
-                  :rows="3"
-                  :maxlength="item.maxlength"
-                  show-word-limit
-                  resize="none"
-                  :clearable="true"
-                  v-if="!getTextModel">
-            <template slot="prepend" v-if="prependMsg">{{ prependMsg }}</template>
-            <template slot="append" v-if="appendMsg">{{ appendMsg }}</template>
-        </el-input>
-        <div v-else :style="item.textStyle||{}">{{ val || '-' }}</div>
+                  :autosize="item.autosize || false"
+                  :rows="item.autosize ? '' : 4"
+                  :resize="item.resize || 'none'"
+                  v-bind="item"
+                  v-if="!getTextModel"/>
+        <div v-else :style="item.textStyle || {}">
+            {{ val || '-' }}
+        </div>
     </div>
 </template>
 
@@ -29,31 +27,39 @@
         name: 'FormInput',
         mixins: [ FormMixin ],
         data () {
-            return {
-                prependMsg: '',
-                appendMsg: ''
-            };
+            return {};
         },
-        watch: {
-            item: {
-                handler (n) {
-                    if (n.prefixMsg) {
-                        this.prependMsg = n.prefixMsg;
-                    }
-                    if (n.suffixMsg) {
-                        this.appendMsg = n.suffixMsg;
-                    }
-                },
-                immediate: true
-            }
+        computed: {
+            // 前置符号
+            prepend () {
+                // 兼容性处理
+                if (this.item.prepend) {
+                    return this.item.prepend;
+                } else if (this.item.prependMsg) {
+                    return this.item.prependMsg;
+                } else {
+                    return '';
+                }
+            },
+            // 后置符号
+            append () {
+                // 兼容性处理
+                if (this.item.append) {
+                    return this.item.append;
+                } else if (this.item.appendMsg) {
+                    return this.item.appendMsg;
+                } else {
+                    return '';
+                }
+            },
         }
     };
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.form-input-box /deep/ .el-input-group__prepend, .single-input .form-input-box /deep/ .el-input-group__append {
-    padding: 0 10px;
-}
+    .form-input-box /deep/ .el-input-group__prepend, .single-input .form-input-box /deep/ .el-input-group__append {
+        padding: 0 10px;
+    }
 </style>

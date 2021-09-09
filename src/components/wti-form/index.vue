@@ -139,7 +139,7 @@
                                                           :ref="rowItem.key"
                                                           :item="rowItem"
                                                           :all-disabled="allDisabled"
-                                                          v-model.trim="formData[rowItem.key]"/>
+                                                          v-model="formData[rowItem.key]"/>
                                             <FormMoneyInput v-if="rowItem.type==='money-input'"
                                                             :ref="rowItem.key"
                                                             :item="rowItem"

@@ -76,6 +76,7 @@ export default {
                 return this.value;
             },
             set (v) {
+                // console.log(`|${v}|`);
                 this.$emit('input', v);
                 // 只有非子表单的情况下，才会冒泡上去数据变更
                 if (this.formItemType !== 'childForm') {
@@ -117,7 +118,6 @@ export default {
 
         // 获取下拉框 placeholder
         getSelectPlaceholder (formItem) {
-            // todo 这里可能还要加一个全部 disable 的判断
             // 如果已禁用，那么不显示 placeholder
             if (formItem.disable) {
                 return '';
@@ -133,7 +133,6 @@ export default {
         // 当取消焦点
         onFocus (item, e) {
             // 表单要素有 onFocus 事件，那么则触发
-            // todo 这里缺少传送一个全部表单数据的值
             if (item.onFocus) {
                 item.onFocus(e, this.formData);
             }
@@ -142,7 +141,6 @@ export default {
         // 当取消焦点
         onBlur (item, e) {
             // 表单要素有 onBlur 事件，那么则触发
-            // todo 这里缺少传送一个全部表单数据的值
             if (item.onBlur) {
                 item.onBlur(e, this.formData);
             }

@@ -23,9 +23,9 @@
                 <el-menu-item index="/formItem/DynamicSelect">字典下拉框 DynamicSelect</el-menu-item>
                 <el-menu-item index="/formItem/RateInput">利率输入框 RateInput</el-menu-item>
                 <el-menu-item index="/formItem/MulLinkage">三级联动输入框（依赖于字典）</el-menu-item>
+                <el-menu-item index="/formItem/TextArea">文本域输入框 TextArea</el-menu-item>
                 <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
                 <el-menu-item index="/formItem/MulSelect">多级下拉框（自定义请求） MulSelect</el-menu-item>
-                <el-menu-item index="/formItem/TextArea">文本域输入框 TextArea</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">其他</template>
