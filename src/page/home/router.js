@@ -22,6 +22,7 @@ import NumberInput from './component/number_input';
 import RateInput from './component/rate_input';
 import MulLinkage from './component/mul_linkage';
 import Textarea from './component/text_area';
+import NormalNumber from './component/normal_number';
 
 
 import Connection from './component/connection';
@@ -52,6 +53,7 @@ const routes = [
     {path: '/formItem/RateInput', component: RateInput,},
     {path: '/formItem/MulLinkage', component: MulLinkage,},
     {path: '/formItem/Textarea', component: Textarea,},
+    {path: '/formItem/NormalNumber', component: NormalNumber,},
 
 
     {path: '/others/AutoTest', component: AutoTest,},

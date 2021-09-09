@@ -160,6 +160,11 @@
                                                             :item="rowItem"
                                                             :all-disabled="allDisabled"
                                                             v-model.trim="formData[rowItem.key]"/>
+                                            <FormNormalNumberInput v-if="rowItem.type==='normal-number'"
+                                                                   :ref="rowItem.key"
+                                                                   :item="rowItem"
+                                                                   :all-disabled="allDisabled"
+                                                                   v-model.trim="formData[rowItem.key]"/>
                                         </el-form-item>
 
                                         <ChildForm v-if="rowItem.type === 'child-form'"
@@ -195,6 +200,7 @@
     import FormRateInput from './form_item/form_rate_input';
     import FormAreaSelect from './form_item/form_area_select';
     import FormMulLinkage from './form_item/form_mul_linkage';
+    import FormNormalNumberInput from './form_item/form_normal_number_input';
 
     import ChildForm from './child_form';
     import FormMixin from './mixin';
@@ -928,6 +934,7 @@
             FormRateInput,
             FormAreaSelect,
             FormMulLinkage,
+            FormNormalNumberInput,
             ChildForm,
         },
     };

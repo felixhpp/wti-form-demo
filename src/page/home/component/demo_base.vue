@@ -145,7 +145,6 @@
                                 key: 'address',
                                 type: 'textarea',
                                 label: '详细地址',
-                                // nextRowFirst: true,
                                 span: 24
                             }
                         ]
