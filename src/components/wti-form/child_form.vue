@@ -116,6 +116,11 @@
                                                            :random-id="childField.randomId"
                                                            :all-disabled="allDisabled"
                                                            v-model.trim="val[index][rowItem.key]"/>
+                                            <FormMulLinkage v-if="rowItem.type==='mul-linkage'"
+                                                            :ref="rowItem.key"
+                                                            :item="rowItem"
+                                                            :all-disabled="allDisabled"
+                                                            v-model.trim="formData[rowItem.key]"/>
                                         </el-form-item>
                                     </el-col>
                                 </div>
@@ -146,6 +151,7 @@
     import FormNormalSelect from './form_item/form_normal_select';
     import FormMoneyInput from './form_item/form_money_input';
     import FormRateInput from './form_item/form_rate_input';
+    import FormMulLinkage from './form_item/form_mul_linkage';
 
     export default {
         name: 'ChildForm',
@@ -629,6 +635,7 @@
             FormNormalSelect,
             FormMoneyInput,
             FormRateInput,
+            FormMulLinkage,
         }
     };
 </script>

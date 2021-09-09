@@ -155,6 +155,11 @@
                                                             :item="rowItem"
                                                             :all-disabled="allDisabled"
                                                             v-model.trim="formData[rowItem.key]"/>
+                                            <FormMulLinkage v-if="rowItem.type==='mul-linkage'"
+                                                            :ref="rowItem.key"
+                                                            :item="rowItem"
+                                                            :all-disabled="allDisabled"
+                                                            v-model.trim="formData[rowItem.key]"/>
                                         </el-form-item>
 
                                         <ChildForm v-if="rowItem.type === 'child-form'"
@@ -189,6 +194,7 @@
     import FormMoneyInput from './form_item/form_money_input';
     import FormRateInput from './form_item/form_rate_input';
     import FormAreaSelect from './form_item/form_area_select';
+    import FormMulLinkage from './form_item/form_mul_linkage';
 
     import ChildForm from './child_form';
     import FormMixin from './mixin';
@@ -921,6 +927,7 @@
             FormMoneyInput,
             FormRateInput,
             FormAreaSelect,
+            FormMulLinkage,
             ChildForm,
         },
     };

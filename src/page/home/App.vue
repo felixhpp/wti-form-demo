@@ -23,7 +23,7 @@
                 <el-menu-item index="/formItem/DynamicSelect">字典下拉框 DynamicSelect</el-menu-item>
                 <el-menu-item index="/formItem/RateInput">利率输入框 RateInput</el-menu-item>
                 <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
-                <el-menu-item index="/formItem/RateInput">三级联动输入框（依赖于字典）</el-menu-item>
+                <el-menu-item index="/formItem/MulLinkage">三级联动输入框（依赖于字典）</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">其他</template>

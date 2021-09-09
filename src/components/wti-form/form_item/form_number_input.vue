@@ -260,14 +260,6 @@
                 this.readonly = false;
             },
         },
-        watch: {
-            item: {
-                handler () {
-                    this.isShowInput = false;
-                },
-                immediate: true
-            }
-        }
     };
 </script>
 

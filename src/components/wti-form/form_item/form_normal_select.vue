@@ -5,7 +5,7 @@
         <el-select style="width:100%"
                    v-model="val"
                    :disabled="getDisabled"
-                   :placeholder="getPlaceholder(item)"
+                   :placeholder="getSelectPlaceholder(item)"
                    v-bind="bindOptions"
                    v-if="!getTextModel">
             <el-option v-for="option in item.options"

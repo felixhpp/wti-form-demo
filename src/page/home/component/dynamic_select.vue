@@ -168,12 +168,6 @@ fields1: [
             }
         }
     };
-
-    const fn = (破防, 无双) => (1 + 1.6 * 破防 + 1 * 无双 + 1.6 * 破防 * 无双);
-
-    for (let 破防 = 0; 破防 < 1; 破防 = 破防 + 0.1) {
-        console.log(fn(破防, 1 - 破防));
-    }
 </script>
 
 <style scoped lang="less">

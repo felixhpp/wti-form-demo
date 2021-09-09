@@ -100,7 +100,7 @@ export default {
         },
     },
     methods: {
-        // 获取输入框
+        // 获取输入框的 placeholder
         getPlaceholder (formItem) {
             // todo 这里可能还要加一个全部 disable 的判断
             // 如果已禁用，那么不显示 placeholder
@@ -113,6 +113,21 @@ export default {
             }
             // 否则返回默认的
             return `请输入${formItem.label}`;
+        },
+
+        // 获取下拉框 placeholder
+        getSelectPlaceholder (formItem) {
+            // todo 这里可能还要加一个全部 disable 的判断
+            // 如果已禁用，那么不显示 placeholder
+            if (formItem.disable) {
+                return '';
+            }
+            // 如果有 placeholder，则直接返回
+            if (formItem.placeholder !== undefined && formItem.placeholder !== null) {
+                return formItem.placeholder;
+            }
+            // 否则返回默认的
+            return `请选择${formItem.label}`;
         },
 
         // 当取消焦点

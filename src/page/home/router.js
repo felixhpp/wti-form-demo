@@ -20,6 +20,7 @@ import DynamicSelect from './component/dynamic_select';
 import HourMinuteInput from './component/hour_minute_input';
 import NumberInput from './component/number_input';
 import RateInput from './component/rate_input';
+import MulLinkage from './component/mul_linkage';
 
 
 import Connection from './component/connection';
@@ -48,6 +49,7 @@ const routes = [
     {path: '/formItem/HourMinuteInput', component: HourMinuteInput,},
     {path: '/formItem/NumberInput', component: NumberInput,},
     {path: '/formItem/RateInput', component: RateInput,},
+    {path: '/formItem/MulLinkage', component: MulLinkage,},
 
 
     {path: '/others/AutoTest', component: AutoTest,},

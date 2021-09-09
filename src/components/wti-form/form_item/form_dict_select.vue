@@ -8,10 +8,10 @@
                    :disabled="getDisabled"
                    :placeholder="getPlaceholder(item)"
                    v-if="!getTextModel">
-            <el-option v-for="items in dynamicDict[item.parentKey]"
-                       :key="items[dynamicSelectOption.value]"
-                       :label="items[dynamicSelectOption.label]"
-                       :value="items[dynamicSelectOption.value]"/>
+            <el-option v-for="option in dynamicDict[item.parentKey]"
+                       :key="option[dynamicSelectOption.value]"
+                       :label="option[dynamicSelectOption.label]"
+                       :value="option[dynamicSelectOption.value]"/>
         </el-select>
         <div v-else :style="item.textStyle || {}">{{ textModelValue || '-' }}</div>
     </div>
