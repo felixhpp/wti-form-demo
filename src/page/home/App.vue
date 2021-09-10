@@ -6,12 +6,13 @@
                  class="el-menu-vertical-demo"
                  @select="selectMenu">
             <el-menu-item-group>
-                <template slot="title">开发指南</template>
-                <el-menu-item index="/demo/Install">安装</el-menu-item>
+                <template slot="title">开发指南 v1.0.2</template>
+                <el-menu-item index="/Install">安装</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">常见用法</template>
-                <el-menu-item index="/demo/base">基本用法</el-menu-item>
+                <el-menu-item index="/demo/Base">基本用法</el-menu-item>
+                <el-menu-item index="/demo/DemoConfig">常见配置</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">各表单组件</template>

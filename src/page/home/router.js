@@ -10,6 +10,7 @@ import Router from 'vue-router';
 
 import Install from './component/install';
 import Base from './component/demo_base';
+import DemoConfig from './component/demo_config';
 
 import Input from './component/input';
 import NormalSelect from './component/normal_select';
@@ -39,9 +40,10 @@ Vue.use(Router);
 
 
 const routes = [
-    {path: '/demo/Install', component: Install,},
-    {path: '/demo/base', component: Base,},
+    {path: '/Install', component: Install,},
 
+    {path: '/demo/Base', component: Base,},
+    {path: '/demo/DemoConfig', component: DemoConfig,},
 
     {path: '/formItem/Input', component: Input,},
     {path: '/formItem/NormalSelect', component: NormalSelect,},
