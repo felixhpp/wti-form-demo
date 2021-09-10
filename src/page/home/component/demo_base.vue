@@ -5,7 +5,7 @@
         <p>给出本组件的常见用法</p>
 
         <h3>典型表单</h3>
-        <p>包含各种表单项，比如文本输入框，数字输入框，单选框，多选框等</p>
+        <p>包含各种表单项，比如文本输入框，数字输入框，单选框，多选框、子表单等</p>
 
         <wti-form :fields="fields1"
                   ref="form1"
@@ -106,18 +106,12 @@
                                 append: '元'
                             },
                             {
-                                key: 'money',
-                                type: 'money-input',
-                                label: '定金',
-                                append: '元'
-                            },
-                            {
                                 'autoCompleteKeys': [],
                                 'searchUrl': '/autocomplete',
                                 'searchKey': 'search',
                                 'mainShowKey': 'search',
                                 'key': 'code',
-                                'label': 'code码',
+                                'label': '输入搜索',
                                 'placeholder': '请输入',
                                 'type': 'auto-complete-input',
                             },

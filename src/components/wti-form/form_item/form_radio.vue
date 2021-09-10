@@ -72,9 +72,9 @@
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
 
-.form-input-box /deep/ .el-input-group__prepend, .single-input .form-input-box /deep/ .el-input-group__append {
+
+    .form-input-box /deep/ .el-input-group__prepend, .single-input .form-input-box /deep/ .el-input-group__append {
     padding: 0 10px;
 }
 </style>

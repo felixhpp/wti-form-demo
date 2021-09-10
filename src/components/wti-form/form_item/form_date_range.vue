@@ -59,9 +59,9 @@
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
 
-.form-item-box /deep/ .el-date-editor--daterange {
+
+    .form-item-box /deep/ .el-date-editor--daterange {
     position: relative;
     width: 100%;
     height: 36px;

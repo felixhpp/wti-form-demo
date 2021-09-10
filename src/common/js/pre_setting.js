@@ -13,6 +13,7 @@ import URL from './url';
 import 'common/less/config.less';
 import 'element-ui/lib/theme-chalk/index.css';
 import WtiForm from '@/components/wti-form';
+// import WtiForm from 'wti-form';
 
 const isProd = process.env.NODE_ENV !== 'development';
 

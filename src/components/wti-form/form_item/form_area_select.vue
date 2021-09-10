@@ -112,7 +112,7 @@
 </script>
 
 <style scoped lang="less">
-    @import '~common/less/config.less';
+
 
     .form-input-box /deep/ .el-input {
         position: relative;

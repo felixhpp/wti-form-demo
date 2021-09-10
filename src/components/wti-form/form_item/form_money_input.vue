@@ -305,7 +305,6 @@
 </script>
 
 <style scoped lang="less">
-    @import '~common/less/config.less';
 
     .form-item-box /deep/ .el-input__inner {
         height: 36px;

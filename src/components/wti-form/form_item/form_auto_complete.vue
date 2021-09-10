@@ -94,7 +94,6 @@
 </script>
 
 <style scoped lang="less">
-    @import '~common/less/config.less';
 
     .auto-complte-input {
         width: 100%;

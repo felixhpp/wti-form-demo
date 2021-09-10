@@ -23,6 +23,7 @@ import RateInput from './component/rate_input';
 import MulLinkage from './component/mul_linkage';
 import Textarea from './component/text_area';
 import NormalNumber from './component/normal_number';
+import Github from './component/github';
 
 
 import Connection from './component/connection';
@@ -56,6 +57,7 @@ const routes = [
     {path: '/formItem/NormalNumber', component: NormalNumber,},
 
 
+    {path: '/others/Github', component: Github,},
     {path: '/others/AutoTest', component: AutoTest,},
     {path: '/others/CodeMaker', component: CodeMaker,},
     {path: '/others/ElementStart', component: ElementStart,},
