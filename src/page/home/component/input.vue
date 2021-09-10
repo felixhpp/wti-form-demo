@@ -16,7 +16,7 @@
                 <template slot="title">
                     <b>点击查看代码</b>
                 </template>
-                <div class="code">{{ code1 }}</div>
+                <pre v-highlightjs><code class="javascript">{{ code1 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
 
@@ -36,7 +36,7 @@
                 <template slot="title">
                     <b>点击查看代码</b>
                 </template>
-                <div class="code">{{ code2 }}</div>
+                <pre v-highlightjs><code class="javascript">{{ code2 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
 
@@ -56,7 +56,7 @@
                 <template slot="title">
                     <b>点击查看代码</b>
                 </template>
-                <div class="code">{{ code3 }}</div>
+                <pre v-highlightjs><code class="javascript">{{ code3 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
 
@@ -76,7 +76,7 @@
                 <template slot="title">
                     <b>点击查看代码</b>
                 </template>
-                <div class="code">{{ code4 }}</div>
+                <pre v-highlightjs><code class="javascript">{{ code4 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
 
@@ -96,7 +96,7 @@
                 <template slot="title">
                     <b>点击查看代码</b>
                 </template>
-                <div class="code">{{ code5 }}</div>
+                <pre v-highlightjs><code class="javascript">{{ code5 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
     </div>

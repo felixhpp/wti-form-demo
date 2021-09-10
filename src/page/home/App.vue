@@ -6,8 +6,12 @@
                  class="el-menu-vertical-demo"
                  @select="selectMenu">
             <el-menu-item-group>
-                <template slot="title">Demo</template>
-                <el-menu-item index="/demo/base">常见用法</el-menu-item>
+                <template slot="title">开发指南</template>
+                <el-menu-item index="/demo/Install">安装</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+                <template slot="title">常见用法</template>
+                <el-menu-item index="/demo/base">基本用法</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">各表单组件</template>
@@ -127,6 +131,14 @@
         border: 1px solid #ebebeb;
         padding: 0 5px;
         border-radius: 3px;
+    }
+
+    .pro-code {
+        display: inline-block;
+        width: 100%;
+        padding: 10px;
+        color: #333;
+        font-family: Menlo;
     }
 
     .el-menu-item, .el-submenu__title {

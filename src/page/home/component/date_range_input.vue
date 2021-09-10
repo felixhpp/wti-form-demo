@@ -18,7 +18,7 @@
                 <template slot="title">
                     <b>点击查看代码</b>
                 </template>
-                <div class="code">{{ code1 }}</div>
+                <pre v-highlightjs><code class="javascript">{{ code1 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
 

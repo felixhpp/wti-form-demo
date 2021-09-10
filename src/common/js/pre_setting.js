@@ -12,6 +12,8 @@ import http from '@/api/ajax.js';
 import URL from './url';
 import 'common/less/config.less';
 import 'element-ui/lib/theme-chalk/index.css';
+import VueHighlightJS from 'vue-highlightjs';
+import 'highlight.js/styles/atom-one-dark.css';
 import WtiForm from '@/components/wti-form';
 // import WtiForm from 'wti-form';
 
@@ -25,6 +27,7 @@ const CommonUtils = {
         // 按需加载
         Vue.use(Element);
         Vue.use(WtiForm);
+        Vue.use(VueHighlightJS);
 
         if (!document.getElementById('app')) {
             const DOM = document.createElement('div');

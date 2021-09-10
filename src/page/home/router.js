@@ -8,7 +8,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+import Install from './component/install';
 import Base from './component/demo_base';
+
 import Input from './component/input';
 import NormalSelect from './component/normal_select';
 import Radio from './component/radio';
@@ -37,10 +39,10 @@ Vue.use(Router);
 
 
 const routes = [
-    {
-        path: '/demo/base',
-        component: Base,
-    },
+    {path: '/demo/Install', component: Install,},
+    {path: '/demo/base', component: Base,},
+
+
     {path: '/formItem/Input', component: Input,},
     {path: '/formItem/NormalSelect', component: NormalSelect,},
     {path: '/formItem/Radio', component: Radio,},
