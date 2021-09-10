@@ -23,7 +23,7 @@
         <el-divider/>
 
         <h3>其他</h3>
-        <p>Element UI 该组件的原生方法，大部分支持，例如可以传入属性：<code>'is-range': true</code> 将其变为时间范围输入框</p>
+        <p>Element UI 该组件的原生方法，大部分支持，例如可以传入属性：<code>is-range: true</code> 将其变为时间范围输入框</p>
         <wti-form ref="form2"
                   :fields="fields2"/>
         <div class="submit-line">
@@ -54,9 +54,9 @@
                     {
                         children: [
                             {
-                                'key': 'key1',
-                                'label': '时分输入框',
-                                'type': 'hour-minute-input',
+                                key: 'key1',
+                                label: '时分输入框',
+                                type: 'hour-minute-input',
                             }
                         ]
                     }
@@ -71,9 +71,9 @@ fields1: [
     {
         children: [
             {
-                'key': 'key1',
-                'label': '时分输入框',
-                'type': 'hour-minute-input',
+                key: 'key1',
+                label: '时分输入框',
+                type: 'hour-minute-input',
             }
         ]
     }
@@ -83,11 +83,11 @@ fields1: [
                     {
                         children: [
                             {
-                                'key': 'key2',
-                                'label': '时分范围输入框',
-                                'type': 'hour-minute-input',
+                                key: 'key2',
+                                label: '时分范围输入框',
+                                type: 'hour-minute-input',
                                 'value-format': 'HH:mm',
-                                // 'is-range': true
+                                // is-range: true
                                 'picker-options': {
                                     selectableRange: '18:30:00 - 20:30:00'
                                 }
@@ -105,9 +105,14 @@ fields1: [
     {
         children: [
             {
-                key: 'key1',
-                type: 'input',
-                label: '我是输入框的 label'
+                key: 'key2',
+                label: '时分范围输入框',
+                type: 'hour-minute-input',
+                'value-format': 'HH:mm',
+                // is-range: true
+                'picker-options': {
+                    selectableRange: '18:30:00 - 20:30:00'
+                }
             }
         ]
     }
@@ -129,33 +134,33 @@ fields1: [
 </script>
 
 <style scoped lang="less">
-@import '~common/less/config.less';
+    @import '~common/less/config.less';
 
-.formitem-box {
-    position: relative;
-    width: 100%;
-
-    .submit-line {
-        margin: 10px 0;
-
-        .tips {
-            margin-left: 24px;
-            font-size: 10px;
-        }
-    }
-
-
-    .collapse {
+    .formitem-box {
         position: relative;
-        width: 600px;
+        width: 100%;
 
-        .code {
-            white-space: pre;
-            background: #fafafa;
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 10px;
+        .submit-line {
+            margin: 10px 0;
+
+            .tips {
+                margin-left: 24px;
+                font-size: 10px;
+            }
+        }
+
+
+        .collapse {
+            position: relative;
+            width: 600px;
+
+            .code {
+                white-space: pre;
+                background: #fafafa;
+                border: 1px solid #ddd;
+                padding: 10px;
+                border-radius: 10px;
+            }
         }
     }
-}
 </style>

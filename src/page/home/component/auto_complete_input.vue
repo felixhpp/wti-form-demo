@@ -80,14 +80,14 @@
                     {
                         children: [
                             {
-                                'autoCompleteKeys': [],
-                                'searchUrl': '/autocomplete',
-                                'searchKey': 'search',
-                                'mainShowKey': 'search',
-                                'key': 'key1',
-                                'label': '基础用法',
-                                'placeholder': '请输入',
-                                'type': 'auto-complete-input',
+                                autoCompleteKeys: [],
+                                searchUrl: '/autocomplete',
+                                searchKey: 'search',
+                                mainShowKey: 'search',
+                                key: 'key1',
+                                label: '基础用法',
+                                placeholder: '请输入',
+                                type: 'auto-complete-input',
                             }
                         ]
                     }
@@ -100,14 +100,14 @@ fields1: [
     {
         children: [
             {
-                'autoCompleteKeys': [],
-                'searchUrl': '/autocomplete',
-                'searchKey': 'search',
-                'mainShowKey': 'search',
-                'key': 'key1',
-                'label': '基础用法',
-                'placeholder': '请输入',
-                'type': 'auto-complete-input',
+                autoCompleteKeys: [],
+                searchUrl: '/autocomplete',
+                searchKey: 'search',
+                mainShowKey: 'search',
+                key: 'key1',
+                label: '基础用法',
+                placeholder: '请输入',
+                type: 'auto-complete-input',
             }
         ]
     }
@@ -118,29 +118,29 @@ fields1: [
                     {
                         children: [
                             {
-                                'autoCompleteKeys': [
+                                autoCompleteKeys: [
                                     'keyA',
                                     'keyB'
                                 ],
-                                'searchUrl': '/autocomplete',
-                                'searchKey': 'search',
-                                'mainShowKey': 'search',
-                                'key': 'key2',
-                                'label': '基础用法',
-                                'placeholder': '请输入',
-                                'type': 'auto-complete-input',
+                                searchUrl: '/autocomplete',
+                                searchKey: 'search',
+                                mainShowKey: 'search',
+                                key: 'key2',
+                                label: '基础用法',
+                                placeholder: '请输入',
+                                type: 'auto-complete-input',
                             },
                             {
-                                'key': 'keyA',
-                                'label': 'keyA',
-                                'type': 'input',
-                                'disableDefault': true,
-                                'nextRowFirst': true
+                                key: 'keyA',
+                                label: 'keyA',
+                                type: 'input',
+                                disableDefault: true,
+                                nextRowFirst: true
                             },
                             {
-                                'key': 'keyB',
-                                'label': 'keyB',
-                                'type': 'input',
+                                key: 'keyB',
+                                label: 'keyB',
+                                type: 'input',
                             }
                         ]
                     }
@@ -153,29 +153,29 @@ fields2: [
     {
         children: [
             {
-                'autoCompleteKeys': [
+                autoCompleteKeys: [
                     'keyA',
                     'keyB'
                 ],
-                'searchUrl': '/autocomplete',
-                'searchKey': 'search',
-                'mainShowKey': 'search',
-                'key': 'key2',
-                'label': '基础用法',
-                'placeholder': '请输入',
-                'type': 'auto-complete-input',
+                searchUrl: '/autocomplete',
+                searchKey: 'search',
+                mainShowKey: 'search',
+                key: 'key2',
+                label: '基础用法',
+                placeholder: '请输入',
+                type: 'auto-complete-input',
             },
             {
-                'key': 'keyA',
-                'label': 'keyA',
-                'type': 'input',
-                'disableDefault': true,
-                'nextRowFirst': true
+                key: 'keyA',
+                label: 'keyA',
+                type: 'input',
+                disableDefault: true,
+                nextRowFirst: true
             },
             {
-                'key': 'keyB',
-                'label': 'keyB',
-                'type': 'input',
+                key: 'keyB',
+                label: 'keyB',
+                type: 'input',
             }
         ]
     }
@@ -186,14 +186,14 @@ fields2: [
                     {
                         children: [
                             {
-                                'autoCompleteKeys': [],
-                                'searchUrl': '/autocomplete',
-                                'searchKey': 'search',
-                                'mainShowKey': 'search',
-                                'key': 'key3',
-                                'label': '回调函数',
-                                'placeholder': '请输入',
-                                'type': 'auto-complete-input',
+                                autoCompleteKeys: [],
+                                searchUrl: '/autocomplete',
+                                searchKey: 'search',
+                                mainShowKey: 'search',
+                                key: 'key3',
+                                label: '回调函数',
+                                placeholder: '请输入',
+                                type: 'auto-complete-input',
                                 onSelect (row) {
                                     console.log('onSelect', row);
                                 },
@@ -212,14 +212,14 @@ fields1: [
     {
         children: [
             {
-                'autoCompleteKeys': [],
-                'searchUrl': '/autocomplete',
-                'searchKey': 'search',
-                'mainShowKey': 'search',
-                'key': 'key3',
-                'label': '回调函数',
-                'placeholder': '请输入',
-                'type': 'auto-complete-input',
+                autoCompleteKeys: [],
+                searchUrl: '/autocomplete',
+                searchKey: 'search',
+                mainShowKey: 'search',
+                key: 'key3',
+                label: '回调函数',
+                placeholder: '请输入',
+                type: 'auto-complete-input',
                 onSelect (row) {
                     console.log('onSelect', row);
                 },

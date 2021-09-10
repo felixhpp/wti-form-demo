@@ -52,19 +52,19 @@
                     {
                         children: [
                             {
-                                'options': [
+                                options: [
                                     {
-                                        'value': 'value_a',
-                                        'label': 'label A'
+                                        value: 'value_a',
+                                        label: 'label A'
                                     },
                                     {
-                                        'value': 'value_b',
-                                        'label': 'label B'
+                                        value: 'value_b',
+                                        label: 'label B'
                                     },
                                 ],
-                                'key': 'key1',
-                                'label': '一个单选框',
-                                'type': 'radio'
+                                key: 'key1',
+                                label: '一个单选框',
+                                type: 'radio'
                             }
                         ]
                     }
@@ -77,19 +77,19 @@ fields1: [
     {
         children: [
             {
-                'options': [
+                options: [
                     {
-                        'value': 'value_a',
-                        'label': 'label A'
+                        value: 'value_a',
+                        label: 'label A'
                     },
                     {
-                        'value': 'value_b',
-                        'label': 'label B'
+                        value: 'value_b',
+                        label: 'label B'
                     },
                 ],
-                'key': 'key A',
-                'label': '一个下拉框',
-                'type': 'radio'
+                key: 'key A',
+                label: '一个下拉框',
+                type: 'radio'
             }
         ]
     }
@@ -99,15 +99,15 @@ fields1: [
                     {
                         children: [
                             {
-                                'options': [
+                                options: [
                                     {
-                                        'value': 'value_a',
-                                        'label': 'label A'
+                                        value: 'value_a',
+                                        label: 'label A'
                                     },
                                 ],
-                                'key': 'key2',
-                                'label': '动态增删的单选框',
-                                'type': 'radio'
+                                key: 'key2',
+                                label: '动态增删的单选框',
+                                type: 'radio'
                             }
                         ]
                     }
@@ -120,15 +120,15 @@ fields2: [
     {
         children: [
             {
-                'options': [
+                options: [
                     {
-                        'value': 'value_a',
-                        'label': 'label A'
+                        value: 'value_a',
+                        label: 'label A'
                     },
                 ],
-                'key': 'key2',
-                'label': '一个下拉框',
-                'type': 'radio'
+                key: 'key2',
+                label: '一个下拉框',
+                type: 'radio'
             }
         ]
     }

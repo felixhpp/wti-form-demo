@@ -31,10 +31,10 @@
                     {
                         children: [
                             {
-                                'key': 'key1',
-                                'label': '一个日期输入框',
-                                'placeholder': '请输入',
-                                'type': 'date-input'
+                                key: 'key1',
+                                label: '一个日期输入框',
+                                placeholder: '请输入',
+                                type: 'date-input'
                             }
                         ]
                     }
@@ -47,10 +47,10 @@ fields1: [
     {
         children: [
             {
-                'key': 'key1',
-                'label': '一个日期输入框',
-                'placeholder': '请输入',
-                'type': 'date-input'
+                key: 'key1',
+                label: '一个日期输入框',
+                placeholder: '请输入',
+                type: 'date-input'
             }
         ]
     }

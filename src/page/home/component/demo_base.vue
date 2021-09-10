@@ -62,43 +62,43 @@
                                 label: '用户名称'
                             },
                             {
-                                'options': [
+                                options: [
                                     {
-                                        'value': 'male',
-                                        'label': '男'
+                                        value: 'male',
+                                        label: '男'
                                     },
                                     {
-                                        'value': 'female',
-                                        'label': '女'
+                                        value: 'female',
+                                        label: '女'
                                     },
                                 ],
-                                'key': 'gender',
-                                'label': '性别',
-                                'type': 'radio'
+                                key: 'gender',
+                                label: '性别',
+                                type: 'radio'
                             },
                             {
-                                'options': [
+                                options: [
                                     {
-                                        'value': '自由职业者',
-                                        'label': '自由职业者'
+                                        value: '自由职业者',
+                                        label: '自由职业者'
                                     },
                                     {
-                                        'value': '体制内',
-                                        'label': '体制内'
+                                        value: '体制内',
+                                        label: '体制内'
                                     },
                                     {
-                                        'value': '打工人',
-                                        'label': '打工人'
+                                        value: '打工人',
+                                        label: '打工人'
                                     },
                                     {
-                                        'value': '其他',
-                                        'label': '其他'
+                                        value: '其他',
+                                        label: '其他'
                                     },
                                 ],
-                                'key': 'job',
-                                'label': '职业',
-                                'placeholder': '请选择',
-                                'type': 'normal-select'
+                                key: 'job',
+                                label: '职业',
+                                placeholder: '请选择',
+                                type: 'normal-select'
                             },
                             {
                                 key: 'money',
@@ -107,31 +107,31 @@
                                 append: '元'
                             },
                             {
-                                'autoCompleteKeys': [],
-                                'searchUrl': '/autocomplete',
-                                'searchKey': 'search',
-                                'mainShowKey': 'search',
-                                'key': 'code',
-                                'label': '输入搜索',
-                                'placeholder': '请输入',
-                                'type': 'auto-complete-input',
+                                autoCompleteKeys: [],
+                                searchUrl: '/autocomplete',
+                                searchKey: 'search',
+                                mainShowKey: 'search',
+                                key: 'code',
+                                label: '输入搜索',
+                                placeholder: '请输入',
+                                type: 'auto-complete-input',
                             },
                             {
-                                'key': 'reg_date',
-                                'label': '注册时间',
-                                'placeholder': '请输入',
-                                'type': 'date-input'
+                                key: 'reg_date',
+                                label: '注册时间',
+                                placeholder: '请输入',
+                                type: 'date-input'
                             },
                             {
-                                'key': 'timearea',
-                                'label': '有效范围',
-                                'placeholder': '请输入',
-                                'type': 'date-range-input'
+                                key: 'timearea',
+                                label: '有效范围',
+                                placeholder: '请输入',
+                                type: 'date-range-input'
                             },
                             {
-                                'key': 'notice_time',
-                                'label': '每日短信通知时刻',
-                                'type': 'hour-minute-input',
+                                key: 'notice_time',
+                                label: '每日短信通知时刻',
+                                type: 'hour-minute-input',
                             },
                             {
                                 key: 'number_limit',
@@ -165,9 +165,9 @@
                             },
                             {
                                 // key
-                                'key': 'testInput',
+                                key: 'testInput',
                                 // 小型表单
-                                'type': 'child-form',
+                                type: 'child-form',
                                 // 是否允许删除单个子表单，默认 true（允许）（未完成）
                                 deleteEnable: true,
                                 // 是否允许新增单个子表单，默认 true（允许）（未完成）
@@ -210,43 +210,43 @@
                     label: '用户名称'
                 },
                 {
-                    'options': [
+                    options: [
                         {
-                            'value': 'male',
-                            'label': '男'
+                            value: 'male',
+                            label: '男'
                         },
                         {
-                            'value': 'female',
-                            'label': '女'
+                            value: 'female',
+                            label: '女'
                         },
                     ],
-                    'key': 'gender',
-                    'label': '性别',
-                    'type': 'radio'
+                    key: 'gender',
+                    label: '性别',
+                    type: 'radio'
                 },
                 {
-                    'options': [
+                    options: [
                         {
-                            'value': '自由职业者',
-                            'label': '自由职业者'
+                            value: '自由职业者',
+                            label: '自由职业者'
                         },
                         {
-                            'value': '体制内',
-                            'label': '体制内'
+                            value: '体制内',
+                            label: '体制内'
                         },
                         {
-                            'value': '打工人',
-                            'label': '打工人'
+                            value: '打工人',
+                            label: '打工人'
                         },
                         {
-                            'value': '其他',
-                            'label': '其他'
+                            value: '其他',
+                            label: '其他'
                         },
                     ],
-                    'key': 'job',
-                    'label': '职业',
-                    'placeholder': '请选择',
-                    'type': 'normal-select'
+                    key: 'job',
+                    label: '职业',
+                    placeholder: '请选择',
+                    type: 'normal-select'
                 },
                 {
                     key: 'money',
@@ -261,31 +261,31 @@
                     append: '元'
                 },
                 {
-                    'autoCompleteKeys': [],
-                    'searchUrl': '/autocomplete',
-                    'searchKey': 'search',
-                    'mainShowKey': 'search',
-                    'key': 'code',
-                    'label': 'code码',
-                    'placeholder': '请输入',
-                    'type': 'auto-complete-input',
+                    autoCompleteKeys: [],
+                    searchUrl: '/autocomplete',
+                    searchKey: 'search',
+                    mainShowKey: 'search',
+                    key: 'code',
+                    label: 'code码',
+                    placeholder: '请输入',
+                    type: 'auto-complete-input',
                 },
                 {
-                    'key': 'reg_date',
-                    'label': '注册时间',
-                    'placeholder': '请输入',
-                    'type': 'date-input'
+                    key: 'reg_date',
+                    label: '注册时间',
+                    placeholder: '请输入',
+                    type: 'date-input'
                 },
                 {
-                    'key': 'timearea',
-                    'label': '有效范围',
-                    'placeholder': '请输入',
-                    'type': 'date-range-input'
+                    key: 'timearea',
+                    label: '有效范围',
+                    placeholder: '请输入',
+                    type: 'date-range-input'
                 },
                 {
-                    'key': 'notice_time',
-                    'label': '每日短信通知时刻',
-                    'type': 'hour-minute-input',
+                    key: 'notice_time',
+                    label: '每日短信通知时刻',
+                    type: 'hour-minute-input',
                 },
                 {
                     key: 'number_limit',
@@ -319,9 +319,9 @@
                 },
                 {
                     // key
-                    'key': 'testInput',
+                    key: 'testInput',
                     // 小型表单
-                    'type': 'child-form',
+                    type: 'child-form',
                     // 是否允许删除单个子表单，默认 true（允许）（未完成）
                     deleteEnable: true,
                     // 是否允许新增单个子表单，默认 true（允许）（未完成）
@@ -348,9 +348,9 @@
                         children: [
                             {
                                 // key
-                                'key': 'testInput',
+                                key: 'testInput',
                                 // 小型表单
-                                'type': 'child-form',
+                                type: 'child-form',
                                 // 是否允许删除单个子表单，默认 true（允许）（未完成）
                                 deleteEnable: true,
                                 // 是否允许新增单个子表单，默认 true（允许）（未完成）

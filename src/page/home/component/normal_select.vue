@@ -52,28 +52,28 @@
                     {
                         children: [
                             {
-                                'options': [
+                                options: [
                                     {
-                                        'value': 'value_a',
-                                        'label': 'label A'
+                                        value: 'value_a',
+                                        label: 'label A'
                                     },
                                     {
-                                        'value': 'value_b',
-                                        'label': 'label B'
+                                        value: 'value_b',
+                                        label: 'label B'
                                     },
                                     {
-                                        'value': 'value_c',
-                                        'label': 'label C'
+                                        value: 'value_c',
+                                        label: 'label C'
                                     },
                                     {
-                                        'value': 'value_d',
-                                        'label': 'label D'
+                                        value: 'value_d',
+                                        label: 'label D'
                                     }
                                 ],
-                                'key': 'key1',
-                                'label': '一个下拉框',
-                                'placeholder': '请选择',
-                                'type': 'normal-select'
+                                key: 'key1',
+                                label: '一个下拉框',
+                                placeholder: '请选择',
+                                type: 'normal-select'
                             }
                         ]
                     }
@@ -86,28 +86,28 @@ fields1: [
     {
         children: [
             {
-                'options': [
+                options: [
                     {
-                        'value': 'value_a',
-                        'label': 'label A'
+                        value: 'value_a',
+                        label: 'label A'
                     },
                     {
-                        'value': 'value_b',
-                        'label': 'label B'
+                        value: 'value_b',
+                        label: 'label B'
                     },
                     {
-                        'value': 'value_c',
-                        'label': 'label C'
+                        value: 'value_c',
+                        label: 'label C'
                     },
                     {
-                        'value': 'value_d',
-                        'label': 'label D'
+                        value: 'value_d',
+                        label: 'label D'
                     }
                 ],
-                'key': 'key A',
-                'label': '一个下拉框',
-                'placeholder': '请选择',
-                'type': 'normal-select'
+                key: 'key A',
+                label: '一个下拉框',
+                placeholder: '请选择',
+                type: 'normal-select'
             }
         ]
     }
@@ -117,16 +117,16 @@ fields1: [
                     {
                         children: [
                             {
-                                'options': [
+                                options: [
                                     {
-                                        'value': 'value_a',
-                                        'label': 'label A'
+                                        value: 'value_a',
+                                        label: 'label A'
                                     },
                                 ],
-                                'key': 'key2',
-                                'label': '一个下拉框',
-                                'placeholder': '请选择',
-                                'type': 'normal-select'
+                                key: 'key2',
+                                label: '一个下拉框',
+                                placeholder: '请选择',
+                                type: 'normal-select'
                             }
                         ]
                     }
@@ -139,16 +139,16 @@ fields2: [
     {
         children: [
             {
-                'options': [
+                options: [
                     {
-                        'value': 'value_a',
-                        'label': 'label A'
+                        value: 'value_a',
+                        label: 'label A'
                     },
                 ],
-                'key': 'key2',
-                'label': '一个下拉框',
-                'placeholder': '请选择',
-                'type': 'normal-select'
+                key: 'key2',
+                label: '一个下拉框',
+                placeholder: '请选择',
+                type: 'normal-select'
             }
         ]
     }
