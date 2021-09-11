@@ -12,6 +12,7 @@ import Install from './component/install';
 import Base from './component/demo_base';
 import DemoConfig from './component/demo_config';
 
+import FormitemCommon from './component/formitem_common';
 import Input from './component/input';
 import NormalSelect from './component/normal_select';
 import Radio from './component/radio';
@@ -45,6 +46,7 @@ const routes = [
     {path: '/demo/Base', component: Base,},
     {path: '/demo/DemoConfig', component: DemoConfig,},
 
+    {path: '/formItem/FormitemCommon', component: FormitemCommon,},
     {path: '/formItem/Input', component: Input,},
     {path: '/formItem/NormalSelect', component: NormalSelect,},
     {path: '/formItem/Radio', component: Radio,},

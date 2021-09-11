@@ -29,7 +29,7 @@
         <p>默认情况下，表单每行是 2 个表单元素。但是根据实际需要，我们也可以让每行 4 个，或者每行一个。</p>
         <p>这个是通过设置 formItemCol 属性来实现（这个本质是设置 <code>el-col</code> 标签的 <code>span</code> 属性）</p>
         <p>
-            <el-radio-group v-model="formItemCol" size="mini">
+            <el-radio-group v-model="formItemCol">
                 <el-radio-button :label="24">一行一个</el-radio-button>
                 <el-radio-button :label="12">一行两个</el-radio-button>
                 <el-radio-button :label="8">一行三个</el-radio-button>
@@ -51,6 +51,28 @@
                 </template>
 
                 <pre v-highlightjs><code class="javascript">{{ code2 }}</code></pre>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>表单是否带边框</h3>
+        <p>默认情况下，表格是带边框的，但也许你会觉得这个边框并没有什么用</p>
+        <wti-form :fields="fields3"
+                  :border-form="false"
+                  ref="form3"/>
+
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form3')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+
+                <pre v-highlightjs><code class="javascript">{{ code3 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
 
@@ -289,7 +311,60 @@ fields2: [
             },
         ]
     }
-]`
+]`,
+
+
+                fields3: [
+                    {
+                        label: '用户基本信息',
+                        children: [
+                            {
+                                key: 'name',
+                                type: 'input',
+                                label: '姓名'
+                            }
+                        ]
+                    },
+                    {
+                        label: '资产信息',
+                        children: [
+                            {
+                                key: 'money',
+                                type: 'money-input',
+                                label: '定金',
+                                append: '元'
+                            },
+                        ]
+                    }
+                ],
+
+                code3: `<wti-form :fields="fields3"
+                  :border-form="false"
+                  ref="form3"/>
+---
+fields3: [
+    {
+        label: '用户基本信息',
+        children: [
+            {
+                key: 'name',
+                type: 'input',
+                label: '姓名'
+            }
+        ]
+    },
+    {
+        label: '资产信息',
+        children: [
+            {
+                key: 'money',
+                type: 'money-input',
+                label: '定金',
+                append: '元'
+            },
+        ]
+    }
+]`,
             };
         },
         methods: {

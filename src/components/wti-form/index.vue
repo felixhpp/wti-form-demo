@@ -170,6 +170,7 @@
                                         <ChildForm v-if="rowItem.type === 'child-form'"
                                                    :text-model="textModel"
                                                    :ref="rowItem.key"
+                                                   :all-disabled="allDisabled"
                                                    :item="rowItem"
                                                    v-model.trim="formData[rowItem.key]"/>
                                     </el-col>
@@ -949,185 +950,185 @@
 </script>
 <style lang="less" type="text/less" scoped>
 
-.wti-form {
-    width: 100%;
+    .wti-form {
+        width: 100%;
 
-    .el-input__inner {
-        height: 36px !important;
-        line-height: 36px !important;
-        border: 1px solid #E2E3E6 !important;
-    }
-
-    .block-title {
-        position: relative;
-        height: 50px;
-        padding-top: 10px;
-        padding-bottom: 24px;
-        font-size: 16px;
-
-        // label 左边的红色竖线
-        .block-line {
-            float: left;
-            width: 4px;
-            height: 16px;
-            background: #EE473A;
-            border-radius: 2px;
-            display: inline-block;
+        .el-input__inner {
+            height: 36px !important;
+            line-height: 36px !important;
+            border: 1px solid #E2E3E6 !important;
         }
-
-        .block-text {
-            margin-left: 10px;
-            float: left;
-            height: 16px;
-            font-size: 16px;
-            color: #21273A;
-            font-weight: 600 !important;
-            vertical-align: top;
-            line-height: 16px;
-        }
-
-        .block-fold-btn {
-            float: right;
-            margin-right: 30px;
-            height: 16px;
-            line-height: 16px;
-            font-size: 14px;
-            cursor: pointer;
-            user-select: none;
-        }
-    }
-
-}
-
-// 带边框的表单组件
-.border-form {
-    .block-item {
-        border: 1px solid #DDE0EA;
-        border-radius: 8px;
-        margin-bottom: 40px;
-        background: #fff;
-        padding-bottom: 15px;
 
         .block-title {
-            height: 60px;
-            line-height: 60px;
-            background: #f8f9fb;
-            padding: 20px 0 18px 24px;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            position: relative;
+            height: 50px;
+            padding-top: 10px;
+            padding-bottom: 24px;
+            font-size: 16px;
+
+            // label 左边的红色竖线
+            .block-line {
+                float: left;
+                width: 4px;
+                height: 16px;
+                background: #EE473A;
+                border-radius: 2px;
+                display: inline-block;
+            }
+
+            .block-text {
+                margin-left: 10px;
+                float: left;
+                height: 16px;
+                font-size: 16px;
+                color: #21273A;
+                font-weight: 600 !important;
+                vertical-align: top;
+                line-height: 16px;
+            }
+
+            .block-fold-btn {
+                float: right;
+                margin-right: 30px;
+                height: 16px;
+                line-height: 16px;
+                font-size: 14px;
+                cursor: pointer;
+                user-select: none;
+            }
         }
 
-        .block-title + .block-content {
-            padding-top: 14px;
-        }
-
-        .block-content {
-            padding: 0 24px;
-        }
-
-        .block-hidden {
-            display: none;
-        }
-    }
-}
-
-
-.el-divider {
-    background-color: #F4F5F8;
-}
-
-.scan-type {
-    position: relative;
-    height: 36px;
-    line-height: 36px;
-    margin-bottom: 16px;
-
-    .all-fold-btn {
-        display: inline-block;
-        padding: 0 20px;
-        height: 36px;
-        background: #EE473A;
-        border: 1px solid #EE473A;
-        border-radius: 4px;
-        color: #fff;
-        cursor: pointer;
-        text-align: center;
-        font-size: 14px;
-        vertical-align: top;
-
-        .all-fold-icon {
-            width: 14px;
-            height: 14px;
-            vertical-align: top;
-            margin-top: 11px;
-        }
     }
 
-    .block-btn-list {
-        float: left;
-
-        .block-btn {
+    // 带边框的表单组件
+    .border-form {
+        .block-item {
             border: 1px solid #DDE0EA;
-            height: 36px;
-            line-height: 36px;
-            padding: 0 18px;
-            color: #3A4566;
-            display: inline-block;
-            cursor: pointer;
-            user-select: none;
-        }
+            border-radius: 8px;
+            margin-bottom: 40px;
+            background: #fff;
+            padding-bottom: 15px;
 
-        .block-btn.focus {
-            background: #EE473A;
-            color: #fff;
-        }
+            .block-title {
+                height: 60px;
+                line-height: 60px;
+                background: #f8f9fb;
+                padding: 20px 0 18px 24px;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+            }
 
-        .block-btn:first-child {
-            border-radius: 4px 0 0 4px;
+            .block-title + .block-content {
+                padding-top: 14px;
+            }
 
-        }
+            .block-content {
+                padding: 0 24px;
+            }
 
-        .block-btn:last-child {
-            border-radius: 0 4px 4px 0;
-
+            .block-hidden {
+                display: none;
+            }
         }
     }
 
-    .scan-type-btn {
-        display: inline-block;
-        float: right;
-        padding: 0 20px;
+
+    .el-divider {
+        background-color: #F4F5F8;
+    }
+
+    .scan-type {
+        position: relative;
         height: 36px;
-        border: 1px solid #AEB3BF;
-        border-radius: 4px;
-        color: #12182A;
-        cursor: pointer;
-        text-align: center;
-        font-size: 14px;
-        vertical-align: top;
-        user-select: none;
+        line-height: 36px;
+        margin-bottom: 16px;
 
-        .scan-type-icon {
-            width: 14px;
-            height: 14px;
+        .all-fold-btn {
+            display: inline-block;
+            padding: 0 20px;
+            height: 36px;
+            background: #EE473A;
+            border: 1px solid #EE473A;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
             vertical-align: top;
-            margin-top: 11px;
+
+            .all-fold-icon {
+                width: 14px;
+                height: 14px;
+                vertical-align: top;
+                margin-top: 11px;
+            }
+        }
+
+        .block-btn-list {
+            float: left;
+
+            .block-btn {
+                border: 1px solid #DDE0EA;
+                height: 36px;
+                line-height: 36px;
+                padding: 0 18px;
+                color: #3A4566;
+                display: inline-block;
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .block-btn.focus {
+                background: #EE473A;
+                color: #fff;
+            }
+
+            .block-btn:first-child {
+                border-radius: 4px 0 0 4px;
+
+            }
+
+            .block-btn:last-child {
+                border-radius: 0 4px 4px 0;
+
+            }
+        }
+
+        .scan-type-btn {
+            display: inline-block;
+            float: right;
+            padding: 0 20px;
+            height: 36px;
+            border: 1px solid #AEB3BF;
+            border-radius: 4px;
+            color: #12182A;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            vertical-align: top;
+            user-select: none;
+
+            .scan-type-icon {
+                width: 14px;
+                height: 14px;
+                vertical-align: top;
+                margin-top: 11px;
+            }
         }
     }
-}
 
-.wti-form-v2 /deep/ input::-webkit-outer-spin-button,
-.wti-form-v2 /deep/ input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-}
+    .wti-form-v2 /deep/ input::-webkit-outer-spin-button,
+    .wti-form-v2 /deep/ input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
 
-.wti-form-v2 /deep/ input[type="number"] {
-    -webkit-appearance: none;
-    appearance: none;
-}
+    .wti-form-v2 /deep/ input[type="number"] {
+        -webkit-appearance: none;
+        appearance: none;
+    }
 
-.wti-form-v2 /deep/ input[type="number"] {
-    -moz-appearance: textfield;
-}
+    .wti-form-v2 /deep/ input[type="number"] {
+        -moz-appearance: textfield;
+    }
 
 </style>

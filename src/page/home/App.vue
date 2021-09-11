@@ -16,6 +16,7 @@
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">各表单组件</template>
+                <el-menu-item index="/formItem/FormitemCommon">表单元素通用属性 CommonAttr</el-menu-item>
                 <el-menu-item index="/formItem/Input">文本输入框 Input</el-menu-item>
                 <el-menu-item index="/formItem/NormalSelect">普通下拉框 NormalSelect</el-menu-item>
                 <el-menu-item index="/formItem/Radio">单选框 Radio</el-menu-item>
@@ -145,6 +146,10 @@
     .el-menu-item, .el-submenu__title {
         height: 46px;
         line-height: 46px;
+    }
+
+    .collapse {
+        margin-top: 10px;
     }
 </style>
 

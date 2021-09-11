@@ -9,6 +9,7 @@
 
         <wti-form :fields="fields1"
                   ref="form1"
+                  :all-disabled="disableStatus"
                   :dynamic-select-option="dynamicSelectOption"/>
 
         <div class="submit-line">
@@ -27,10 +28,66 @@
 
         <el-divider/>
 
-        <!--        <wti-form :fields="fields2"-->
-        <!--                  ref="form2"-->
-        <!--                  :form-item-col="12"-->
-        <!--                  :dynamic-select-option="dynamicSelectOption"/>-->
+        <h3>横排表单</h3>
+        <p>每排一个。label 右对齐，自定义 label 宽度为 100px 宽，不要标题行，不要外框。</p>
+        <p>注意，如果再限制一下容器宽度，那么就跟 Element UI 给的表单示例是一模一样了。</p>
+        <p>也可以通过另外 2 个表单元素属性来限制，参照 表单元素通用属性页 的配置方法</p>
+
+        <wti-form :fields="fields2"
+                  label-position="right"
+                  :form-item-col="24"
+                  :border-form="false"
+                  label-width="100px"
+                  ref="form2"/>
+
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+
+                <pre v-highlightjs><code class="javascript">{{ code2 }}</code></pre>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>全局禁用模式</h3>
+        <p>当我们提交表单、或者其他场景时，需要禁止用户修改表单元素。这个时候，我们需要对全局表单进行禁用限制。</p>
+        <p>注意，禁用状态下，只是禁止了用户操作，但是仍然是可以通过 js 进行添加、删除的</p>
+
+        <p>
+            <el-radio-group v-model="disableStatus">
+                <el-radio-button :label="true">禁用</el-radio-button>
+                <el-radio-button :label="false">取消禁用</el-radio-button>
+            </el-radio-group>
+        </p>
+        <wti-form :fields="fields2"
+                  label-position="right"
+                  :form-item-col="24"
+                  :border-form="false"
+                  label-width="100px"
+                  ref="form2"/>
+
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+
+                <pre v-highlightjs><code class="javascript">{{ code2 }}</code></pre>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
     </div>
 </template>
 
@@ -347,32 +404,124 @@ fields1: [
 
                 fields2: [
                     {
-                        label: '用户信息登记',
                         children: [
                             {
-                                // key
-                                key: 'testInput',
-                                // 小型表单
-                                type: 'child-form',
-                                // 是否允许删除单个子表单，默认 true（允许）（未完成）
-                                deleteEnable: true,
-                                // 是否允许新增单个子表单，默认 true（允许）（未完成）
-                                addEnable: true,
-                                // 每个小表单头的文字部分，以及新增按钮的部分
-                                headerLabel: '面签人员信息',
-                                // 里面是表单的每一项，写法和外面的没区别
-                                childrenForm: [
+                                key: 'name',
+                                type: 'input',
+                                label: '用户名称'
+                            },
+                            {
+                                options: [
                                     {
-                                        key: 'dict_code2',
-                                        type: 'dynamic-select',
-                                        label: '这是一个字典下拉框（想不出来用处了）',
-                                        parentKey: '101'
+                                        value: 'male',
+                                        label: '男'
                                     },
-                                ]
-                            }
+                                    {
+                                        value: 'female',
+                                        label: '女'
+                                    },
+                                ],
+                                key: 'gender',
+                                label: '性别',
+                                type: 'radio'
+                            },
+                            {
+                                options: [
+                                    {
+                                        value: '自由职业者',
+                                        label: '自由职业者'
+                                    },
+                                    {
+                                        value: '体制内',
+                                        label: '体制内'
+                                    },
+                                    {
+                                        value: '打工人',
+                                        label: '打工人'
+                                    },
+                                    {
+                                        value: '其他',
+                                        label: '其他'
+                                    },
+                                ],
+                                key: 'job',
+                                label: '职业',
+                                placeholder: '请选择',
+                                type: 'normal-select'
+                            },
+                            {
+                                key: 'money',
+                                type: 'money-input',
+                                label: '定金',
+                                append: '元'
+                            },
                         ]
                     }
-                ]
+                ],
+                code2: `<wti-form :fields="fields2"
+label-position="right"
+:form-item-col="24"
+label-width="100px"
+ref="form2"/>
+---
+fields2: [
+    {
+        children: [
+            {
+                key: 'name',
+                type: 'input',
+                label: '用户名称'
+            },
+            {
+                options: [
+                    {
+                        value: 'male',
+                        label: '男'
+                    },
+                    {
+                        value: 'female',
+                        label: '女'
+                    },
+                ],
+                key: 'gender',
+                label: '性别',
+                type: 'radio'
+            },
+            {
+                options: [
+                    {
+                        value: '自由职业者',
+                        label: '自由职业者'
+                    },
+                    {
+                        value: '体制内',
+                        label: '体制内'
+                    },
+                    {
+                        value: '打工人',
+                        label: '打工人'
+                    },
+                    {
+                        value: '其他',
+                        label: '其他'
+                    },
+                ],
+                key: 'job',
+                label: '职业',
+                placeholder: '请选择',
+                type: 'normal-select'
+            },
+            {
+                key: 'money',
+                type: 'money-input',
+                label: '定金',
+                append: '元'
+            },
+        ]
+    }
+]`,
+
+                disableStatus: false
             };
         },
         methods: {

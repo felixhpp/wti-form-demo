@@ -26,7 +26,7 @@
                 </svg>
 
                 <div class="cfh-del"
-                     @click="()=>deleteChildForm(childField.randomId)">
+                     @click="()=>allDisabled ? '' : deleteChildForm(childField.randomId)">
                     <img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAxUlEQVR42uWSsQ0CMQxFbwYKJmAGmAI2oENsglgg9onEUFBSxLkOalo6pkCIGeB+ER0KKEeRjkhfsvxffhwlVfHF22ZGVs/k9PIu9OD1BhjnH+yUWy0TMbyvm0SOA5awAGisf7LzqzQAPXiowWJPd+ouTMj6G1m9Y9ycwICtRcfJ6LqB8hfsuKxB0oyM6Dx6qNH7OQD3xLjRQ43ePwWQhClZ1eihRi/lyj4jubAm568YNScwYD8C6v1p2JqHvp8IBmxVar0AUiAwjfTBZFwAAAAASUVORK5CYII="
                         class="cfh-del-btn"/>
@@ -136,7 +136,7 @@
             </div>
         </div>
 
-        <div class="child-form-add-btn" @click="addChildForm">
+        <div class="child-form-add-btn" @click="()=>allDisabled ? '' : addChildForm()">
             ＋ {{ item.headerLabel }}
         </div>
     </div>
@@ -342,6 +342,7 @@
 
             // 添加一个子表单到 childFormFileds 最后
             addChildForm (childFormData) {
+                // 禁用时禁止操作
                 const {childrenForm} = this.item;
                 // 插入 childFormFileds
                 const filed = this.deepCopy(childrenForm);
@@ -625,6 +626,10 @@
 
             // 某个子表单删除时调用
             deleteChildForm (randomId) {
+                // 禁用时禁止操作
+                if (this.allDisabled) {
+                    return;
+                }
                 let i = -1;
                 this.childFormFileds.forEach((field, index) => {
                     if (field.randomId === randomId) {
@@ -704,81 +709,81 @@
 
 
     .child-form-container {
-    width: 100%;
+        width: 100%;
 
-    .child-form {
-        background: #F8F9FB;
-        border-radius: 4px;
-        margin-bottom: 24px;
+        .child-form {
+            background: #F8F9FB;
+            border-radius: 4px;
+            margin-bottom: 24px;
 
-        .child-form-head {
-            position: relative;
-            height: 44px;
-            line-height: 44px;
-            text-align: left;
-            padding: 0 20px;
-            font-size: 14px;
-            color: #3A4566;
-            border-bottom: 1px solid #E7E8EB;
-            font-weight: 500;
+            .child-form-head {
+                position: relative;
+                height: 44px;
+                line-height: 44px;
+                text-align: left;
+                padding: 0 20px;
+                font-size: 14px;
+                color: #3A4566;
+                border-bottom: 1px solid #E7E8EB;
+                font-weight: 500;
 
-            .cfh-flod, .cfh-unflod {
-                position: absolute;
-                top: 16px;
-                right: 20px;
-                width: 12px;
-                height: 6px;
-                cursor: pointer;
-                user-select: none;
-            }
-
-            .cfh-del {
-                position: absolute;
-                top: 0;
-                right: 60px;
-                height: 40px;
-                line-height: 40px;
-                cursor: pointer;
-                user-select: none;
-
-                .cfh-del-btn {
-                    position: relative;
-                    height: 16px;
-                    width: 16px;
-                    margin-top: 12px;
-                    vertical-align: top;
+                .cfh-flod, .cfh-unflod {
+                    position: absolute;
+                    top: 16px;
+                    right: 20px;
+                    width: 12px;
+                    height: 6px;
+                    cursor: pointer;
+                    user-select: none;
                 }
 
-                .cfh-del-text {
-                    display: inline-block;
-                    position: relative;
+                .cfh-del {
+                    position: absolute;
+                    top: 0;
+                    right: 60px;
                     height: 40px;
                     line-height: 40px;
-                    vertical-align: top;
-                    font-size: 14px;
-                    color: #949AAE;
-                    font-weight: 400;
+                    cursor: pointer;
+                    user-select: none;
+
+                    .cfh-del-btn {
+                        position: relative;
+                        height: 16px;
+                        width: 16px;
+                        margin-top: 12px;
+                        vertical-align: top;
+                    }
+
+                    .cfh-del-text {
+                        display: inline-block;
+                        position: relative;
+                        height: 40px;
+                        line-height: 40px;
+                        vertical-align: top;
+                        font-size: 14px;
+                        color: #949AAE;
+                        font-weight: 400;
+                    }
                 }
+            }
+
+            .child-form-body {
+                padding: 0 20px;
             }
         }
 
-        .child-form-body {
-            padding: 0 20px;
+        .child-form-add-btn {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background: #FBFCFD;
+            border: 1px dashed #ABB3CC;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 14px;
+            color: #12182A;
+            cursor: pointer;
         }
     }
-
-    .child-form-add-btn {
-        position: relative;
-        width: 100%;
-        height: 40px;
-        line-height: 40px;
-        background: #FBFCFD;
-        border: 1px dashed #ABB3CC;
-        border-radius: 4px;
-        text-align: center;
-        font-size: 14px;
-        color: #12182A;
-        cursor: pointer;
-    }
-}
 </style>
