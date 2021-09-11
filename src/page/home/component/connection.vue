@@ -1,7 +1,6 @@
 <template>
     <div class="formitem-box">
-        <el-backtop target="#header"/>
-        <h2 id="header">联系方式</h2>
+<h2>联系方式</h2>
 
         <h3>想吹牛逼</h3>
         <p>QQ 群：387017550</p>

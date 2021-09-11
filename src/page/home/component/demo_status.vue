@@ -1,99 +1,59 @@
 <template>
     <div id="base">
-        <h2>常见用法</h2>
-        <p>给出本组件的常见用法</p>
+        <h2>一份json配置演化三表单</h2>
+        <p>一般来说，表单分为三态：【新增（无初始数据）】、【编辑（有初始数据）】、【详情（有初始数据但纯文本显示）】</p>
+        <p>通过同一个 fields 配置的三个不同状态的表单，演示本组件是如何在真实业务环境下，提高约 200%~1000% 的开发效率。</p>
 
         <el-tree :default-expand-all="true"
                  :data="[{label:'目录',children:[
-                     {label:'典型表单'},{label:'横排表单'},
-                     {label:'表单全局禁用'},{label:'纯文本模式表单'},]}]"/>
+                     {label:'新增表单'},
+                     {label:'编辑表单'},
+                     {label:'纯文本展示表单'},]}]"/>
 
-        <h3>典型表单</h3>
-        <p>包含各种表单项，比如文本输入框，数字输入框，单选框，多选框、子表单等</p>
+        <h3>新增表单</h3>
+        <p>新增表单里，没有任何初始内容</p>
 
-        <wti-form :fields="fields1"
+        <wti-form :fields="fields"
                   ref="form1"
+                  :all-disabled="loading1"
                   :dynamic-select-option="dynamicSelectOption"/>
 
         <div class="submit-line">
-            <el-button type="primary" @click="submit('form1')">提交按钮</el-button>
-            <span class="tips">请查看控制台看提交结果</span>
+            <el-button type="primary" @click="submitForm1">提交</el-button>
+            <span class="tips">（下个表单将反显本表单的数据）</span>
         </div>
-        <el-collapse class="collapse">
-            <el-collapse-item>
-                <template slot="title">
-                    <b>点击查看代码</b>
-                </template>
+        <el-divider/>
 
-                <pre v-highlightjs><code class="javascript">{{ code1 }}</code></pre>
-            </el-collapse-item>
-        </el-collapse>
+        <h3>编辑表单</h3>
+        <p>本表单的数据，来源于另一个表单提交的结果。当然，本表单也支持二次编辑和二次提交。</p>
+
+        <wti-form :fields="fields"
+                  ref="form2"
+                  :data="originData1"
+                  :dynamic-select-option="dynamicSelectOption"/>
+
+        <div class="submit-line">
+            <el-button type="primary" @click="submitForm2">提交</el-button>
+            <span class="tips">下个表单将以纯文本形式，显示本表单填写的内容</span>
+        </div>
 
         <el-divider/>
 
-        <h3>横排表单</h3>
-        <p>每排一个。label 右对齐，自定义 label 宽度为 100px 宽，不要标题行，不要外框。</p>
-        <p>注意，如果再限制一下容器宽度，那么就跟 Element UI 给的表单示例是一模一样了。</p>
-        <p>也可以通过另外 2 个表单元素属性来限制，参照 表单元素通用属性页 的配置方法</p>
+        <h3>纯文本模式表单</h3>
+        <p>纯文本表单的意思是，以纯文本的形式展示结果，并不展示表单选项。</p>
 
-        <wti-form :fields="fields2"
-                  label-position="right"
-                  :form-item-col="24"
-                  :border-form="false"
-                  label-width="100px"
-                  ref="form2"/>
-
-        <div class="submit-line">
-            <el-button type="primary" @click="submit('form2')">提交按钮</el-button>
-            <span class="tips">请查看控制台看提交结果</span>
-        </div>
-        <el-collapse class="collapse">
-            <el-collapse-item>
-                <template slot="title">
-                    <b>点击查看代码</b>
-                </template>
-
-                <pre v-highlightjs><code class="javascript">{{ code2 }}</code></pre>
-            </el-collapse-item>
-        </el-collapse>
-
-        <el-divider/>
-
-        <h3>表单全局禁用</h3>
-        <p>当我们提交表单、或者其他场景时，需要禁止用户修改表单元素。这个时候，我们需要对全局表单进行禁用限制。</p>
-        <p>注意，禁用状态下，只是禁止了用户操作，但是仍然是可以通过 js 进行添加、删除的</p>
-
-        <p>
-            <el-radio-group v-model="disableStatus">
-                <el-radio-button :label="true">禁用</el-radio-button>
-                <el-radio-button :label="false">取消禁用</el-radio-button>
-            </el-radio-group>
-        </p>
-        <wti-form :fields="fields3"
-                  :all-disabled="disableStatus"
-                  ref="form3"/>
-
-        <div class="submit-line">
-            <el-button type="primary" @click="submit('form3')">提交按钮</el-button>
-            <span class="tips">请查看控制台看提交结果</span>
-        </div>
-        <el-collapse class="collapse">
-            <el-collapse-item>
-                <template slot="title">
-                    <b>点击查看代码</b>
-                </template>
-
-                <pre v-highlightjs><code class="javascript">{{ code3 }}</code></pre>
-            </el-collapse-item>
-        </el-collapse>
-
+        <wti-form :fields="fields"
+                  ref="form3"
+                  :data="originData2"
+                  :text-model="true"
+                  :dynamic-select-option="dynamicSelectOption"/>
         <el-divider/>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'DemoBase',
+        name: 'DemoStatus',
         data () {
             return {
                 dynamicSelectOption: {
@@ -108,14 +68,24 @@
                     value: 'code', // 这是下拉框选项的值
                     label: 'label' // 这是下拉框选项的 label
                 },
-                fields1: [
+                fields: [
                     {
                         label: '用户信息登记',
                         children: [
                             {
                                 key: 'name',
                                 type: 'input',
-                                label: '用户名称'
+                                label: '用户名称',
+                                rules: [
+                                    {
+                                        required: true,
+                                        message: '请输入',
+                                        trigger: [
+                                            'blur',
+                                            'change'
+                                        ]
+                                    }
+                                ],
                             },
                             {
                                 options: [
@@ -209,7 +179,7 @@
                             {
                                 key: 'area',
                                 type: 'mul-linkage',
-                                label: '三级联动下拉框，',
+                                label: '三级联动下拉框',
                                 linkLevel: 3,
                                 firstParentKey: '100'
                             },
@@ -402,255 +372,48 @@ fields1: [
     }
 ]`,
 
-                fields2: [
-                    {
-                        children: [
-                            {
-                                key: 'name',
-                                type: 'input',
-                                label: '用户名称'
-                            },
-                            {
-                                options: [
-                                    {
-                                        value: 'male',
-                                        label: '男'
-                                    },
-                                    {
-                                        value: 'female',
-                                        label: '女'
-                                    },
-                                ],
-                                key: 'gender',
-                                label: '性别',
-                                type: 'radio'
-                            },
-                            {
-                                options: [
-                                    {
-                                        value: '自由职业者',
-                                        label: '自由职业者'
-                                    },
-                                    {
-                                        value: '体制内',
-                                        label: '体制内'
-                                    },
-                                    {
-                                        value: '打工人',
-                                        label: '打工人'
-                                    },
-                                    {
-                                        value: '其他',
-                                        label: '其他'
-                                    },
-                                ],
-                                key: 'job',
-                                label: '职业',
-                                placeholder: '请选择',
-                                type: 'normal-select'
-                            },
-                            {
-                                key: 'money',
-                                type: 'money-input',
-                                label: '定金',
-                                append: '元'
-                            },
-                        ]
-                    }
-                ],
-
-                code2: `<wti-form :fields="fields2"
-label-position="right"
-:form-item-col="24"
-label-width="100px"
-ref="form2"/>
----
-fields2: [
-    {
-        children: [
-            {
-                key: 'name',
-                type: 'input',
-                label: '用户名称'
-            },
-            {
-                options: [
-                    {
-                        value: 'male',
-                        label: '男'
-                    },
-                    {
-                        value: 'female',
-                        label: '女'
-                    },
-                ],
-                key: 'gender',
-                label: '性别',
-                type: 'radio'
-            },
-            {
-                options: [
-                    {
-                        value: '自由职业者',
-                        label: '自由职业者'
-                    },
-                    {
-                        value: '体制内',
-                        label: '体制内'
-                    },
-                    {
-                        value: '打工人',
-                        label: '打工人'
-                    },
-                    {
-                        value: '其他',
-                        label: '其他'
-                    },
-                ],
-                key: 'job',
-                label: '职业',
-                placeholder: '请选择',
-                type: 'normal-select'
-            },
-            {
-                key: 'money',
-                type: 'money-input',
-                label: '定金',
-                append: '元'
-            },
-        ]
-    }
-]`,
-
                 disableStatus: false,
 
-                fields3: [
-                    {
-                        label: '禁用表单',
-                        children: [
-                            {
-                                key: 'name',
-                                type: 'input',
-                                label: '用户名称'
-                            },
-                            {
-                                options: [
-                                    {
-                                        value: 'male',
-                                        label: '男'
-                                    },
-                                    {
-                                        value: 'female',
-                                        label: '女'
-                                    },
-                                ],
-                                key: 'gender',
-                                label: '性别',
-                                type: 'radio'
-                            },
-                            {
-                                options: [
-                                    {
-                                        value: '自由职业者',
-                                        label: '自由职业者'
-                                    },
-                                    {
-                                        value: '体制内',
-                                        label: '体制内'
-                                    },
-                                    {
-                                        value: '打工人',
-                                        label: '打工人'
-                                    },
-                                    {
-                                        value: '其他',
-                                        label: '其他'
-                                    },
-                                ],
-                                key: 'job',
-                                label: '职业',
-                                placeholder: '请选择',
-                                type: 'normal-select'
-                            },
-                            {
-                                key: 'money',
-                                type: 'money-input',
-                                label: '定金',
-                                append: '元'
-                            },
-                        ]
-                    }
-                ],
-
-                code3: `<wti-form :fields="fields3"
-                    :all-disabled="disableStatus"
-                    ref="form3"/>
----
-// 这里无特殊配置
-fields3: [
-    {
-        children: [
-            {
-                key: 'name',
-                type: 'input',
-                label: '用户名称'
-            },
-            {
-                options: [
-                    {
-                        value: 'male',
-                        label: '男'
-                    },
-                    {
-                        value: 'female',
-                        label: '女'
-                    },
-                ],
-                key: 'gender',
-                label: '性别',
-                type: 'radio'
-            },
-            {
-                options: [
-                    {
-                        value: '自由职业者',
-                        label: '自由职业者'
-                    },
-                    {
-                        value: '体制内',
-                        label: '体制内'
-                    },
-                    {
-                        value: '打工人',
-                        label: '打工人'
-                    },
-                    {
-                        value: '其他',
-                        label: '其他'
-                    },
-                ],
-                key: 'job',
-                label: '职业',
-                placeholder: '请选择',
-                type: 'normal-select'
-            },
-            {
-                key: 'money',
-                type: 'money-input',
-                label: '定金',
-                append: '元'
-            },
-        ]
-    }
-]`,
+                loading1: false,
+                originData1: {},
+                originData2: {}
             };
         },
         methods: {
-            submit (formName) {
-                this.$refs[formName].validate((isPass, data) => {
+            // submit (formName) {
+            //     this.$refs[formName].validate((isPass, data) => {
+            //         if (isPass) {
+            //             console.log('这是你刚提交的数据', data);
+            //         } else {
+            //             this.$message.error('校验失败！');
+            //         }
+            //     });
+            // },
+            submitForm1 () {
+                this.loading1 = true;
+                this.$refs.form1.validate((isPass, data) => {
                     if (isPass) {
-                        console.log('这是你刚提交的数据', data);
+                        this.$message.info('开始提交，模拟异步请求，1 秒后提交成功');
+                        setTimeout(() => {
+                            this.$message.success('提交成功，现在将把数据回显到【编辑表单】里');
+                            console.log('这是你刚提交的数据', data);
+                            this.originData1 = Object.assign({}, data);
+                            this.loading1 = false;
+                        }, 1000);
                     } else {
+                        this.loading1 = false;
+                        this.$message.error('校验失败！');
+                    }
+                });
+            },
+            submitForm2 () {
+                this.$refs.form2.validate((isPass, data) => {
+                    if (isPass) {
+                        this.$message.info('直接将内容显示到纯文本表单里');
+
+                        this.originData2 = Object.assign({}, data);
+                    } else {
+                        this.loading1 = false;
                         this.$message.error('校验失败！');
                     }
                 });

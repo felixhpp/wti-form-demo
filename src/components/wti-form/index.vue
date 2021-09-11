@@ -668,6 +668,7 @@
             },
 
             // 找到 type="dynamic-select" 获取所有 parentCode，然后读取数据字典接口拉取对应的数据
+            // todo 这里的数据字典请求接口，应该最后合并到一起，由一个专门的数据字典请求管理器去请求，减低接口重复请求的情况
             loadDynamicSelectOptions () {
                 const parentCodeList = [];
                 // 遍历传入的数据
@@ -728,6 +729,15 @@
                 axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
                     if (res.code === 200) {
                         if (res.data.length > 0) {
+                            // 因为可能多个地方同时调这个接口的原因，为了避免重复将内容添加到里面，所以，
+                            // 这里在赋值之前，需要先判断一下 parentCodeList 的每个值，其对应的 dynamicDict 里的哪一个数组，是否是空的
+                            // 如果不是空的，则将其置为空数组
+                            parentCodeList.forEach(pCode => {
+                                if (this.dynamicDict[pCode].length > 0) {
+                                    this.$set(this.dynamicDict, pCode, []);
+                                }
+                            });
+
                             // 加载到结果
                             res.data.forEach(item => {
                                 // 用每个返回值的 pCode 作为 key，将该项添加到数组里。
@@ -814,7 +824,6 @@
                     // 对数据进行过滤
                     const data = this.getData();
 
-
                     // 判断是否需要校验子表单
                     const childFormKeyList = [];
                     this.fields.forEach(filed => {
@@ -839,7 +848,13 @@
                             return this.$refs[key][0].validateForm();
                         });
                         Promise.all(validateList).then(() => {
-                            fn(true, data);
+                            // 父表单校验也通过了，才算都通过
+                            if (valid) {
+                                fn(true, data);
+                            } else {
+                                // 否则即使子表单校验通过，父表单校验没通过，也是算不通过的
+                                fn(false, data);
+                            }
                         }).catch(() => {
                             fn(false, data);
                         });

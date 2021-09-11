@@ -9,7 +9,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Install from './component/install';
-import Base from './component/demo_base';
+import DemoBase from './component/demo_base';
+import DemoStatus from './component/demo_status';
 import DemoConfig from './component/demo_config';
 
 import FormitemCommon from './component/formitem_common';
@@ -43,8 +44,9 @@ Vue.use(Router);
 const routes = [
     {path: '/Install', component: Install,},
 
-    {path: '/demo/Base', component: Base,},
-    {path: '/demo/DemoConfig', component: DemoConfig,},
+    {path: '/demo/Base', component: DemoBase,},
+    {path: '/demo/Status', component: DemoStatus,},
+    {path: '/demo/Config', component: DemoConfig,},
 
     {path: '/formItem/FormitemCommon', component: FormitemCommon,},
     {path: '/formItem/Input', component: Input,},

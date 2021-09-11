@@ -1,7 +1,6 @@
 <template>
     <div id="base">
-        <el-backtop target="#header"/>
-        <h2 id="header">常见配置</h2>
+<h2>常见配置</h2>
         <p>给出本组件的常见配置</p>
 
         <h3>分栏表单</h3>

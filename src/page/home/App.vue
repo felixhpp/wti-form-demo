@@ -12,7 +12,8 @@
             <el-menu-item-group>
                 <template slot="title">常见用法</template>
                 <el-menu-item index="/demo/Base">基本用法</el-menu-item>
-                <el-menu-item index="/demo/DemoConfig">常见配置</el-menu-item>
+                <el-menu-item index="/demo/Status">表单的三态</el-menu-item>
+                <el-menu-item index="/demo/Config">常见配置</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">各表单组件</template>
