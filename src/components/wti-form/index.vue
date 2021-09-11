@@ -727,8 +727,9 @@
                 }
                 // console.log('WtiForm 拉取动态字典');
                 axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
-                    if (res.code === 200) {
-                        if (res.data.length > 0) {
+                    const data = res.data;
+                    if (data.code === 200) {
+                        if (data.data.length > 0) {
                             // 因为可能多个地方同时调这个接口的原因，为了避免重复将内容添加到里面，所以，
                             // 这里在赋值之前，需要先判断一下 parentCodeList 的每个值，其对应的 dynamicDict 里的哪一个数组，是否是空的
                             // 如果不是空的，则将其置为空数组
@@ -739,7 +740,7 @@
                             });
 
                             // 加载到结果
-                            res.data.forEach(item => {
+                            data.data.forEach(item => {
                                 // 用每个返回值的 pCode 作为 key，将该项添加到数组里。
                                 // 注：之所以是数组，是因为之前已经初始化过了（parentKey 为 Code）
                                 const pCode = item[this.dynamicSelectOption.parentKey];
@@ -749,7 +750,7 @@
                             });
                         }
                     } else {
-                        this.$message.error(res.msg);
+                        this.$message.error(data.msg);
                     }
                 }).catch(() => {
                     this.$message.error('数据字典加载错误，请刷新页面重试');

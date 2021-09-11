@@ -38,9 +38,10 @@
                 }
 
                 axios.post(this.item.searchUrl, payload).then(res => {
-                    if (res.code === 200) {
-                        if (res.data) {
-                            const d = res.data.map(item => {
+                    const data = res.data;
+                    if (data.code === 200) {
+                        if (data.data) {
+                            const d = data.data.map(item => {
                                 if (this.item.mainShowKey) {
                                     return {
                                         value: item[this.item.mainShowKey],
@@ -69,7 +70,7 @@
                         if (this.item.fetchSuggestions) {
                             this.item.fetchSuggestions([], this.randomId);
                         }
-                        this.$message.error(res.msg || '无匹配数据');
+                        this.$message.error(data.msg || '无匹配数据');
                     }
                 }).catch(() => {
                     this.$message.error('服务器错误');
