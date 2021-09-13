@@ -195,7 +195,7 @@
                     }
                 }
                 this.$set(this.dynamicDict, parentCode, []);
-                console.log('nul linkage load dict');
+                // console.log('nul linkage load dict');
                 // 否则，根据当前的值，去请求数据字典
                 axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
                     const data = res;
