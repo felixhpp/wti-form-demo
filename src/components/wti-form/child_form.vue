@@ -26,6 +26,7 @@
                 </svg>
 
                 <div class="cfh-del"
+                     v-if="!textModel"
                      @click="()=>allDisabled ? '' : deleteChildForm(childField.randomId)">
                     <img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAxUlEQVR42uWSsQ0CMQxFbwYKJmAGmAI2oENsglgg9onEUFBSxLkOalo6pkCIGeB+ER0KKEeRjkhfsvxffhwlVfHF22ZGVs/k9PIu9OD1BhjnH+yUWy0TMbyvm0SOA5awAGisf7LzqzQAPXiowWJPd+ouTMj6G1m9Y9ycwICtRcfJ6LqB8hfsuKxB0oyM6Dx6qNH7OQD3xLjRQ43ePwWQhClZ1eihRi/lyj4jubAm568YNScwYD8C6v1p2JqHvp8IBmxVar0AUiAwjfTBZFwAAAAASUVORK5CYII="
@@ -43,7 +44,7 @@
                         <el-row :gutter="20"
                                 :key="rowIndex"
                                 class="block-content"
-                                :class="{'block-hidden': childFormHiddenList, [childField.randomId]:true}">
+                                :class="{[childField.randomId]:true}">
                             <template v-for="{rowItem} in row">
                                 <div :key="rowItem.key">
                                     <el-col :span="getColSize(rowItem)"
@@ -56,75 +57,61 @@
                                                       :label="getFormItemLabel(rowItem)"
                                                       :prop="rowItem.key">
                                             <FormInput v-if="rowItem.type==='input'"
-                                                       :item="rowItem"
+                                                       v-bind="getProps(rowItem)"
                                                        :random-id="childField.randomId"
-                                                       :all-disabled="allDisabled"
                                                        v-model.trim="val[index][rowItem.key]"/>
                                             <FormDate v-if="rowItem.type==='date-input'"
-                                                      :item="rowItem"
+                                                      v-bind="getProps(rowItem)"
                                                       :random-id="childField.randomId"
-                                                      :all-disabled="allDisabled"
                                                       v-model.trim="val[index][rowItem.key]"/>
                                             <FormHourMinute v-if="rowItem.type==='hour-minute-input'"
-                                                            :item="rowItem"
+                                                            v-bind="getProps(rowItem)"
                                                             :random-id="childField.randomId"
-                                                            :all-disabled="allDisabled"
                                                             v-model.trim="val[index][rowItem.key]"/>
                                             <FormDateRange v-if="rowItem.type==='date-range-input'"
-                                                           :item="rowItem"
+                                                           v-bind="getProps(rowItem)"
                                                            :random-id="childField.randomId"
-                                                           :all-disabled="allDisabled"
                                                            v-model.trim="val[index][rowItem.key]"/>
                                             <FormDictSelect v-if="rowItem.type === 'dynamic-select'"
-                                                            :item="rowItem"
+                                                            v-bind="getProps(rowItem)"
                                                             :random-id="childField.randomId"
-                                                            :all-disabled="allDisabled"
                                                             v-model.trim="val[index][rowItem.key]"/>
                                             <FormNormalSelect v-if="rowItem.type === 'normal-select'"
-                                                              :item="rowItem"
+                                                              v-bind="getProps(rowItem)"
                                                               :random-id="childField.randomId"
-                                                              :all-disabled="allDisabled"
                                                               v-model.trim="val[index][rowItem.key]"/>
                                             <FormNumberInput v-if="rowItem.type === 'number-input'"
-                                                             :item="rowItem"
+                                                             v-bind="getProps(rowItem)"
                                                              :random-id="childField.randomId"
-                                                             :all-disabled="allDisabled"
                                                              v-model.trim="val[index][rowItem.key]"/>
                                             <!-- 动态下拉框，入参是父 key，根据父 key 自动加载列表内容 -->
                                             <FormAutoComplete v-if="rowItem.type === 'auto-complete-input'"
-                                                              :item="rowItem"
+                                                              v-bind="getProps(rowItem)"
                                                               :random-id="childField.randomId"
-                                                              :all-disabled="allDisabled"
                                                               v-model.trim="val[index][rowItem.key]"/>
                                             <FormRadio v-if="rowItem.type === 'radio'"
-                                                       :item="rowItem"
+                                                       v-bind="getProps(rowItem)"
                                                        :random-id="childField.randomId"
-                                                       :all-disabled="allDisabled"
                                                        v-model.trim="val[index][rowItem.key]"/>
                                             <FormTextarea v-if="rowItem.type==='textarea'"
-                                                          :item="rowItem"
+                                                          v-bind="getProps(rowItem)"
                                                           :random-id="childField.randomId"
-                                                          :all-disabled="allDisabled"
                                                           v-model="val[index][rowItem.key]"/>
                                             <FormMoneyInput v-if="rowItem.type==='money-input'"
-                                                            :item="rowItem"
+                                                            v-bind="getProps(rowItem)"
                                                             :random-id="childField.randomId"
-                                                            :all-disabled="allDisabled"
                                                             v-model.trim="val[index][rowItem.key]"/>
                                             <FormRateInput v-if="rowItem.type==='rate-input'"
-                                                           :item="rowItem"
+                                                           v-bind="getProps(rowItem)"
                                                            :random-id="childField.randomId"
-                                                           :all-disabled="allDisabled"
                                                            v-model.trim="val[index][rowItem.key]"/>
                                             <FormMulLinkage v-if="rowItem.type==='mul-linkage'"
-                                                            :ref="rowItem.key"
-                                                            :item="rowItem"
-                                                            :all-disabled="allDisabled"
+                                                            v-bind="getProps(rowItem)"
+                                                            :random-id="childField.randomId"
                                                             v-model.trim="val[rowItem.key]"/>
                                             <FormNormalNumberInput v-if="rowItem.type==='normal-number'"
-                                                                   :ref="rowItem.key"
-                                                                   :item="rowItem"
-                                                                   :all-disabled="allDisabled"
+                                                                   v-bind="getProps(rowItem)"
+                                                                   :random-id="childField.randomId"
                                                                    v-model.trim="val[rowItem.key]"/>
                                         </el-form-item>
                                     </el-col>
@@ -136,7 +123,9 @@
             </div>
         </div>
 
-        <div class="child-form-add-btn" @click="()=>allDisabled ? '' : addChildForm()">
+        <div class="child-form-add-btn"
+             v-if="!textModel"
+             @click="()=>allDisabled ? '' : addChildForm()">
             ＋ {{ item.headerLabel }}
         </div>
     </div>
@@ -210,6 +199,7 @@
             }
         },
         mounted () {
+            console.log('this.item', this.item);
             // console.log('this.value', this.value);
             if (this.value && this.value instanceof Array && this.value.length > 0) {
                 this.value.forEach(childFormData => {
@@ -321,7 +311,7 @@
                 }
                 // console.log('WtiForm 拉取动态字典');
                 axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
-                    const data = res.data;
+                    const data = res;
                     if (data.code === 200) {
                         if (data.data.length > 0) {
                             // 因为可能多个地方同时调这个接口的原因，为了避免重复将内容添加到里面，所以，
@@ -695,6 +685,13 @@
                         item[k] = obj[k];
                     });
                 });
+            },
+
+            getProps (rowItem) {
+                return {
+                    item: rowItem,
+                    allDisabled: this.allDisabled,
+                };
             }
         },
         components: {

@@ -198,7 +198,7 @@
                 console.log('nul linkage load dict');
                 // 否则，根据当前的值，去请求数据字典
                 axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
-                    const data = res.data;
+                    const data = res;
                     if (data.code === 200) {
                         if (data.data.length > 0) {
                             // 因为可能多个地方同时调这个接口的原因，为了避免重复将内容添加到里面，所以，

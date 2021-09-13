@@ -9,8 +9,8 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import Install from './component/install';
-import DemoBase from './component/demo_base';
-import DemoStatus from './component/demo_status';
+import DemoBase from './component/demo/base';
+import DemoStatus from './component/demo/status';
 import DemoConfig from './component/demo_config';
 
 import FormitemCommon from './component/formitem_common';

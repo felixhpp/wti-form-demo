@@ -90,88 +90,56 @@
                                                       :label="getFormItemLabel(rowItem)"
                                                       :prop="rowItem.key">
                                             <FormInput v-if="rowItem.type==='input'"
-                                                       :ref="rowItem.key"
-                                                       :item="rowItem"
-                                                       :all-disabled="allDisabled"
+                                                       v-bind="getProps(rowItem)"
                                                        v-model.trim="formData[rowItem.key]"/>
                                             <FormDate v-if="rowItem.type==='date-input'"
-                                                      :ref="rowItem.key"
-                                                      :item="rowItem"
-                                                      :all-disabled="allDisabled"
+                                                      v-bind="getProps(rowItem)"
                                                       v-model.trim="formData[rowItem.key]"/>
                                             <FormHourMinute v-if="rowItem.type==='hour-minute-input'"
-                                                            :ref="rowItem.key"
-                                                            :item="rowItem"
-                                                            :all-disabled="allDisabled"
+                                                            v-bind="getProps(rowItem)"
                                                             v-model.trim="formData[rowItem.key]"/>
                                             <FormDateRange v-if="rowItem.type==='date-range-input'"
-                                                           :ref="rowItem.key"
-                                                           :item="rowItem"
-                                                           :all-disabled="allDisabled"
+                                                           v-bind="getProps(rowItem)"
                                                            v-model.trim="formData[rowItem.key]"/>
                                             <FormDictSelect v-if="rowItem.type === 'dynamic-select'"
-                                                            :ref="rowItem.key"
-                                                            :item="rowItem"
-                                                            :all-disabled="allDisabled"
+                                                            v-bind="getProps(rowItem)"
                                                             v-model.trim="formData[rowItem.key]"/>
                                             <FormNormalSelect v-if="rowItem.type === 'normal-select'"
-                                                              :ref="rowItem.key"
-                                                              :item="rowItem"
-                                                              :all-disabled="allDisabled"
+                                                              v-bind="getProps(rowItem)"
                                                               v-model.trim="formData[rowItem.key]"/>
                                             <FormNumberInput v-if="rowItem.type === 'number-input'"
-                                                             :ref="rowItem.key"
-                                                             :item="rowItem"
-                                                             :all-disabled="allDisabled"
+                                                             v-bind="getProps(rowItem)"
                                                              v-model.trim="formData[rowItem.key]"/>
                                             <!-- 动态下拉框，入参是父 key，根据父 key 自动加载列表内容 -->
                                             <FormAutoComplete v-if="rowItem.type === 'auto-complete-input'"
-                                                              :ref="rowItem.key"
-                                                              :item="rowItem"
-                                                              :all-disabled="allDisabled"
+                                                              v-bind="getProps(rowItem)"
                                                               v-model.trim="formData[rowItem.key]"/>
                                             <FormRadio v-if="rowItem.type === 'radio'"
-                                                       :ref="rowItem.key"
-                                                       :item="rowItem"
-                                                       :all-disabled="allDisabled"
+                                                       v-bind="getProps(rowItem)"
                                                        v-model.trim="formData[rowItem.key]"/>
                                             <FormTextarea v-if="rowItem.type==='textarea'"
-                                                          :ref="rowItem.key"
-                                                          :item="rowItem"
-                                                          :all-disabled="allDisabled"
+                                                          v-bind="getProps(rowItem)"
                                                           v-model="formData[rowItem.key]"/>
                                             <FormMoneyInput v-if="rowItem.type==='money-input'"
-                                                            :ref="rowItem.key"
-                                                            :item="rowItem"
-                                                            :all-disabled="allDisabled"
+                                                            v-bind="getProps(rowItem)"
                                                             v-model.trim="formData[rowItem.key]"/>
                                             <FormRateInput v-if="rowItem.type==='rate-input'"
-                                                           :ref="rowItem.key"
-                                                           :item="rowItem"
-                                                           :all-disabled="allDisabled"
+                                                           v-bind="getProps(rowItem)"
                                                            v-model.trim="formData[rowItem.key]"/>
                                             <FormAreaSelect v-if="rowItem.type==='area-select'"
-                                                            :ref="rowItem.key"
-                                                            :item="rowItem"
-                                                            :all-disabled="allDisabled"
+                                                            v-bind="getProps(rowItem)"
                                                             v-model.trim="formData[rowItem.key]"/>
                                             <FormMulLinkage v-if="rowItem.type==='mul-linkage'"
-                                                            :ref="rowItem.key"
-                                                            :item="rowItem"
-                                                            :all-disabled="allDisabled"
+                                                            v-bind="getProps(rowItem)"
                                                             v-model.trim="formData[rowItem.key]"/>
                                             <FormNormalNumberInput v-if="rowItem.type==='normal-number'"
-                                                                   :ref="rowItem.key"
-                                                                   :item="rowItem"
-                                                                   :all-disabled="allDisabled"
+                                                                   v-bind="getProps(rowItem)"
                                                                    v-model.trim="formData[rowItem.key]"/>
                                         </el-form-item>
 
                                         <ChildForm v-if="rowItem.type === 'child-form'"
                                                    :text-model="textModel"
-                                                   :ref="rowItem.key"
-                                                   :all-disabled="allDisabled"
-                                                   :item="rowItem"
+                                                   v-bind="getProps(rowItem)"
                                                    v-model.trim="formData[rowItem.key]"/>
                                     </el-col>
                                 </div>
@@ -185,6 +153,7 @@
         </el-form>
     </div>
 </template>
+
 <script>
     import axios from 'axios';
     import FormInput from './form_item/form_input';
@@ -297,7 +266,6 @@
         },
         provide () {
             return {
-                // formData: this.formData,
                 dynamicSelectOption: this.dynamicSelectOption,
                 dynamicDict: this.dynamicDict,
                 // 状态切换函数
@@ -727,7 +695,7 @@
                 }
                 // console.log('WtiForm 拉取动态字典');
                 axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
-                    const data = res.data;
+                    const data = res;
                     if (data.code === 200) {
                         if (data.data.length > 0) {
                             // 因为可能多个地方同时调这个接口的原因，为了避免重复将内容添加到里面，所以，
@@ -942,6 +910,14 @@
                     this.scanType = 'normal';
                     this.singleScanBlock = '';
                 }
+            },
+
+            getProps (rowItem) {
+                return {
+                    ref: rowItem.key,
+                    item: rowItem,
+                    allDisabled: this.allDisabled,
+                };
             }
         },
         components: {
@@ -964,8 +940,8 @@
         },
     };
 </script>
-<style lang="less" type="text/less" scoped>
 
+<style scoped lang="less">
     .wti-form {
         width: 100%;
 

@@ -38,7 +38,7 @@
                 }
 
                 axios.post(this.item.searchUrl, payload).then(res => {
-                    const data = res.data;
+                    const data = res;
                     if (data.code === 200) {
                         if (data.data) {
                             const d = data.data.map(item => {
