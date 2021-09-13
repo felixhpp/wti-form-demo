@@ -199,8 +199,6 @@
             }
         },
         mounted () {
-            console.log('this.item', this.item);
-            // console.log('this.value', this.value);
             if (this.value && this.value instanceof Array && this.value.length > 0) {
                 this.value.forEach(childFormData => {
                     this.addChildForm(childFormData);

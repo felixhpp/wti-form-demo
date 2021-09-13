@@ -139,7 +139,9 @@
 
                                         <ChildForm v-if="rowItem.type === 'child-form'"
                                                    :text-model="textModel"
-                                                   v-bind="getProps(rowItem)"
+                                                   :ref="rowItem.key"
+                                                   :all-disabled="allDisabled"
+                                                   :item="rowItem"
                                                    v-model.trim="formData[rowItem.key]"/>
                                     </el-col>
                                 </div>

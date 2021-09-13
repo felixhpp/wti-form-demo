@@ -194,10 +194,6 @@
                                 key: 'testInput',
                                 // 小型表单
                                 type: 'child-form',
-                                // 是否允许删除单个子表单，默认 true（允许）（未完成）
-                                deleteEnable: true,
-                                // 是否允许新增单个子表单，默认 true（允许）（未完成）
-                                addEnable: true,
                                 // 每个小表单头的文字部分，以及新增按钮的部分
                                 headerLabel: '面签人员信息',
                                 // 里面是表单的每一项，写法和外面的没区别
@@ -393,15 +389,6 @@ fields1: [
             };
         },
         methods: {
-            // submit (formName) {
-            //     this.$refs[formName].validate((isPass, data) => {
-            //         if (isPass) {
-            //             console.log('这是你刚提交的数据', data);
-            //         } else {
-            //             this.$message.error('校验失败！');
-            //         }
-            //     });
-            // },
             submitForm1 () {
                 this.loading1 = true;
                 this.$refs.form1.validate((isPass, data) => {

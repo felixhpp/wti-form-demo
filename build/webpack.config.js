@@ -2,9 +2,9 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
+const {VueLoaderPlugin} = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const gitManager = require('./git_manage.js').gitManager;
 const fs = require('fs');
@@ -342,7 +342,7 @@ if (isProd) {
                 extractComments: false,
             }),
         ],
-        runtimeChunk: { name: 'runtime' }, // 为每个入口提取出webpack runtime模块
+        runtimeChunk: {name: 'runtime'}, // 为每个入口提取出webpack runtime模块
     };
     config.externals = {
         'vue': 'Vue',
@@ -387,7 +387,7 @@ if (isProd) {
                 },
             },
         },
-        runtimeChunk: { name: 'runtime' }, // 为每个入口提取出webpack runtime模块
+        runtimeChunk: {name: 'runtime'}, // 为每个入口提取出webpack runtime模块
     };
 }
 
