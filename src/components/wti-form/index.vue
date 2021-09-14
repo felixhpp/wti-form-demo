@@ -143,6 +143,11 @@
                                                    :all-disabled="allDisabled"
                                                    :item="rowItem"
                                                    v-model.trim="formData[rowItem.key]"/>
+
+                                        <TableReadonly v-if="rowItem.type === 'table-readonly'"
+                                                       :ref="rowItem.key"
+                                                       :item="rowItem"
+                                                       v-model="formData[rowItem.key]"/>
                                     </el-col>
                                 </div>
                             </template>
@@ -173,6 +178,7 @@
     import FormAreaSelect from './form_item/form_area_select';
     import FormMulLinkage from './form_item/form_mul_linkage';
     import FormNormalNumberInput from './form_item/form_normal_number_input';
+    import TableReadonly from './form_item/table_readonly';
 
     import ChildForm from './child_form';
     import FormMixin from './mixin';
@@ -326,7 +332,7 @@
                                     });
                                 } else {
                                     // 2.2 该要素没有默认值，使用通用默认值
-                                    if (field.type === 'child-form') {
+                                    if (field.type === 'child-form' || field.type === 'table-readonly') {
                                         this.$set(this.formData, field.key, []);
                                     } else if (field.type === 'area-select') {
                                         this.$set(this.formData, field.key, [ '', '', '' ]);
@@ -384,7 +390,7 @@
                     // 如果初始不为空，
                     // 1、判断有没有打开 （当前这个的）【默认在新行第一列】开关
                     // 又或者是当前是不是子表单（item.type === 'child-form'表示是子表单）
-                    if (item.nextRowFirst || item.type === 'child-form') {
+                    if (item.nextRowFirst || item.type === 'child-form' || item.type === 'table-readonly') {
                         // 如果是新行第一列，那么直接把这个添加到 list 里面
                         const obj = {
                             // 获取到他有多少 span，满 24 为一行
@@ -751,7 +757,7 @@
                     this.fields.map(field => {
                         const list = [];
                         field.children.forEach(item => {
-                            if (item.type === 'child-form') {
+                            if (item.type === 'child-form' || item.type === 'table-readonly') {
                                 list.push(item.key);
                             }
                         });
@@ -938,6 +944,8 @@
             FormAreaSelect,
             FormMulLinkage,
             FormNormalNumberInput,
+
+            TableReadonly,
             ChildForm,
         },
     };
