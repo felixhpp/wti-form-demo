@@ -215,14 +215,15 @@ fields1: [
                             {
                                 key: 'key1',
                                 type: 'input',
-                                label: '必填规则，触发时机 change + blur',
+                                label: '我是普通输入框，默认值是 123',
                                 defaultValue: '123',
                             },
                             {
                                 key: 'key2',
-                                type: 'input',
-                                label: '长度 2~4 个字，触发时机 change + blur',
-                                defaultValue: '234',
+                                type: 'dynamic-select',
+                                label: '我是动态下拉框，默认值是 "101"',
+                                parentKey: '100',
+                                defaultValue: '101',
                             },
                         ]
                     }
@@ -238,7 +239,7 @@ fields2: [
             {
                 key: 'key1',
                 type: 'input',
-                label: '必填规则，触发时机 change + blur',
+                label: '示例 1',
                 defaultValue: '123',
             },
             {
