@@ -55,6 +55,28 @@
         </el-collapse>
 
         <el-divider/>
+
+        <h3>表单联动</h3>
+        <p>在某些场景下，我们需要在某个表单元素为特定值时，给其他表单元素自动回填值。</p>
+        <p>因此，对于此种场景，我们目前支持在【单选框】、【普通下拉框】、【字典下拉框】这三种情况下，选择特定值时，支持联动表单内其他选项。</p>
+        <p>具体来说，支持四种功能：1、联动设置值；2、联动设置禁用/非禁用；3、联动设置隐藏/取消隐藏；4、联动设置必填/取消必填；</p>
+        <p>同时，这个联动具有以下特点：①支持一个值联动多个表单项；②支持联动一个表单项时，执行多种操作（比如同时设置值和禁用）。<span style="color:red;">具体可以看代码里的注释。</span></p>
+        <p>除此之外，我们也支持【输入搜索下拉框】在搜索到值并选中后，自动将值回填给某一项或多项（具体参考表单对应文档）</p>
+
+        <wti-form ref="form3"
+                  :fields="fields3"/>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form3')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <pre v-highlightjs><code class="javascript">{{ code3 }}</code></pre>
+            </el-collapse-item>
+        </el-collapse>
     </div>
 </template>
 
@@ -247,6 +269,273 @@ fields2: [
                 type: 'input',
                 label: '长度 2~4 个字，触发时机 change + blur',
                 defaultValue: '234',
+            },
+        ]
+    }
+]`,
+
+                fields3: [
+                    {
+                        label: '规则列举',
+                        children: [
+                            {
+                                key: 'key1',
+                                type: 'input',
+                                label: '我是一个工具人输入框'
+                            },
+                            {
+                                key: 'key2',
+                                type: 'normal-select',
+                                label: '我是动态下拉框，默认值是 "101"',
+                                options: [
+                                    {
+                                        value: '1',
+                                        label: '选我会给输入框赋值【12345】'
+                                    },
+                                    {
+                                        value: '2',
+                                        label: '选我会禁用输入框'
+                                    },
+                                    {
+                                        value: '3',
+                                        label: '如果输入框已禁用，那么选我会取消禁用他'
+                                    },
+                                    {
+                                        value: '4',
+                                        label: '选我会把输入框隐藏起来'
+                                    },
+                                    {
+                                        value: '5',
+                                        label: '如果输入框已隐藏，那么选我会把他取消隐藏'
+                                    },
+                                    {
+                                        value: '6',
+                                        label: '选我，输入框会添加校验规则【必填】'
+                                    },
+                                    {
+                                        value: '7',
+                                        label: '如果输入框已是【必填】，那么选我【必填】会被取消掉'
+                                    },
+                                ],
+                                valueLink: [
+                                    {
+                                        // 下拉框的同一个值，触发的联动，都是 valueLink 里的一个元素
+                                        // 这里的 value 就是该下拉框的某个值
+                                        value: '1',
+                                        linkList: [
+                                            // 一个下拉框每联动一个表单元素，便在 linkList 添加一个元素
+                                            {
+                                                // 这里的 linkKey 是被联动元素在表单里的 key
+                                                linkKey: 'key1',
+                                                // 当 enableLinkValue 为 true 时，表示这个配置是联动设置值的。此时 linkValue 才生效
+                                                enableLinkValue: true,
+                                                linkValue: '12345',
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        value: '2',
+                                        linkList: [
+                                            {
+                                                linkKey: 'key1',
+                                                // enableLinkDisable 表示是否打开联动禁用
+                                                enableLinkDisable: true,
+                                                // linkDisable 为 true 表示设置为禁用。false 表示取消禁用
+                                                linkDisable: true,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        value: '3',
+                                        linkList: [
+                                            {
+                                                linkKey: 'key1',
+                                                enableLinkDisable: true,
+                                                linkDisable: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        value: '4',
+                                        linkList: [
+                                            {
+                                                linkKey: 'key1',
+                                                // enableLinkHidden 表示是否打开联动隐藏/显示
+                                                enableLinkHidden: true,
+                                                // linkHidden 为 true 表示设置为隐藏。false 表示取消隐藏
+                                                // 被隐藏的元素，通过 $ref.form.validate 调用校验方法时，将不会出现在 data 里
+                                                linkHidden: true,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        value: '5',
+                                        linkList: [
+                                            {
+                                                linkKey: 'key1',
+                                                enableLinkHidden: true,
+                                                linkHidden: false,
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        value: '6',
+                                        linkList: [
+                                            {
+                                                linkKey: 'key1',
+                                                // enableLinkRequired 表示是否打开联动必填
+                                                enableLinkRequired: true,
+                                                // linkRequired 为 true 表示设置为必填，false 表示取消必填
+                                                linkRequired: true
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        value: '7',
+                                        linkList: [
+                                            {
+                                                linkKey: 'key1',
+                                                enableLinkRequired: true,
+                                                linkRequired: false
+                                            }
+                                        ]
+                                    },
+                                ],
+                            },
+                        ]
+                    }
+                ],
+
+                code3: `<wti-form ref="form2"
+                :fields="fields2"/>
+---
+fields3: [
+    {
+        label: '规则列举',
+        children: [
+            {
+                key: 'key1',
+                type: 'input',
+                label: '我是一个工具人输入框'
+            },
+            {
+                key: 'key2',
+                type: 'normal-select',
+                label: '我是动态下拉框，默认值是 "101"',
+                options: [
+                    {
+                        value: '1',
+                        label: '选我会给输入框赋值【12345】'
+                    },
+                    {
+                        value: '2',
+                        label: '选我会禁用输入框'
+                    },
+                    {
+                        value: '3',
+                        label: '如果输入框已禁用，那么选我会取消禁用他'
+                    },
+                    {
+                        value: '4',
+                        label: '选我会把输入框隐藏起来'
+                    },
+                    {
+                        value: '5',
+                        label: '如果输入框已隐藏，那么选我会把他取消隐藏'
+                    },
+                    {
+                        value: '6',
+                        label: '选我，输入框会添加校验规则【必填】'
+                    },
+                    {
+                        value: '7',
+                        label: '如果输入框已是【必填】，那么选我【必填】会被取消掉'
+                    },
+                ],
+                valueLink: [
+                    {
+                        // 下拉框的同一个值，触发的联动，都是 valueLink 里的一个元素
+                        // 这里的 value 就是该下拉框的某个值
+                        value: '1',
+                        linkList: [
+                            // 一个下拉框每联动一个表单元素，便在 linkList 添加一个元素
+                            {
+                                // 这里的 linkKey 是被联动元素在表单里的 key
+                                linkKey: 'key1',
+                                // 当 enableLinkValue 为 true 时，表示这个配置是联动设置值的。此时 linkValue 才生效
+                                enableLinkValue: true,
+                                linkValue: '12345',
+                            }
+                        ]
+                    },
+                    {
+                        value: '2',
+                        linkList: [
+                            {
+                                linkKey: 'key1',
+                                // enableLinkDisable 表示是否打开联动禁用
+                                enableLinkDisable: true,
+                                // linkDisable 为 true 表示设置为禁用。false 表示取消禁用
+                                linkDisable: true,
+                            }
+                        ]
+                    },
+                    {
+                        value: '3',
+                        linkList: [
+                            {
+                                linkKey: 'key1',
+                                enableLinkDisable: true,
+                                linkDisable: false,
+                            }
+                        ]
+                    },
+                    {
+                        value: '4',
+                        linkList: [
+                            {
+                                linkKey: 'key1',
+                                // enableLinkHidden 表示是否打开联动隐藏/显示
+                                enableLinkHidden: true,
+                                // linkHidden 为 true 表示设置为隐藏。false 表示取消隐藏
+                                // 被隐藏的元素，通过 $ref.form.validate 调用校验方法时，将不会出现在 data 里
+                                linkHidden: true,
+                            }
+                        ]
+                    },
+                    {
+                        value: '5',
+                        linkList: [
+                            {
+                                linkKey: 'key1',
+                                enableLinkHidden: true,
+                                linkHidden: false,
+                            }
+                        ]
+                    },
+                    {
+                        value: '6',
+                        linkList: [
+                            {
+                                linkKey: 'key1',
+                                // enableLinkRequired 表示是否打开联动必填
+                                enableLinkRequired: true,
+                                // linkRequired 为 true 表示设置为必填，false 表示取消必填
+                                linkRequired: true
+                            }
+                        ]
+                    },
+                    {
+                        value: '7',
+                        linkList: [
+                            {
+                                linkKey: 'key1',
+                                enableLinkRequired: true,
+                                linkRequired: false
+                            }
+                        ]
+                    },
+                ],
             },
         ]
     }

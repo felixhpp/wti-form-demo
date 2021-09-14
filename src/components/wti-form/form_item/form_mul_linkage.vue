@@ -65,7 +65,6 @@
                 },
                 set (v) {
                     this.$emit('input', v);
-                    this._valueLink(v);
                     // 只有非子表单的情况下，才会冒泡上去数据变更
                     if (this.formItemType !== 'childForm') {
                         this.statusChangeFn.valueUpdateEvent({
