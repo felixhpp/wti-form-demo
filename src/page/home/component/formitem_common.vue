@@ -99,6 +99,7 @@
                                             if (d2 > v) {
                                                 return callback(new Error('必须小于 60 岁'));
                                             }
+                                            callback();
                                         },
                                         trigger: [
                                             'blur',
