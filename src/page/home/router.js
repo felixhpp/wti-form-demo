@@ -11,7 +11,7 @@ import Router from 'vue-router';
 import Install from './component/install';
 import DemoBase from './component/demo/base';
 import DemoStatus from './component/demo/status';
-import DemoConfig from './component/demo_config';
+import DemoOften from './component/demo/often';
 
 import FormitemCommon from './component/formitem_common';
 import Input from './component/input';
@@ -46,7 +46,7 @@ const routes = [
 
     {path: '/demo/Base', component: DemoBase,},
     {path: '/demo/Status', component: DemoStatus,},
-    {path: '/demo/Config', component: DemoConfig,},
+    {path: '/demo/Often', component: DemoOften,},
 
     {path: '/formItem/FormitemCommon', component: FormitemCommon,},
     {path: '/formItem/Input', component: Input,},

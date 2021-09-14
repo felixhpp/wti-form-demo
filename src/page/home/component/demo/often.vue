@@ -1,7 +1,17 @@
 <template>
     <div id="base">
-<h2>常见配置</h2>
+        <h2>常见配置</h2>
         <p>给出本组件的常见配置</p>
+
+        <el-tree :default-expand-all="true"
+                 :data="[{label:'目录',
+                    children:[
+                        {label:'分栏表单'},
+                        {label:'自定义每列要素数'},
+                        {label:'表单是否带边框'},
+                        {label:'支持收起和展开的表单'},
+                        {label:'大表单专用（分块布局，浏览模式切换，全部收起/展开）'},
+                    ]}]"/>
 
         <h3>分栏表单</h3>
         <p>表单有一种常见的场景，是根据不同的表单元素，划分到不同的区块里。方便管理和阅读。不过他们提交的时候，数据都是一起提交的，具体可以查看提交结果</p>
@@ -72,6 +82,58 @@
                 </template>
 
                 <pre v-highlightjs><code class="javascript">{{ code3 }}</code></pre>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>支持收起和展开的表单</h3>
+        <p>如果表单元素很多，表单比较长，那么就基于分块的基础上，支持对每块表单的收起和展开，可以提高用户体验。</p>
+        <p>showFoldBtn: true，单个表单显示收起/展开按钮</p>
+        <p>showAllFoldBtn: true，显示全部表单收起/展开按钮</p>
+        <wti-form :fields="fields4"
+                  :show-fold-btn="true"
+                  :show-all-fold-btn="true"
+                  ref="form4"/>
+
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form4')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+
+                <pre v-highlightjs><code class="javascript">{{ code4 }}</code></pre>
+            </el-collapse-item>
+        </el-collapse>
+
+        <el-divider/>
+
+        <h3>大表单专用（分块布局，浏览模式切换，全部收起/展开）</h3>
+        <p>对于大表单，提供了几个配置专门处理这个场景。</p>
+        <p>首先是常规的分块展示（见本页示例一），其次是收起和展开（见本页示例四）。</p>
+        <p>除此之外，我们还可以通过将大表单拆分为带 tab 模式的小表单（showScanTypeBtn）</p>
+        <wti-form :fields="fields4"
+                  :show-fold-btn="true"
+                  :show-all-fold-btn="true"
+                  :show-scan-type-btn="true"
+                  ref="form4"/>
+
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form4')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+
+                <pre v-highlightjs><code class="javascript">{{ code4 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
 
@@ -364,6 +426,79 @@ fields3: [
         ]
     }
 ]`,
+
+                fields4: [
+                    {
+                        label: '用户基本信息',
+                        children: [
+                            {
+                                key: 'name',
+                                type: 'input',
+                                label: '姓名'
+                            },
+                        ]
+                    },
+                    {
+                        label: '资产信息',
+                        children: [
+                            {
+                                key: 'money',
+                                type: 'money-input',
+                                label: '定金',
+                                append: '元'
+                            },
+                        ]
+                    },
+                    {
+                        label: '联系信息',
+                        children: [
+                            {
+                                key: 'phone',
+                                type: 'normal-number',
+                                label: '电话'
+                            },
+                        ]
+                    },
+                ],
+
+                code4: `<wti-form :fields="fields4"
+                  :show-fold-btn="true"
+                  ref="form4"/>
+---
+fields4: [
+    {
+        label: '用户基本信息',
+        children: [
+            {
+                key: 'name',
+                type: 'input',
+                label: '姓名'
+            },
+        ]
+    },
+    {
+        label: '资产信息',
+        children: [
+            {
+                key: 'money',
+                type: 'money-input',
+                label: '定金',
+                append: '元'
+            },
+        ]
+    },
+    {
+        label: '联系信息',
+        children: [
+            {
+                key: 'phone',
+                type: 'normal-number',
+                label: '电话'
+            },
+        ]
+    },
+]`,
+
             };
         },
         methods: {
