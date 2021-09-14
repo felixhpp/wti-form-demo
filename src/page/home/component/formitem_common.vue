@@ -8,9 +8,8 @@
                     children:[
                         {label:'校验规则'},
                         {label:'表单项默认值'},
-                        {label:''},
-                        {label:''},
-                        {label:''},
+                        {label:'表单联动'},
+                        {label:'高级数据更新事件'},
                     ]}]"/>
 
         <h3>校验规则</h3>
@@ -75,6 +74,61 @@
                     <b>点击查看代码</b>
                 </template>
                 <pre v-highlightjs><code class="javascript">{{ code3 }}</code></pre>
+            </el-collapse-item>
+        </el-collapse>
+
+        <h3>高级数据更新事件</h3>
+        <p>表单联动，支持了表单内部值的更新。但是有时候，这个功能仍无法满足一些特殊需求。我列举一些特殊场景：</p>
+        <p>①当某个输入框值为某个特定值时，更新表单内部某些值或状态；</p>
+        <p>②当某个字段为某个值时，设置另一个表单的某个字段为禁用；</p>
+        <p>无论哪种特殊场景，细化来说可以列为两种情况：①表单内部值的变化希望表单外可以监听到；②表单外有办法可以影响表单内部的状态；</p>
+        <p>针对前者场景，我们可以通过监听 <code>updateValue</code> 事件来获取到变化的key 和值；</p>
+        <p>对于后者场景，设置值可以通过 <code>this.$refs.form.updateFormData({k:v})</code> 实现；</p>
+        <p>设置禁用/取消禁用通过 <code>this.$refs.form.setElementDisable (key, beDisable = true)</code> 实现；</p>
+        <p>设置隐藏/取消隐藏通过 <code>this.$refs.form.setElementHidden (key, beDisable = true)</code> 实现；</p>
+
+        <wti-form ref="form4"
+                  @updateValue="updateValue"
+                  :fields="fields4"/>
+
+        <p>1、值变化时，更新后的值会显示在右边→ {{ valueChange }}</p>
+        <p>
+            2、
+            <el-button type="primary"
+                       size="mini"
+                       @click="setValue">
+                点击我，设置输入框的值为 1234
+            </el-button>
+            注意，他不会触发 updateValue 事件
+        </p>
+        <p>
+            3、
+            <el-button type="primary"
+                       size="mini"
+                       @click="setDisable">
+                点击我，随机设置输入框禁用/非禁用
+            </el-button>
+            因为是随机的，所以一次没变化就多点几次吧
+        </p>
+        <p>
+            4、
+            <el-button type="primary"
+                       size="mini"
+                       @click="setHidden">
+                点击我，随机设置输入框隐藏/非隐藏
+            </el-button>
+            因为是随机的，所以一次没变化就多点几次吧
+        </p>
+        <div class="submit-line">
+            <el-button type="primary" @click="submit('form4')">提交按钮</el-button>
+            <span class="tips">请查看控制台看提交结果</span>
+        </div>
+        <el-collapse class="collapse">
+            <el-collapse-item>
+                <template slot="title">
+                    <b>点击查看代码</b>
+                </template>
+                <pre v-highlightjs><code class="javascript">{{ code4 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
     </div>
@@ -276,7 +330,7 @@ fields2: [
 
                 fields3: [
                     {
-                        label: '规则列举',
+                        label: '表单联动示例',
                         children: [
                             {
                                 key: 'key1',
@@ -406,12 +460,12 @@ fields2: [
                     }
                 ],
 
-                code3: `<wti-form ref="form2"
-                :fields="fields2"/>
+                code3: `<wti-form ref="form3"
+                :fields="fields3"/>
 ---
 fields3: [
     {
-        label: '规则列举',
+        label: '表单联动示例',
         children: [
             {
                 key: 'key1',
@@ -539,7 +593,42 @@ fields3: [
             },
         ]
     }
-]`
+]`,
+
+                fields4: [
+                    {
+                        label: '高级数据更新事件',
+                        children: [
+                            {
+                                key: 'key1',
+                                type: 'input',
+                                label: '我是一个工具人输入框'
+                            },
+                        ]
+                    }
+                ],
+
+                code4: `<wti-form ref="form4"
+                  @updateValue="updateValue"
+                  :fields="fields4"/>
+---
+setValue () {
+    this.$refs.form4.updateFormData({
+        key1: '1234'
+    });
+},
+setDisable () {
+    const bool = Math.random() > 0.5;
+    this.$message.info(\`本次为\${bool ? '禁用' : '取消禁用'}\`);
+    this.$refs.form4.setElementDisable('key1', bool);
+},
+setHidden () {
+    const bool = Math.random() > 0.5;
+    this.$message.info(\`本次为\${bool ? '隐藏' : '显示'}\`);
+    this.$refs.form4.setElementHidden('key1', bool);
+}`,
+
+                valueChange: ''
             };
         },
         methods: {
@@ -551,7 +640,25 @@ fields3: [
                         this.$message.error('校验失败！');
                     }
                 });
-            }
+            },
+            updateValue (kv) {
+                this.valueChange = kv;
+            },
+            setValue () {
+                this.$refs.form4.updateFormData({
+                    key1: '1234'
+                });
+            },
+            setDisable () {
+                const bool = Math.random() > 0.5;
+                this.$message.info(`本次为${bool ? '禁用' : '取消禁用'}`);
+                this.$refs.form4.setElementDisable('key1', bool);
+            },
+            setHidden () {
+                const bool = Math.random() > 0.5;
+                this.$message.info(`本次为${bool ? '隐藏' : '显示'}`);
+                this.$refs.form4.setElementHidden('key1', bool);
+            },
         }
     };
 </script>
