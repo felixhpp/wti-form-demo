@@ -8,7 +8,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Install from './component/install';
+import Install from './component/demo/install';
 import DemoBase from './component/demo/base';
 import DemoStatus from './component/demo/status';
 import DemoOften from './component/demo/often';
@@ -28,13 +28,13 @@ import RateInput from './component/rate_input';
 import MulLinkage from './component/mul_linkage';
 import Textarea from './component/text_area';
 import NormalNumber from './component/normal_number';
-import Github from './component/github';
 
 
-import Connection from './component/connection';
-import AutoTest from './component/auto_test';
-import CodeMaker from './component/code_maker';
-import ElementStart from './component/element_start';
+import Github from './component/others/github';
+import Connection from './component/others/connection';
+import AutoTest from './component/others/auto_test';
+import CodeMaker from './component/others/code_maker';
+import ElementStart from './component/others/element_start';
 
 import Empty from './component/empty';
 
