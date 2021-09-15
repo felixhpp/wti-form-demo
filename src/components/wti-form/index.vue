@@ -757,7 +757,7 @@
                     this.fields.map(field => {
                         const list = [];
                         field.children.forEach(item => {
-                            if (item.type === 'child-form' || item.type === 'table-readonly') {
+                            if (item.type === 'child-form') {
                                 list.push(item.key);
                             }
                         });
