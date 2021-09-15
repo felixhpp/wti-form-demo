@@ -14,8 +14,9 @@ import 'common/less/config.less';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueHighlightJS from 'vue-highlightjs';
 import 'highlight.js/styles/atom-one-dark.css';
-import WtiForm from '@/components/wti-form';
-// import WtiForm from 'wti-form';
+// import WtiForm from '@/components/wti-form';
+import WtiForm from 'wti-form';
+import {baseURL} from '@/config/env.js';
 
 const isProd = process.env.NODE_ENV !== 'development';
 
@@ -31,7 +32,7 @@ const CommonUtils = {
                 type: Object,
                 default: () => ({
                     // 这是字典接口的 url
-                    dictUrl: '/dict',
+                    dictUrl: `${baseURL}/dict`,
                     // 异步请求时，请求内容是一个对象或一个数组。
                     // 如果是对象，那么包含一个 key 和一个数组。
                     // 如果是数组，那么只有这个数组。

@@ -309,7 +309,14 @@
                 }
                 // console.log('WtiForm 拉取动态字典');
                 axios.post(this.dynamicSelectOption.dictUrl, payload).then(res => {
-                    const data = res;
+                    // 兼容性处理
+                    let data;
+                    // 这里判断是不是 axios 的默认返回数据（未经过请求拦截器处理的）
+                    if (res.request && res.headers) {
+                        data = res.data;
+                    } else {
+                        data = res;
+                    }
                     if (data.code === 200) {
                         if (data.data.length > 0) {
                             // 因为可能多个地方同时调这个接口的原因，为了避免重复将内容添加到里面，所以，

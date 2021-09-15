@@ -1,6 +1,6 @@
 {
   "name": "wti-form-demo",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": {
     "email": "20004604@qq.com",
     "name": "王冬"
@@ -55,6 +55,6 @@
     "vue-highlightjs": "^1.3.3",
     "vue-router": "^3.4.9",
     "vuex": "^3.6.2",
-    "wti-form": "^1.0.4"
+    "wti-form": "^1.0.6"
   }
 }

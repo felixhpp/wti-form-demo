@@ -12,6 +12,7 @@ import Install from './component/demo/install';
 import DemoBase from './component/demo/base';
 import DemoStatus from './component/demo/status';
 import DemoOften from './component/demo/often';
+import FastCreate from './component/demo/fast_create';
 
 import FormitemCommon from './component/formitem_common';
 import Input from './component/input';
@@ -44,9 +45,12 @@ Vue.use(Router);
 const routes = [
     {path: '/Install', component: Install,},
 
+
     {path: '/demo/Base', component: DemoBase,},
     {path: '/demo/Status', component: DemoStatus,},
     {path: '/demo/Often', component: DemoOften,},
+    {path: '/demo/FastCreate', component: FastCreate,},
+
 
     {path: '/formItem/FormitemCommon', component: FormitemCommon,},
     {path: '/formItem/Input', component: Input,},

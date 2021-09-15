@@ -31,6 +31,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 // 引入本组件
 import WtiForm from 'wti-form';
+import {baseURL} from '@/config/env.js';
 
 // 把 Element UI 和 本组件挂载上去
 Vue.use(Element);
@@ -39,8 +40,8 @@ const props = {
     dynamicSelectOption: {
         type: Object,
         default: () => ({
-            // 这是字典接口的 url
-            dictUrl: '/dict',
+            // 这是字典接口的 url。baseURL 指开发和生产环境下，不同的前缀。
+            dictUrl: \`\${baseURL}/dict\`,
             // 异步请求时，请求内容是一个对象或一个数组。
             // 如果是对象，那么包含一个 key 和一个数组。
             // 如果是数组，那么只有这个数组。
