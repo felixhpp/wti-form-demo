@@ -6,7 +6,7 @@
                  class="el-menu-vertical-demo"
                  @select="selectMenu">
             <el-menu-item-group>
-                <template slot="title">开发指南 v1.0.7.1</template>
+                <template slot="title">开发指南 v1.0.7.2</template>
                 <el-menu-item index="/Install">安装</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
@@ -14,7 +14,7 @@
                 <el-menu-item index="/demo/Base">基本用法</el-menu-item>
                 <el-menu-item index="/demo/Status">表单的三态</el-menu-item>
                 <el-menu-item index="/demo/Often">常见配置</el-menu-item>
-                <el-menu-item index="/demo/FastCreate">快捷创建表单</el-menu-item>
+                <el-menu-item index="/demo/FastCreate">快捷创建表单 FastCreate</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">各表单组件</template>
