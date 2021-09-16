@@ -1,6 +1,6 @@
 <template>
     <div class="formitem-box">
-        <h2>快捷创建表单</h2>
+        <h2>快捷创建表单 FastCreate</h2>
         <p>这里，你可以通过快捷命令，快速创建出来一个表单的配置 JSON</p>
 
         <h3>表单快捷配置区</h3>
@@ -116,7 +116,9 @@
                     <b>点击查看代码</b>
                 </template>
                 HTML 代码：
-                <pre v-highlightjs><code class="javascript">{{ htmlCode }}</code></pre>
+                <pre v-highlightjs v-if="showCode">
+                    <code class="javascript">{{ htmlCode }}</code>
+                </pre>
                 <el-divider/>
                 JSON 配置：
                 <pre v-highlightjs v-if="showCode" style="margin-top:20px;">
@@ -249,9 +251,6 @@
 
             // 获取 Vue 的 code
             getVueCode () {
-                this.htmlCode = `<wti-form ref="form"
-                  :fields="fields"/>`;
-
                 const htmlCode = `<template>
     <div class="">
         <wti-form ref="form"
@@ -259,12 +258,22 @@
     </div>
 </template>`;
 
+                let fields = JSON.stringify(this.fields, null, 4).split('\n');
+                fields = fields.map((rowText, index) => {
+                    if (index === 0) {
+                        return rowText;
+                    } else {
+                        // 除了第一行，每行前面加 24 个空格，用于提高代码可阅读性
+                        return '                ' + rowText;
+                    }
+                }).join('\n');
+
                 const scriptCode = `%3Cscript%3E
     export default {
         name: 'Input',
         data () {
             return {
-                fields: ${JSON.stringify(this.fields, null, 4)}
+                fields: ${fields}
             }
         },
         methods: {
@@ -283,6 +292,8 @@
 %3Cstyle%20scoped%3E
 
 %3C%2Fstyle%3E`;
+
+                this.htmlCode = htmlCode;
 
                 // console.log(decodeURIComponent(htmlCode + '\n' + scriptCode));
                 this.vueCode = decodeURIComponent(htmlCode + '\n' + scriptCode);

@@ -6,7 +6,7 @@
                  class="el-menu-vertical-demo"
                  @select="selectMenu">
             <el-menu-item-group>
-                <template slot="title">开发指南 v1.0.7</template>
+                <template slot="title">开发指南 v1.0.7.1</template>
                 <el-menu-item index="/Install">安装</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
@@ -33,8 +33,7 @@
                 <el-menu-item index="/formItem/RateInput">利率输入框 RateInput</el-menu-item>
                 <el-menu-item index="/formItem/MulLinkage">多级联动输入框 MulLinkage</el-menu-item>
                 <el-menu-item index="/formItem/TextArea">文本域输入框 TextArea</el-menu-item>
-                <el-menu-item disabled>---↓↓文档不全↓↓---</el-menu-item>
-                <el-menu-item index="/formItem/MulSelect">多级下拉框（自定义请求） MulSelect</el-menu-item>
+                <!--<el-menu-item disabled>-&#45;&#45;↓↓文档不全↓↓-&#45;&#45;</el-menu-item>-->
             </el-menu-item-group>
             <el-menu-item-group>
                 <template slot="title">其他</template>
