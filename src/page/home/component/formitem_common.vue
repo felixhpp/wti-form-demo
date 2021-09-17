@@ -769,7 +769,127 @@ setHidden () {
                     }
                 ],
 
-                code5: ''
+                code5: `<wti-form ref="form5"
+                  :fields="fields5"/>
+---
+fields5: [
+    {
+        label: '默认示例',
+        children: [
+            {
+                key: 'key1',
+                type: 'input',
+                label: '默认禁用',
+                disableDefault: true,
+            },
+            {
+                key: 'key2',
+                type: 'input',
+                label: '默认隐藏',
+                hiddenDefault: true,
+            },
+            {
+                key: 'key3',
+                type: 'normal-select',
+                label: '工具人下拉框，选我取消禁用和取消隐藏',
+                options: [
+                    {
+                        value: '1',
+                        label: '取消第一个的禁用状态'
+                    },
+                    {
+                        value: '2',
+                        label: '取消另一个的隐藏'
+                    },
+                ],
+                valueLink: [
+                    {
+                        value: '1',
+                        linkList: [
+                            {
+                                linkKey: 'key1',
+                                enableLinkDisable: true,
+                                linkDisable: false,
+                            }
+                        ]
+                    },
+                    {
+                        value: '2',
+                        linkList: [
+                            {
+                                linkKey: 'key2',
+                                enableLinkHidden: true,
+                                linkHidden: false,
+                            }
+                        ]
+                    },
+                ],
+            },
+
+            {
+                // key
+                key: 'testInput',
+                // 小型表单
+                type: 'child-form',
+                // 每个小表单头的文字部分，以及新增按钮的部分
+                headerLabel: '子表单的示例',
+                // 里面是表单的每一项，写法和外面的没区别
+                childrenForm: [
+
+                    {
+                        key: 'key3',
+                        type: 'input',
+                        label: '默认禁用',
+                        disableDefault: true,
+                    },
+                    {
+                        key: 'key4',
+                        type: 'input',
+                        label: '默认隐藏',
+                        hiddenDefault: true,
+                    },
+                    {
+                        key: 'key5',
+                        type: 'normal-select',
+                        label: '工具人下拉框，选我取消禁用和取消隐藏',
+                        options: [
+                            {
+                                value: '1',
+                                label: '取消第一个的禁用状态'
+                            },
+                            {
+                                value: '2',
+                                label: '取消另一个的隐藏'
+                            },
+                        ],
+                        valueLink: [
+                            {
+                                value: '1',
+                                linkList: [
+                                    {
+                                        linkKey: 'key3',
+                                        enableLinkDisable: true,
+                                        linkDisable: false,
+                                    }
+                                ]
+                            },
+                            {
+                                value: '2',
+                                linkList: [
+                                    {
+                                        linkKey: 'key4',
+                                        enableLinkHidden: true,
+                                        linkHidden: false,
+                                    }
+                                ]
+                            },
+                        ],
+                    },
+                ]
+            }
+        ]
+    }
+]`
             };
         },
         methods: {
