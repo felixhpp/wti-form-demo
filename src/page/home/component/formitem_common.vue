@@ -131,6 +131,10 @@
                 <pre v-highlightjs><code class="javascript">{{ code4 }}</code></pre>
             </el-collapse-item>
         </el-collapse>
+
+
+        <h3>默认禁用和默认隐藏表单元素</h3>
+        <p>默认隐藏事件</p>
     </div>
 </template>
 

@@ -233,7 +233,6 @@ export default {
                             }
                             // 如果是子表单里的元素的话，采用三段匹配
                             const formKey = this.childChangeData.formKey;
-                            // debugger;
                             const randomId = this.randomId;
                             const key = triggerItem.linkKey;
                             const keyText = `${formKey}_${randomId}_${key}`;

@@ -211,7 +211,98 @@
                                         key: 'dict_code',
                                         type: 'dynamic-select',
                                         label: '这是一个字典下拉框（想不出来用处了）',
-                                        parentKey: '101'
+                                        parentKey: '101',
+                                        valueLink: [
+                                            {
+                                                // 下拉框的同一个值，触发的联动，都是 valueLink 里的一个元素
+                                                // 这里的 value 就是该下拉框的某个值
+                                                value: '10100-',
+                                                linkList: [
+                                                    // 一个下拉框每联动一个表单元素，便在 linkList 添加一个元素
+                                                    {
+                                                        // 这里的 linkKey 是被联动元素在表单里的 key
+                                                        linkKey: 'dict_code1',
+                                                        // 当 enableLinkValue 为 true 时，表示这个配置是联动设置值的。此时 linkValue 才生效
+                                                        enableLinkValue: true,
+                                                        linkValue: '12345',
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                value: '10101',
+                                                linkList: [
+                                                    {
+                                                        linkKey: 'dict_code1',
+                                                        // enableLinkDisable 表示是否打开联动禁用
+                                                        enableLinkDisable: true,
+                                                        // linkDisable 为 true 表示设置为禁用。false 表示取消禁用
+                                                        linkDisable: true,
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                value: '10102',
+                                                linkList: [
+                                                    {
+                                                        linkKey: 'dict_code1',
+                                                        enableLinkDisable: true,
+                                                        linkDisable: false,
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                value: '10100',
+                                                linkList: [
+                                                    {
+                                                        linkKey: 'dict_code1',
+                                                        // enableLinkHidden 表示是否打开联动隐藏/显示
+                                                        enableLinkHidden: true,
+                                                        // linkHidden 为 true 表示设置为隐藏。false 表示取消隐藏
+                                                        // 被隐藏的元素，通过 $ref.form.validate 调用校验方法时，将不会出现在 data 里
+                                                        linkHidden: true,
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                value: '10101-',
+                                                linkList: [
+                                                    {
+                                                        linkKey: 'dict_code1',
+                                                        enableLinkHidden: true,
+                                                        linkHidden: false,
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                value: '10101-',
+                                                linkList: [
+                                                    {
+                                                        linkKey: 'dict_code1',
+                                                        // enableLinkRequired 表示是否打开联动必填
+                                                        enableLinkRequired: true,
+                                                        // linkRequired 为 true 表示设置为必填，false 表示取消必填
+                                                        linkRequired: true
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                value: '10102-',
+                                                linkList: [
+                                                    {
+                                                        linkKey: 'dict_code1',
+                                                        enableLinkRequired: true,
+                                                        linkRequired: false
+                                                    }
+                                                ]
+                                            },
+                                        ]
+                                    },
+                                    {
+                                        key: 'dict_code1',
+                                        type: 'input',
+                                        label: '这是一个字典下拉框（想不出来用处了）',
+                                        disableDefault: true,
+                                        hiddenDefault: true
                                     },
                                 ]
                             },
@@ -382,7 +473,13 @@ fields1: [
                         key: 'dict_code',
                         type: 'dynamic-select',
                         label: '这是一个字典下拉框（想不出来用处了）',
-                        parentKey: '101'
+                        parentKey: '101',
+                    },
+                    {
+                        key: 'dict_code1',
+                        type: 'input',
+                        label: '这是一个字典下拉框（想不出来用处了）',
+                        parentKey: '101',
                     },
                 ]
             },

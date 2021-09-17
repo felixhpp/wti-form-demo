@@ -14,8 +14,8 @@ import 'common/less/config.less';
 import 'element-ui/lib/theme-chalk/index.css';
 import VueHighlightJS from 'vue-highlightjs';
 import 'highlight.js/styles/atom-one-dark.css';
-// import WtiForm from '@/components/wti-form';
-import WtiForm from 'wti-form';
+import WtiForm from '@/components/wti-form';
+// import WtiForm from 'wti-form';
 import {baseURL} from '@/config/env.js';
 
 const isProd = process.env.NODE_ENV !== 'development';

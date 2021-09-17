@@ -251,6 +251,8 @@
             this.initFormData();
             // 加载初始情况下，默认禁用的要素
             this.getDefaultDisableList();
+            // 默认隐藏
+            this.getDefaultHiddenList();
             // 动态加载需要数据字典的选项
             this.loadDynamicSelectOptions();
             this.initStatus();
@@ -261,6 +263,7 @@
                 this.$nextTick(() => {
                     this.currentFileds = v;
                     this.getDefaultDisableList();
+                    this.getDefaultHiddenList();
                     this.loadDynamicSelectOptions();
                     this.initFormData();
                     this.initStatus();
@@ -363,6 +366,25 @@
 
                 this.changeData.disableList = disableList;
             },
+
+            // 默认隐藏
+            getDefaultHiddenList () {
+                const hiddenList = [];
+                // 遍历传入的数据
+                this.fields.forEach(fields => {
+                    if (fields.children && fields.children instanceof Array) {
+                        fields.children.forEach(field => {
+                            // 如果是true，则添加到禁用列表里
+                            if (field.hiddenDefault) {
+                                hiddenList.push(field.key);
+                            }
+                        });
+                    }
+                });
+
+                this.changeData.hiddenKeyList = hiddenList;
+            },
+
 
             // 对一个 block 下的要素，进行 el-row 的分行
             getFieldRow (children) {

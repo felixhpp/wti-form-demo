@@ -357,6 +357,10 @@
                 filed.randomId = randomId;
                 this.childFormFileds.push(filed);
 
+                // 默认禁用
+                const defaultDisableList = [];
+                // 默认隐藏
+                const defaultHiddenList = [];
                 // 给 value 插入一条
                 const obj = {};
                 childrenForm.forEach(child => {
@@ -365,10 +369,27 @@
                     } else {
                         obj[child.key] = child.defaultValue || '';
                     }
+                    if (child.disableDefault) {
+                        defaultDisableList.push(child.key);
+                    }
+                    if (child.hiddenDefault) {
+                        defaultHiddenList.push(child.key);
+                    }
                 });
                 this.val.push(obj);
-                // console.log('newValue', newValue);
-                // this.$emit('input', newValue);
+
+                const formKey = this.item.key;
+
+
+                defaultDisableList.forEach(disableKey => {
+                    const keyText = `${formKey}_${randomId}_${disableKey}`;
+                    // this.statusChangeFn.setElementHidden(keyText, false);
+                    this.statusChangeFn.setElementDisable(keyText);
+                });
+                defaultHiddenList.forEach(disableKey => {
+                    const keyText = `${formKey}_${randomId}_${disableKey}`;
+                    this.statusChangeFn.setElementHidden(keyText);
+                });
             },
 
             // 表单组件是否显示
