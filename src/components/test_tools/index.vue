@@ -1,39 +1,81 @@
 <template>
     <div id="test-tools">
-        <div class="header">
-            <button>1</button>
-            <button>2</button>
-        </div>
-        <div>
-            <router-view/>
-        </div>
+        <el-button @click="makeTestData">生成测试数据</el-button>
     </div>
 </template>
 
 <script>
     // 自动测试工具
     // 目的是通过 refForm 获取表单组件，以及 fields 获取表单结构，自动推断出表单应该填写的内容
+    import TestValueCreator from './TestValueCreator';
+
     export default {
         name: 'TestTools',
         props: {
             // form 表单
-            refForm: {
+            refFormName: {
+                type: String,
+                default: ''
+            },
+            // 数据状态
+            // standard 合法标准随机数据
+            // border 合法边界数据
+            // outlimit 非法超限数据（需要将超限数据添加到 this.OutLimitKeys 里，否则生成随机数据）
+            dataStatus: {
+                type: String,
+                default: 'standard'
+            },
+            // 自定义校验函数
+            // 字段是 key，值是函数，入参是：(this.DataType)
+            customizeFn: {
                 type: Object,
                 default: () => {
                     return {};
                 }
             },
-            // 配置文件
-            fields: {
+            // 超限数据的 key 的集合。只有启用超限模式才生效
+            exceptOutLimitKeys: {
                 type: Array,
                 default: () => []
             }
         },
-        methods: {}
+        created () {
+            this.TestValueCreator = new TestValueCreator();
+        },
+        data () {
+            return {
+                TestValueCreator: null
+            };
+        },
+        methods: {
+            getFields () {
+                return this.$parent.$refs[this.refFormName].fields;
+            },
+            makeTestData () {
+                const fields = this.getFields();
+                // 更新生成数据类型
+                this.TestValueCreator.setDataType(this.dataStatus);
+                // 更新自定义生成数据函数
+                this.TestValueCreator.customizeFn = this.customizeFn;
+                // 更新超限数据 key
+                this.TestValueCreator.exceptOutLimitKeys = this.exceptOutLimitKeys;
+                // 随机生成数据
+                const obj = this.TestValueCreator.makeValue(fields);
+                // 更新数据
+                this.$parent.$refs[this.refFormName].updateFormData(obj);
+            }
+        }
     };
 </script>
 
 <style scoped lang="less">
-    @import '~common/less/config.less';
+    #test-tools {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid red;
+    }
 
 </style>
