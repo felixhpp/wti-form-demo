@@ -51,9 +51,12 @@
 
         <p>
             源代码见Github：
-            <a href="https://github.com/qq20004604/wti-form-demo/blob/main/src/page/home/component/demo/status.vue">
-                https://github.com/qq20004604/wti-form-demo/blob/main/src/page/home/component/demo/status.vue
-            </a>
+
+            <el-link
+                type="primary"
+                href="https://github.com/qq20004604/wti-form-demo/blob/main/src/page/home/component/demo/status.vue">
+                点击访问Github
+            </el-link>
         </p>
     </div>
 </template>

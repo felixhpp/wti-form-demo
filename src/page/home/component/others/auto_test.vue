@@ -11,6 +11,15 @@
 
         <wti-form :fields="fields1"
                   ref="form"/>
+
+        <p>
+            数据生成逻辑，参考源代码→
+            <el-link
+                type="primary"
+                href="https://github.com/qq20004604/wti-form-demo/blob/main/src/components/test_tools/TestValueCreator.js">
+                点击访问Github
+            </el-link>
+        </p>
     </div>
 </template>
 
