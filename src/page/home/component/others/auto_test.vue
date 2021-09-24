@@ -5,7 +5,11 @@
         <p>通过这种方法，我们可以快速验证后端接口是否正常，是否和前端接口匹配。</p>
         <p>功能和文档待补充，也欢迎感兴趣的同学一起参与进来贡献开源代码</p>
 
-        <TestTools ref-form-name="form"
+        <p>
+            <el-button type="primary" @click="makeTestTools">手动生成标准测试数据</el-button>
+        </p>
+        <TestTools ref="testTool"
+                   ref-form-name="form"
                    :data-status="dataStatus"
                    :customize-fn="customizeFn"/>
 
@@ -77,7 +81,11 @@
                 }
             };
         },
-        methods: {},
+        methods: {
+            makeTestTools () {
+                this.$refs.testTool.makeTestData();
+            }
+        },
         components: {
             TestTools
         }

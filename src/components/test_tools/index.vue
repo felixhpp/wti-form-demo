@@ -1,5 +1,10 @@
 <template>
     <div id="test-tools">
+        <el-select v-model="dataStatus" placeholder="请选择">
+            <el-option label="标准合法数据" value="standard"/>
+            <el-option label="合法边界数据" value="border"/>
+            <el-option label="非法超限数据" value="outlimit"/>
+        </el-select>
         <el-button @click="makeTestData">生成测试数据</el-button>
     </div>
 </template>
@@ -21,10 +26,10 @@
             // standard 合法标准随机数据
             // border 合法边界数据
             // outlimit 非法超限数据（需要将超限数据添加到 this.OutLimitKeys 里，否则生成随机数据）
-            dataStatus: {
-                type: String,
-                default: 'standard'
-            },
+            // dataStatus: {
+            //     type: String,
+            //     default: 'standard'
+            // },
             // 自定义校验函数
             // 字段是 key，值是函数，入参是：(this.DataType)
             customizeFn: {
@@ -44,7 +49,8 @@
         },
         data () {
             return {
-                TestValueCreator: null
+                TestValueCreator: null,
+                dataStatus: 'standard'
             };
         },
         methods: {
@@ -63,7 +69,7 @@
                 const obj = this.TestValueCreator.makeValue(fields);
                 // 更新数据
                 this.$parent.$refs[this.refFormName].updateFormData(obj);
-            }
+            },
         }
     };
 </script>
